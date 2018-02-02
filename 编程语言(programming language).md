@@ -20,26 +20,28 @@ ps：string放在字符串池中，除非是通过new创建的
 ### 用法1：常量
 
 ### 用法2：指针和常量
-    使用指针时涉及到两个对象：该指针本身和被它所指的对象。将一个指针的声明用const“预先固定”将使那个对象而不是使这个指针成为常量。要将指针本身而不是被指对象声明为常量，必须使用声明运算符*const。所以出现在 * 之前的const是作为基础类型的一部分：
-char *const cp; //到char的const指针
-char const *pc1; //到const char的指针
-const char *pc2; //到const char的指针（后两个声明是等同的）
+    使用指针时涉及到两个对象：该指针本身和被它所指的对象。将一个指针的声明用const“预先固定”将使那个对象而不是使这个指针成为常量。
+    要将指针本身而不是被指对象声明为常量，必须使用声明运算符*const。所以出现在 * 之前的const是作为基础类型的一部分：
+    char *const cp; //到char的const指针
+    char const *pc1; //到const char的指针
+    const char *pc2; //到const char的指针（后两个声明是等同的）
     从右向左读的记忆方式：
-cp is a const pointer to char. 故pc不能指向别的字符串，但可以修改其指向的字符串的内容
-pc2 is a pointer to const char. 故*pc2的内容不可以改变，但pc2可以指向别的字符串
-且注意：允许把非 const 对象的地址赋给指向 const 对象的指针,不允许把一个 const 对象的地址赋给一个普通的、非 const 对象的指针。
+    cp is a const pointer to char. 故pc不能指向别的字符串，但可以修改其指向的字符串的内容
+    pc2 is a pointer to const char. 故*pc2的内容不可以改变，但pc2可以指向别的字符串
+    且注意：允许把非 const 对象的地址赋给指向 const 对象的指针,不允许把一个 const 对象的地址赋给一个普通的、非 const 对象的指针。
 
 ### 用法3：const修饰函数传入参数
-    将函数传入参数声明为const，以指明使用这种参数仅仅是为了效率的原因，而不是想让调用函数能够修改对象的值。同理，将指针参数声明为const，函数将不修改由这个参数所指的对象。
+    将函数传入参数声明为const，以指明使用这种参数仅仅是为了效率的原因，而不是想让调用函数能够修改对象的值。同理，将指针参数声明为const，函数将不修改     由这个参数所指的对象。
     通常修饰指针参数和引用参数：
-void Fun( const A *in); //修饰指针型传入参数
-void Fun(const A &in); //修饰引用型传入参数
+    void Fun( const A *in); //修饰指针型传入参数
+    void Fun(const A &in); //修饰引用型传入参数
 
 ### 用法4：修饰函数返回值
     可以阻止用户修改返回值。返回值也要相应的付给一个常量或常指针。
 
 ### 用法5：const修饰成员函数(c++特性)
-const对象只能访问const成员函数，而非const对象可以访问任意的成员函数，包括const成员函数；
-const对象的成员是不能修改的，而通过指针维护的对象确实可以修改的；
-const成员函数不可以修改对象的数据，不管对象是否具有const性质。编译时以是否修改成员数据为依据进行检查。
+    const对象只能访问const成员函数，而非const对象可以访问任意的成员函数，包括const成员函数；
+    const对象的成员是不能修改的，而通过指针维护的对象确实可以修改的；
+    const成员函数不可以修改对象的数据，不管对象是否具有const性质。编译时以是否修改成员数据为依据进行检查。
+    
 （详细原文见 ：http://www.cnblogs.com/yc_sunniwell/archive/2010/07/14/1777416.html）
