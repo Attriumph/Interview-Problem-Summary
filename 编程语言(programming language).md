@@ -64,3 +64,6 @@ ps：string放在字符串池中，除非是通过new创建的
 
 (原文参考：http://blog.csdn.net/zbuger/article/details/51119556)
 
+## 6.hash冲突解决方法
+
+开放地址法 、链地址法 、再哈希法 、 建立一个公共溢出区
