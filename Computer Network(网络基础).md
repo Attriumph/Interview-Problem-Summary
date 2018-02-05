@@ -7,7 +7,7 @@ UDP：面向非连接、传输不可靠、用于传输少量数据(数据包模�
   三次握手
  
       第一次握手：建立连接。客户端发送连接请求报文段，然后，客户端进入SYN_SEND状态，等待服务器的确认；
-      第二次握手：服务器收到SYN报文段。SYN报文段进行确认；同时，自己还要发送SYN请求信息；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一       并发送给客户端，此时服务器进入SYN_RECV状态；
+      第二次握手：服务器收到SYN报文段。SYN报文段进行确认；同时，自己还要发送SYN请求信息；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，       一并发送给客户端，此时服务器进入SYN_RECV状态；
        第三次握手：客户端收到服务器的SYN+ACK报文段,客户端进入established状态。然后向服务器发送ACK报文段，这个报文段发送完毕以后，服务器端进入    
         ESTABLISHED状态，完成TCP三次握手。
 
@@ -42,7 +42,7 @@ UDP：面向非连接、传输不可靠、用于传输少量数据(数据包模�
 
 1) 流程概述：
   
-  a）浏览器会自动补全为http://www.google.com/, 这是个url,他表示网络某个资源(resource)的位置, 
+  a)浏览器会自动补全为http://www.google.com/, 这是个url,他表示网络某个资源(resource)的位置, 
   一般格式为: protocol :// hostname[:port] / path / ;parameters#fragment
 
   b)浏览器拿着这个domain找离你最近的DNS，DNS是网络运营商(电信,联通,移动,verizon,comcast)提供的。DNS服务器返回给我一个IP地址.
@@ -54,4 +54,5 @@ a)Google的Web Server(硬件)收到request，将这个request递交给正在80�
 
  b)HTTP拿到request后转发给Web Application(我们写的程序)，常见框架:Django(Python),Ruby on Rails(Ruby),NodeJS(JS),Dropwizard(Java).
 应用服务器把写好的html+css+js通过http协议发回给浏览器，浏览器显示并运行这些文件，以此页面为出发点，开始后续的交互.
+
 (原文：https://segmentfault.com/a/1190000006129691)
