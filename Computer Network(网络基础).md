@@ -19,9 +19,9 @@ UDP：面向非连接、传输不可靠、用于传输少量数据(数据包模�
       第四次分手：主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；
       此时，主机1等待2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，主机1也可以关闭连接了。
 
-## 什么是后端服务器
-1.本质：是向前端提供需要显示网页和APP内容的数据，可能是HTML，也可能是JSON数据，也可以是音视频或者PDF文件。
-2.一个服务器包含3个部分：
+## 3.什么是后端服务器
+1)本质：是向前端提供需要显示网页和APP内容的数据，可能是HTML，也可能是JSON数据，也可以是音视频或者PDF文件。
+2)一个服务器包含3个部分：
 
 * HTTP服务器：
 
@@ -37,3 +37,18 @@ UDP：面向非连接、传输不可靠、用于传输少量数据(数据包模�
 * 数据库
 
 (原文链接：https://www.jianshu.com/p/69f1553b7714)
+
+## 4.访问www.google.com的时候发生了什么？
+
+1) 流程概述：
+  a）浏览器会自动补全为http://www.google.com/, 这是个url,他表示网络某个资源(resource)的位置, 
+  一般格式为: protocol :// hostname[:port] / path / ;parameters#fragment
+
+  b)浏览器拿着这个domain找离你最近的DNS，DNS是网络运营商(电信,联通,移动,verizon,comcast)提供的。DNS服务器返回给我一个IP地址.
+  浏览器向这个IP地址发送一个http/https Request, google的服务器处理这个请求之后返回对应的Response，是一个html文件，浏览器将html文件显示.
+
+2) Google的服务器端：
+  a)Google的Web Server(硬件)收到request，将这个request递交给正在80端口监听的HTTP Server(跑在Web Server上的软件，常见的有Nginx,Apache,Unicorn,Gunicorn等)，80端口是专为http开放的，端口号用来区分这台主机提供的不同服务，由TCP/IP协议栈规定.
+
+  b)HTTP拿到request后转发给Web Application(我们写的程序)，常见框架:Django(Python),Ruby on Rails(Ruby),NodeJS(JS),Dropwizard(Java).
+应用服务器把写好的html+css+js通过http协议发回给浏览器，浏览器显示并运行这些文件，以此页面为出发点，开始后续的交互.
