@@ -67,3 +67,8 @@ ps：string放在字符串池中，除非是通过new创建的
 ## 6.hash冲突解决方法
 
 开放地址法 、链地址法 、再哈希法 、 建立一个公共溢出区
+
+## 7.HashMap与HashTable的区别。 
+* HashMap是非线程安全的，HashTable是线程安全的。 
+* HashMap的键和值都允许有null值存在，而HashTable则不行。 
+* 因为线程安全的问题，HashMap效率比HashTable的要高。
