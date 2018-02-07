@@ -72,3 +72,6 @@ ps：string放在字符串池中，除非是通过new创建的
 * HashMap是非线程安全的，HashTable是线程安全的。 
 * HashMap的键和值都允许有null值存在，而HashTable则不行。 
 * 因为线程安全的问题，HashMap效率比HashTable的要高。
+
+## 8.Math.round(11.5) 等于多少？Math.round(-11.5)等于多少？ 
+答：Math.round(11.5)的返回值是12，Math.round(-11.5)的返回值是-11。四舍五入的原理是在参数上加0.5然后进行下取整。
