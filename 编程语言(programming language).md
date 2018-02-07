@@ -74,4 +74,10 @@ ps：string放在字符串池中，除非是通过new创建的
 * 因为线程安全的问题，HashMap效率比HashTable的要高。
 
 ## 8.Math.round(11.5) 等于多少？Math.round(-11.5)等于多少？ 
-答：Math.round(11.5)的返回值是12，Math.round(-11.5)的返回值是-11。四舍五入的原理是在参数上加0.5然后进行下取整。
+Math.round(11.5)的返回值是12，Math.round(-11.5)的返回值是-11。四舍五入的原理是在参数上加0.5然后进行下取整。
+
+## 9.String和StringBuilder、StringBuffer的区别？ 
+
+Java平台提供了两种类型的字符串：String和StringBuffer/StringBuilder，它们可以储存和操作字符串。
+其中String是只读字符串，也就意味着String引用的字符串内容是不能被改变的。
+而StringBuffer/StringBuilder类表示的字符串对象可以直接进行修改。StringBuilder（线程不安全）是Java 5中引入的，它和StringBuffer（线程安全）的方法完全相同，区别在于它是在单线程环境下使用的，因为它的所有方面都没有被synchronized修饰，因此它的效率也比StringBuffer要高。
