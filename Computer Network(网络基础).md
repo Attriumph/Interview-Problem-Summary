@@ -56,3 +56,16 @@ a)Google的Web Server(硬件)收到request，将这个request递交给正在80�
 应用服务器把写好的html+css+js通过http协议发回给浏览器，浏览器显示并运行这些文件，以此页面为出发点，开始后续的交互.
 
 (原文：https://segmentfault.com/a/1190000006129691)
+
+## 5.URL和URI的区别
+URI，是统一资源标识符，用来唯一的标识一个资源。而URL是统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何locate这个资源。而URN，统一资源命名，是通过名字来标识资源，比如mailto:java-net@java.sun.com。
+也就是说，URI是以一种抽象的，高层次概念定义统一资源标识，而URL和URN则是具体的资源标识的方式。URL和URN都是一种URI；
+URL和URN是URI的具体表现。
+URI一般由三部组成
+①访问资源的命名机制
+②存放资源的主机名
+③资源自身的名称，由路径表示，着重强调于资源。
+
+
+
+
