@@ -32,33 +32,49 @@ Git区别于SCM（software change and configuration management system）在于�
 
       git add 做两件事
       1)把内容做成一个blobs文件，并对内容进行hash，用它作为文件名
-      2)把这个文件放到stage area， update status
+      2)把这个文件放到stage area(index)， update status
 
 * git commit -m "messgae for the commit"
 
 2.more common commands
-
-      git push origin master(此处也可也是其他任意branch)
-
-      git checkout -b feature_x  （b--branch）
+      
+      * checkout a respository:create a working copy of a respo
+      git clone /path/to/repository
+      git clone  username@host:/path/to/repository
+      
+      * push changes:send changes in local HEAD to remote respo
+      git push origin master(此处master也可也是其他任意branch)
+      git remote add origin <server>(when we have not clone an existing respo annd want to connect our respo to the remote)
+      
+      * branching 
+      git checkout -b feature_x  （b--branch）
       git checkout master
       git branch -d feature_x （d--delete）
-      git push origin <branch>
-
-      git pull
-      git merge <branch>
+      git push origin <branch> (push local branch to server)
+      
+      * update and merge
+      git pull (update our local branch to the newest commit)
+      git merge <branch> (to merge another branch into the acctive branch)
       git diff <source_branch> <target_branch>
-
+      
+      * tagging
+      git tag 1.0.0 id (get from log)
+      
+      *Log:study repository history
       git log
       git log --author==Mike
       git log --name-status
-      git checkout -- <filename>
-
+      git log --help
+      
+      * replace local changes
+      git checkout -- <filename> 
+      //replaces the changes in your working tree with the last content in HEAD. Changes already added to the index, as well as new   
+        files, will be kept.
+      
       git fetch origin
       git reset --hard origin/master
+      //drop all our local changes and commits, fetch the latest history from the server and point our local master branch 
 
-
-      更多代码：
-      git clone /path/to/repository
+    
 
 
