@@ -30,9 +30,9 @@ Git区别于SCM（software change and configuration management system）在于�
 * coding~~~~
 * git add .
 
-       git add 做两件事
-        1)把内容做成一个blobs文件，并对内容进行hash，用它作为文件名
-        2)把这个文件放到stage area， update status
+      git add 做两件事
+      1)把内容做成一个blobs文件，并对内容进行hash，用它作为文件名
+      2)把这个文件放到stage area， update status
 
 * git commit -m "messgae for the commit"
 
