@@ -18,9 +18,9 @@ Git区别于SCM（software change and configuration management system）在于�
 
       key：sha-1hash---只对content进行hash
       value：binary files， comprised of commits，trees and blobs
-      1）commits是acutal git commits（当前文件的snapshot）
-      2）trees：directory
-      3）blobs：content of datas
+      1)commits是acutal git commits（当前文件的snapshot）
+      2)trees：directory
+      3)blobs：content of datas
  
 ## 常用代码：
 
@@ -31,8 +31,8 @@ Git区别于SCM（software change and configuration management system）在于�
 * git add .
 
        git add 做两件事
-        1）把内容做成一个blobs文件，并对内容进行hash，用它作为文件名
-        2）把这个文件放到stage area， update status
+        1)把内容做成一个blobs文件，并对内容进行hash，用它作为文件名
+        2)把这个文件放到stage area， update status
 
 * git commit -m "messgae for the commit"
 
