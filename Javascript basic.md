@@ -1,4 +1,4 @@
-# Summary of CSS lecture from CSCI 571 
+# Summary of JS lecture from CSCI 571 
 (refer:http://cs-server.usc.edu:45678/lectures.html)
 
 ## 1.the location of Javascript
