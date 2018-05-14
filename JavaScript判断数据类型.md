@@ -7,7 +7,7 @@
   * prototype
   * jquery.type()
 
-      假设我们有： 
+ ## 假设我们有： 
       var a = "string.";
       var b = 123;
       var c= [1,2,3];
@@ -64,7 +64,8 @@
     alert(Object.prototype.toString.call(f) === ‘[object Function]’) -------> true;
     ** 大小写不能写错，比较麻烦，但胜在通用。
 
-   5.万金油：jquery.type()
+  ## 5.万金油：jquery.type()
+  
     如果对象是undefined或null，则返回相应的“undefined”或“null”。
     jQuery.type( undefined ) === "undefined"
     jQuery.type() === "undefined"
