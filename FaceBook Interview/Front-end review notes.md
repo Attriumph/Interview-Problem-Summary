@@ -1,7 +1,7 @@
 # Common front-end questions
 
-1.	the forEach() method doesn’t actually return anything (undefined). It simply calls a provided function on each element in your array. This callback is allowed to mutate the calling array.However, the map() method will also call a provided function on every element in the array. The difference is that map() utilizes return values and actually returns a new Array of the same size.
 ##	forEach() VS map()
+1.	the forEach() method doesn’t return anything (undefined). It simply calls a provided function on each element in your array. However, the map() method will also call a provided function on every element in the array and returns a new Array of the same size.
 2.	forEach can be used by map, set and array, map just be used by array
 
 ## What is a Closure?
@@ -13,13 +13,26 @@ A closure is an inner function that has access to the outer function’s variabl
 Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to tell a browser to let a web application running at one origin (domain) have permission to access selected resources from a server at a different origin.
 
 ## How to cross origin?
-1. CORS mechanism: it is decidedy by server of the requested source(the server decides Access-Control-Allow-Origin)
+1. CORS mechanism: it is decided by server of the requested source(the server decides Access-Control-Allow-Origin)
 2. JSONP
 3. proxy server
 
 ## The way to judge the data type  in js
 Object.prototype.toString.call();
 jquery.type();
+
+## What is Promise?
+Since JavaScript is single-thread language, so we need a lot of asynchronous functions. However, sometime we got a bunch of nested code for asynchronous operation. Therefore, we introduce Promise to solve this problem.
+
+* A Promise object serves as a link between the executor(resolve, reject) and the consuming functions, which will receive the result or error.
+* In executor, we do the asynchronous action. After it is done, we will call the consuming functions.
+* When the promise is created, this executor function runs automatically. Since it contains the producing code, that will eventually produce a result(consuming function will use the result)
+* The resulting promise object has internal properties: state(pending, fulfilled and rejected) and result
+
+* also, we could use '.then' after a promise, so we can control the sequence of a series of asynchronous action
+* also, we have promise.all() and promise.race()
+
+## What is generatot?
 
 ## Event delegation:
 https://www.cnblogs.com/bfgis/p/5460191.html
@@ -45,9 +58,16 @@ event  flow  includes capture phase, target phase and bubble phase.
 2. data type independent
 3. stateless
 
+## variable hoisting(only under un strict mode)
+A variable declared by ‘var’, can be accessed before its declaration
+Only the declaration hoisted, not the assignment!
+So it is hoisted with a value as ‘undefined’.
+
+
 ## How to implement a Queue by using JS?
 1.	Two pointers and A object
 2.	Use array—reverse();
+
 ```javascript
 function Queue() {
     this._oldestIndex = 1;
