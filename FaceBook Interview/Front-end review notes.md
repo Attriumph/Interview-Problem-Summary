@@ -34,6 +34,11 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 
 ## What is generatot?
 
+## apply() vs call()
+Both these functions are used to bind this to functions. JavaScript function has their owner.
+The only difference is parameters for them. The call() method takes arguments separately.
+The apply() method takes arguments as an array.
+
 ## Event delegation:
 https://www.cnblogs.com/bfgis/p/5460191.html
 event  flow  includes capture phase, target phase and bubble phase.
