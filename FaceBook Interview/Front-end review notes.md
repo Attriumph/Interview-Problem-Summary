@@ -18,7 +18,7 @@ Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP he
 3. proxy server
 
 ## The way to judge the data type  in js
-Object.prototype.toString.call();
+Object.prototype.toString.call(), return [Object，type]
 jquery.type();
 
 ## What is Promise?
@@ -32,7 +32,13 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 * also, we could use '.then' after a promise, so we can control the sequence of a series of asynchronous action
 * also, we have promise.all() and promise.race()
 
-## What is generatot?
+## What is generator?
+* got bunch of nested code when dealing with many asynchronous functions
+* generator can be viewed as a special function in ES6, which allows us to control the process of the function
+* generator could pause its own process by yield inside and restart it from outside
+* we create a generator object to control its process, the generator object is also a iterator object
+
+
 
 ## apply() vs call()
 Both these functions are used to bind this to functions. JavaScript function has their owner.
@@ -68,6 +74,12 @@ A variable declared by ‘var’, can be accessed before its declaration
 Only the declaration hoisted, not the assignment!
 So it is hoisted with a value as ‘undefined’.
 
+## Talk about 'this'
+* Since JavaScript does not have real class (everything is object),  so functions do not know who is their owner. When a object call a function, it should tell the function that I am the current owner of you  and you should use my properties to execute. This is what this does.
+* The this reference ALWAYS refers to (and holds the value of) an object—a singular object—and it is usually used inside a function or a method
+* two special condition is constructor and arrow function
+* this in arrow function is lexical scoping
+* for constructor, this refers the new object
 
 ## How to implement a Queue by using JS?
 1.	Two pointers and A object
