@@ -33,12 +33,22 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 * also, we have promise.all() and promise.race()
 
 ## What is generator?
-* got bunch of nested code when dealing with many asynchronous functions
+* got bunch of nested code when dealing with many asynchronous functions, better then Promise
 * generator can be viewed as a special function in ES6, which allows us to control the process of the function
 * generator could pause its own process by yield inside and restart it from outside
 * we create a generator object to control its process, the generator object is also a iterator object
 
-
+## Key concepts of Redux
+* There are two aspects that React does not solve well, one is code structure and other is comunication of component. Therefore, we have Redux(before it, is Flux).
+* The key point of Redux is the web application is state machine. A view corresponds to a state.
+* All data are stored in one object(store);
+* The key concepts are store, state, action and reducer;
+* we use createStore to create a store.
+* For a store, we could get state by store.getState() and initiate a action by store.dispatch();
+* reducer is used to compute state, which is a function could receive two parameters(state and action)
+* normally, we pass reducer into createStore()--createStore(reducer) so that reducer will automatically compute and return new state when dispatch a action;
+* once state changes, we should automatically update view. This is finished by store.subscribe()
+* for large application, we split reducer into different smaller reducers, but we use combineReducers() to combine them
 
 ## apply() vs call()
 Both these functions are used to bind this to functions. JavaScript function has their owner.
