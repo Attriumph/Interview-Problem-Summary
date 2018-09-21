@@ -107,6 +107,25 @@ https://www.cnblogs.com/bfgis/p/5460191.html
 2. data type independent
 3. stateless
 
+## Post VS Get
+
+## Prototype
+ A prototype is an internal object from which other objects inherit properties. Its main purpose is to allow multiple instances of an object to share a common property.
+
+## Class inheritance VS prototype inheritance
+> Class Inheritance:
+* instances inherit from classes and create sub-class relationships.
+* Instances are typically instantiated via constructor functions with the new keyword.  
+* ES6 syntax extending classes is much easier to understand.
+* There are two new keywords: extends and super.
+*  The extends keyword sets up the inheritance relationship between the parent and child classes.
+* The super keyword invokes the constructor on the parent class.
+> Prototypal Inheritance:
+* instances inherit directly from other objects.
+* Instances are typically created via factory functions or Object.create().
+* Instances may be composed from many different objects, allowing for easy selective inheritance. We all know that JavaScript doesn’t supports multiple inheritance. But there’s a way to “mimic multiple inheritance” in prototype-based languages. But it cannot be done in class-based languages which does not support multiple inheritance.
+
+
 ## variable hoisting(only under un strict mode)
 A variable declared by ‘var’, can be accessed before its declaration
 Only the declaration hoisted, not the assignment!
