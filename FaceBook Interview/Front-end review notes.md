@@ -12,12 +12,17 @@ A closure is an inner function that has access to the outer function’s variabl
 
 Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to tell a browser to let a web application running at one origin (domain) have permission to access selected resources from a server at a different origin.
 
+## variable hoisting-- just for no strict mode
+* A variable declared by ‘var’, can be accessed before its declaration
+* Only the declaration hoisted, not the assignment!
+* So it is hoisted with a value as ‘undefined’.
+
 ## How to cross origin?
 1. CORS mechanism: it is decided by server of the requested source(the server decides Access-Control-Allow-Origin)
 2. JSONP
 3. proxy server
 
-## The way to judge the data type  in js
+## The way to judge the data type in js
 Object.prototype.toString.call(), return [Object，type]
 jquery.type();
 
@@ -75,8 +80,12 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 2. slice() of array work likes subString() of string
 
 ## Event delegation:
+add a event listener to a single common parent rather than each child, through the event bubbling
+
 https://www.cnblogs.com/bfgis/p/5460191.html
-event  flow  includes capture phase, target phase and bubble phase.
+## event flow
+1. event  flow  includes capture phase, target phase and bubble phase.
+2. capture and bubble phase are event propagation
 
 ## what happends when we type a URL on browser?
 1. if requested object is in the browser cache and is fresh, move on to step 7
