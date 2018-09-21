@@ -105,6 +105,14 @@ So it is hoisted with a value as ‘undefined’.
 * this in arrow function is lexical scoping
 * for constructor, this refers the new object
 
+## CommonJS, AMD, RequireJS, ES6 Modules
+All of them are talking about javascript modules.
+JavaScript Modules refer to a small units of independent, reusable code. They have distinct functionality, allowing them to be added, removed without disrupting the system.
+* CommonJS uses the keywords require and exports. require is a function used to import functions from another module. exports is an object where any function put into it will get exported.(we could use nodeJS implmentation)
+* Asynchronous Module Definition (AMD): AMD was born since CommonJS wasn’t suited for the browsers early on. As the name implies, it supports asynchronous module loading.
+* RequireJS：implements the AMD API. It loads the plain JavaScript files as well as modules by using plain script tags. It includes an optimizing tool which can be run while deploying our code for better performance.
+
+
 ## How to implement a Queue by using JS?
 1.	Two pointers and A object
 2.	Use array—reverse();
