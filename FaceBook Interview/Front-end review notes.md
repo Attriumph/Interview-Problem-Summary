@@ -50,10 +50,29 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 * once state changes, we should automatically update view. This is finished by store.subscribe()
 * for large application, we split reducer into different smaller reducers, but we use combineReducers() to combine them
 
-## apply() vs call()
-Both these functions are used to bind this to functions. JavaScript function has their owner.
-The only difference is parameters for them. The call() method takes arguments separately.
-The apply() method takes arguments as an array.
+## apply(), call(), bind()
+* Both these functions are used to bind 'this' to functions. JavaScript function has their owner.
+* The only difference between apply and call is parameters for them. The call() method takes arguments separately. The apply() method takes arguments as an array.
+* bind() will create new function, it will not execute immediately, but call and bind will
+
+## Object VS array
+1. array has order, object does not have order
+2. when delete or add element in array, typically, it will be more expensive
+
+## Map vs Object
+1. Key field: in Object, the keys MUST be simple types — either integer or string or symbols.
+   But in Map it can be any data type (an object, an array, etc…).
+2. Element order: in Map, original order of elements (pairs) is preserved(so iterable), while in Object, it isn’t.
+3. Inheritance: Map is an instance of Object
+4. compared with object, map has a lot of convenient method for data operation, such as size(), remove element, forEach
+
+## Array VS set
+1. set does not have duplicates, so when we need non-duplicate, we better use set
+2. array is better  when we need quick access to element by index and do heavy modification
+
+## splice vs slice
+1. The splice() method adds/removes items to/from an array, and returns the removed item(s).
+2. slice() of array work likes subString() of string
 
 ## Event delegation:
 https://www.cnblogs.com/bfgis/p/5460191.html
