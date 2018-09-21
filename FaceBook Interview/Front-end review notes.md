@@ -200,9 +200,13 @@ If children set float, the parent will lose height from children. In order to le
 Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to tell a browser to let a web application running at one origin (domain) have permission to access selected resources from a server at a different origin.
 
 ## How to cross origin?
+[more details](https://segmentfault.com/a/1190000011145364)
+since the same-origin-policy, we cannot send a request to get data from different origin
 1. CORS mechanism: it is decided by server of the requested source(the server decides Access-Control-Allow-Origin)
 2. JSONP
-3. proxy server
+3. proxy server- nginx
+4. websocket(HTML5)
+5. nodejs as middleware
 
 ## Event delegation:
 add a event listener to a single common parent rather than each child, based on the event bubbling mechanism
@@ -246,7 +250,7 @@ To solve this issue we can use WAI-ARIA (Web Accessibility Initiative – Access
 
 1. Choose a content management system that supports accessibility.
 2. Use headings correctly to organize the structure of your content.
-Screen reader users can use heading structure to navigate content. By using headings (<h1>, <h2>, etc.) correctly and strategically, the content of your website will be well-organized and easily interpreted by screen readers.
+Screen reader users can use heading structure to navigate content. By using headings (< h1 >, < h2>, etc.) correctly and strategically, the content of your website will be well-organized and easily interpreted by screen readers.
 3. Include proper alt text for images.
 Alt text should be provided for images, so that screen reader users can understand the message conveyed by the use of images on the page.
 (This is especially important for informative images (such as infographics). When creating the alt text, the text should contain the message you wish to convey through that image,)
