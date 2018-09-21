@@ -162,6 +162,26 @@ CSS preprocessors take code written in the preprocessed language and then conver
 6. import: separating your codes in small pieces is helpful for expressing your declarations and increasing maintainability and control over the codebase.
 7. Math operations: can be used for standard arithmetic or unit conversions.
 
+## Clear float
+If children set float, the parent will lose height from children. In order to let the parent looks like contain children, we have several method:
+1. add new tag in the parent element: < br style="clear:both" />
+2. Float (Nearly) Everything
+3. set the parent container overflow: hidden,  or overflow: auto;
+4. use clearfix:
+```
+        .clearfix:after {
+          content: " ";
+          display: block;
+          clear: both;
+          height: 0;
+        }
+        .clearfix {
+          zoom: 1;
+        }
+        <div class="clearfix">
+        <div class="floated"></div>
+        </div>
+```
 # Http
 
 ## Features of Http
@@ -213,3 +233,26 @@ https://www.cnblogs.com/bfgis/p/5460191.html
 8. client interaction with server
 
 [From here](http://edusagar.com/articles/view/70/What-happens-when-you-type-a-URL-in-browser)
+
+## Website accessibility consideration:
+[From here](https://www.w3.org/WAI/intro/accessibility.php)
+### define：
+Web accessibility means that developing the website which is accessible to people with disabilities, and that provides a better user experience for everyone.
+
+### specific method
+To solve this issue we can use WAI-ARIA (Web Accessibility Initiative – Accessible Rich Internet Applications) to add special ARIA attributes to extend the semantics of the component markup.
+
+[From here](https://webaccess.berkeley.edu/resources/tips/web-accessibility)
+
+1. Choose a content management system that supports accessibility.
+2. Use headings correctly to organize the structure of your content.
+Screen reader users can use heading structure to navigate content. By using headings (<h1>, <h2>, etc.) correctly and strategically, the content of your website will be well-organized and easily interpreted by screen readers.
+3. Include proper alt text for images.
+Alt text should be provided for images, so that screen reader users can understand the message conveyed by the use of images on the page.
+(This is especially important for informative images (such as infographics). When creating the alt text, the text should contain the message you wish to convey through that image,)
+4. Give your links unique and descriptive names.
+When including links in your content, use text that properly describes where the link will go. Using "click here" is not considered descriptive,
+5. Ensure that all content can be accessed with the keyboard alone in a logical way.
+Users with mobility disabilities may not be able to use a mouse or trackpad. These people are able to access content through the use of a keyboard by pressing the "tab" or "arrow" keys.
+6. Design your forms for accessibility.
+When form fields are not labeled appropriately, the screen reader user does not have the same cues available as the sighted user. It may be impossible to tell what type of content should be entered into a form field.
