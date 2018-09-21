@@ -143,7 +143,7 @@ Queue.prototype.dequeue = function() {
 # HTML
 ## HTML Semantic
 Semantic HTML is HTML that introduces meaning to the web page rather than just presentation. For example, a <p> tag indicates that the enclosed text is a paragraph. This is both semantic and presentational, because people know what paragraphs are and browsers know how to display them. In HTML4, tags like <b> and <i> are not semantic, because they define only how the text should look (bold or italic) and do not provide any additional meaning.
-Examples of semantic HTML tags include the header tags <h1> through <h6>, <blockquote>, <code> and <em>. There are many more semantic HTML tags.
+Examples of semantic HTML tags include the header tags '<h1> through <h6>, <blockquote>, <code> and <em>'. There are many more semantic HTML tags.
 
 ### Why Semantic HTML is Important
 1. semantic code aids accessibility. Specially, many people whose eyes are not good rely on speech browsers to read pages to them. These programs cannot interpret pages very well unless they are clearly explained.
