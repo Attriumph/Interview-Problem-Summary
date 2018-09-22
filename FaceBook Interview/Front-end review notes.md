@@ -7,6 +7,7 @@
 ## What is a Closure?
 
 A closure is an inner function that has access to the outer function’s variables.
+Why use it? A closure lets you associate some data (the environment) with a function that operates on that data. This has obvious parallels to object oriented programming, where objects allow us to associate some data (the object's properties) with one or more methods.
 
 ## variable hoisting-- just for no strict mode
 * A variable declared by ‘var’, can be accessed before its declaration
@@ -158,6 +159,9 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
 2. Help Search engines to better understand pages.  Search engine need to understand what your content is about when rank you properly on search engines. Semantic code tends to improve your placement on search engines, as it is easier for the "search engine spiders" to understand.
 3. It’s easier to read and edit, which saves time and money during maintenance.
 
+## What is Iframe?
+
+
 # CSS
 ## CSS preprocessor
 CSS preprocessors take code written in the preprocessed language and then convert that code into the same old css. 3 of the more popular css preprocessors are Sass(用过), LESS, and Stylus
@@ -230,6 +234,62 @@ https://www.cnblogs.com/bfgis/p/5460191.html
 6. we can use stopPropogation to stop
 
 # General Web question
+## Ways to improve website performance
+1. Minimize HTTP Requests
+2. Use a Content Delivery Network
+3. Add an Expires or a Cache-Control Header
+4. Gzip Components
+5. Put Stylesheets at the Top
+6. Put Scripts at the Bottom
+7. Avoid CSS Expressions
+8. Make JavaScript and CSS External
+9. Reduce DNS Lookups
+10. Minify JavaScript and CSS
+11. Avoid Redirects
+12. Remove Duplicate Scripts
+13. Configure Etags
+14. Make Ajax Cacheable
+15. Flush the Buffer Early
+16. Use GET for AJAX Requests
+17. Post-load Components
+18. Preload Components
+19. Reduce the Number of DOM Elements
+20. Split Components Across Domains
+21. Minimize the Number of iframes
+22. No 404s
+23. Reduce Cookie Size
+24. Use Cookie-free Domains for Components
+25. Minimize DOM Access
+26. Optimize Images
+27. Optimize CSS Sprites
+28. Don't Scale Images in HTML
+29. Make favicon.ico Small and Cacheable
+30. Avoid Empty Image src
+
+
+## Cookie
+* A cookie is small piece of information stored on local computer by a website you visit.
+* Every time the user loads the website, the browser sends the cookie back to the server to notify the website of the user’s previous activity.
+* Cookies have a certain life span defined by their creators.
+* Cookies allows the site to present user with information customized to fit their needs.
+* mainly used for these three purposes:
+ 1. Session management (user logins, shopping carts)
+ 2. Personalization (user preferences)
+ 3.	Tracking (analyzing user behavior)
+
+## Cache
+* A web cache (or HTTP cache) is an information technology for the temporary storage (caching) of web documents, such as HTML pages and images, to reduce bandwidth usage, server load, and perceived lag.
+
+## Session
+* A session is a server-side storage of information that is used to store the user's interaction with the web site or web application.
+* The web application pairs this session id with it's internal database and retrieves the stored variables for use by the requested page.
+* It is stored unlimited amount of data.
+
+## Difference between Cache and Cookies
+Although cookies and cache are two ways to store data on client’s machine, but there are difference between cache and cookies and they serve different purposes.
+1. Cookie is used to store information to track different characteristics related to user, while cache is used to make the loading of web pages faster.
+2. Cookies stores information such as user preferences, while cache will keep resource files such as audio, video or flash files.
+3. Typically, cookies expire after some time, but cache is kept in the client’s machine until they are removed manually by the user.
 
 ## what happends when we type a URL on browser?
 1. if requested object is in the browser cache and is fresh, move on to step 7
