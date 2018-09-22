@@ -65,17 +65,6 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 1. The splice() method adds/removes items to/from an array, and returns the removed item(s).
 2. slice() of array work likes subString() of string
 
-## Key concepts of Redux
-* There are two aspects that React does not solve well, one is code structure and other is comunication of component. Therefore, we have Redux(before it, is Flux).
-* The key point of Redux is the web application is state machine. A view corresponds to a state.
-* All data are stored in one object(store);
-* The key concepts are store, state, action and reducer;
-* we use createStore to create a store.
-* For a store, we could get state by store.getState() and initiate a action by store.dispatch();
-* reducer is used to compute state, which is a function could receive two parameters(state and action)
-* normally, we pass reducer into createStore()--createStore(reducer) so that reducer will automatically compute and return new state when dispatch a action;
-* once state changes, we should automatically update view. This is finished by store.subscribe()
-* for large application, we split reducer into different smaller reducers, but we use combineReducers() to combine them
 
 ## Prototype
  A prototype is an internal object from which other objects inherit properties. Its main purpose is to allow multiple instances of an object to share a common property.
@@ -193,6 +182,45 @@ If children set float, the parent will lose height from children. In order to le
         <div class="clearfix">
         <div class="floated"></div>
         </div>
+```
+
+# React-Redux
+## Redux Basic
+* There are two aspects that React does not solve well, one is code structure and other is communication between components. Therefore, we have Redux(before it, is Flux).
+* The key point of Redux is the web application is state machine. A view corresponds to a state.
+* All data are stored in one object(store);
+* The key concepts are store, state, action and reducer;
+* we use createStore to create a store.
+* For a store, we could get state by store.getState() and initiate a action by store.dispatch();
+* reducer is used to compute state, which is a function could receive two parameters(state and action)
+* normally, we pass reducer into createStore()--createStore(reducer) so that reducer will automatically compute and return new state when dispatch a action;
+* once state changes, we should automatically update view. This is finished by store.subscribe()
+* for large application, we split reducer into different smaller reducers, but we use combineReducers() to combine them
+
+## Keys for Redux usage
+* Redux divides components into two types, one is presentational component, the other is container components
+* presentational components are responsible for UI, no states; all data are from props;
+* container components are responsible for dealing with data and logics, have state
+* In redux, we just provide presentational components, redux will create container components automatically
+* How we let redux create the container component for our presentational compoents? —— connect()(UI component)
+* The rest we need to do is: 1. tell how "state" pass into UI components(becomes props) 2. how let interactions or operation of users become action objects, dispatch to store;
+* So, we need mapStateToProps and mapDispatchToProps
+
+```JavaScript
+function mapStateToProps(state) {
+  return {
+    findsState: state
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    findsActions: bindActionCreators(findsActions, dispatch)
+    // bindActionCreators() call dispath by using findsActions
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FindsView)
 ```
 # Http
 
