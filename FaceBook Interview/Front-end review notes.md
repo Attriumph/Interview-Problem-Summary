@@ -222,6 +222,18 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(FindsView)
 ```
+
+## Redux-sagas
+* Saga is a middleware to manage the asynchronous operations, which is implemented by generator functions
+* Saga could subscribe actions, and then decide what to do next, such as initiate a Asynchronous operation, or initiate another action
+* In order to run our Saga, we need to:
+  1. create a Saga middleware with a list of Sagas to run
+  2. connect the Saga middleware to the Redux store
+* all tasks in saga are taken over by Effects, so we can see effects as task units
+* There are several factory functions to create effects, such as call(), put(), take()--waiting for a specific action, fork()
+* also we have takeEvery() and takeLatest() to execute tasks when we have specific Actions
+
+
 # Http
 
 ## Features of Http
