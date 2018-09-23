@@ -150,10 +150,23 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
 
 ## What is Iframe?
 
+## Meta tag
+* The tag provides metadata about the HTML document. Metadata will not be displayed on the page, but will be machine parsable.
+* Meta elements are typically used to specify page description, keywords, author of the document, last modified, and other metadata.
+* The metadata can be used by browsers (how to display content or reload page), search engines (keywords), or other web services.
 
 # CSS
 ## CSS preprocessor
 CSS preprocessors take code written in the preprocessed language and then convert that code into the same old css. 3 of the more popular css preprocessors are Sass(用过), LESS, and Stylus
+
+## pt, px, em, rem
+* pt are absolute length, 1 pt = 1/72 inch
+* px are relative length, different resolution is different length
+* em is also relative length, which depends its parents length
+* rem is also relative length, which depends root length of HTML
+
+### CSS3 to make shape
+ http://www.jqhtml.com/8045.html
 ## SASS basic concepts
 1. Variables: Variables in SASS start with $ sign
 2. Nesting: CSS lacks visual hierarchy while working with child selectors. You have to write selectors and their combinations in separate lines. Nesting provides a visual hierarchy as in the HTML and increases the readability.
@@ -167,8 +180,24 @@ CSS preprocessors take code written in the preprocessed language and then conver
 If children set float, the parent will lose height from children. In order to let the parent looks like contain children, we have several method:
 1. add new tag in the parent element: < br style="clear:both" />
 2. Float (Nearly) Everything
-3. set the parent container overflow: hidden,  or overflow: auto;
-4. use clearfix:
+3. use psedou class after
+```html
+<div class="l-form-row">
+            <div class="l-form-label"></div>
+            ....
+        </div>
+        <style>
+            .l-form-row:after {
+                clear: both;
+                content: "\0020";
+                display: block;
+                height: 0;
+                overflow: hidden
+            }
+        </style>
+```
+4. set the parent container overflow: hidden,  or overflow: auto;
+5. use clearfix:
 ```
         .clearfix:after {
           content: " ";
@@ -274,6 +303,9 @@ https://www.cnblogs.com/bfgis/p/5460191.html
 6. we can use stopPropogation to stop
 
 # General Web question
+
+## responsive Website
+
 ## Ways to improve website performance
 1. Minimize HTTP Requests
 2. Use a Content Delivery Network
