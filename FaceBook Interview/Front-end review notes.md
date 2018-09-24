@@ -166,7 +166,8 @@ CSS preprocessors take code written in the preprocessed language and then conver
 * rem is also relative length, which depends root length of HTML
 
 ### CSS3 to make shape
- http://www.jqhtml.com/8045.html
+ [See more details here](http://www.jqhtml.com/8045.html)
+
 ## SASS basic concepts
 1. Variables: Variables in SASS start with $ sign
 2. Nesting: CSS lacks visual hierarchy while working with child selectors. You have to write selectors and their combinations in separate lines. Nesting provides a visual hierarchy as in the HTML and increases the readability.
