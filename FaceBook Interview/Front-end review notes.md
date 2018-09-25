@@ -1,18 +1,66 @@
 # JavaScript
 
 ##	forEach() VS map()
-1.	the forEach() method doesn’t return anything (undefined). It simply calls a provided function on each element in your array. However, the map() method will also call a provided function on every element in the array and returns a new Array of the same size.
-2.	forEach can be used by map, set and array, map just be used by array
+1.	Both they will  call a provided function on each element in given array. However, the forEach() method doesn’t return anything (undefined), the map() method will return a new Array of  the same size.
+2.	forEach() can be used by map, set and array, map just be used by array
 
 ## What is a Closure?
 
-A closure is an inner function that has access to the outer function’s variables.
-Why use it? A closure lets you associate some data (the environment) with a function that operates on that data. This has obvious parallels to object oriented programming, where objects allow us to associate some data (the object's properties) with one or more methods.
+* A closure is an inner function that has access to the outer function’s variables.
+* Why use it?
+   1. A closure lets us associate some data (the environment) with a function that operates on that data.
+   2. This has obvious parallels to object oriented programming, where objects allow us to associate some data (the object's properties) with one or more methods.
 
 ## variable hoisting-- just for no strict mode
 * A variable declared by ‘var’, can be accessed before its declaration
 * Only the declaration hoisted, not the assignment!
 * So it is hoisted with a value as ‘undefined’.
+
+## key features of ES6
+* block scoping with let keyword
+* default parameters
+* rest parameters: a prefix of three dots (...).  The rest parameter allows us to represent an indefinite number of arguments as an array.
+  ```JavaScript
+  function fn(a,b,...args) {
+     //...
+  }
+  ```
+* Spread Operator: consists three dots (...). The spread operator allows us to spread out elements of an array or a string.
+* Object Literal: The object literal is one of the most popular patterns for creating objects in JavaScript because of its simplicity.
+  1. computed property name
+  2. ES6 allows you to eliminate the duplication when a property of an object is same as the local variable name by including the name without a colon and value.
+  ```javascript
+    function createMachine(name, status) {
+      return {
+          name,
+          status
+      };
+  }
+  ```
+* ES6 introduced a new construct for...of that creates a loop iterating over an iterable object such as an Array, a Map, a Set, or an object that implements the iterator.
+* destructing assignment: that allows us to take an object or an array and destructure it into individual variables.
+* Template Literals: a template literal uses backticks , it has the following features:
+   1. Multiline string: a string that can span multiple lines.
+   2. String formatting: the ability to substitute part of the string for the values of a variable or an expression.
+   3. HTML escaping: the ability to transform a string so that it is safe to include in HTML.
+* ES6 modules: export variables, functions, classes from a module and reuse them in other modules.  
+* introduce class and also extends and super key words
+    ```JavaScript
+    class Animal {
+        constructor(type) {
+            this.type = type;
+          }
+          identify() {
+            console.log(type);
+          }
+        }
+  ```
+* Symbol: ES6 added the Symbol as a new primitive type.
+* promise
+* generator
+* iterator
+* map and set
+  [more details see here](http://www.javascripttutorial.net/es6/)
 
 ## The way to judge the data type in js
 Object.prototype.toString.call(), return [Object，type]
