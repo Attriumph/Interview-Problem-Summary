@@ -197,6 +197,9 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
 3. It’s easier to read and edit, which saves time and money during maintenance.
 
 ## What is Iframe?
+An IFrame (Inline Frame) is an HTML document embedded inside another HTML document on a website. The IFrame HTML element is often used to insert content from another source, such as an advertisement, into a Web page.
+<iframe src="http://www.w3schools.com"></iframe>
+
 
 ## Meta tag
 * The tag provides metadata about the HTML document. Metadata will not be displayed on the page, but will be machine parsable.
@@ -325,6 +328,16 @@ export default connect(mapStateToProps, mapDispatchToProps)(FindsView)
 3. history different: for get method, Parameters remain in browser history because they are part of the URL; post: parameter are not saved in browser history
 4. restriction on form data length: post no restriction, get has
 5. restriction on form data type: get also can use ASCII characters, post method no restriction
+
+## http methods
+* GET: The GET method is used to retrieve information from the given server using a given URI. Requests using GET should only retrieve data and should have no other effect on the data.
+* HEAD: Same as GET, but transfers the status line and header section only.
+* POST: A POST request is used to send data to the server, for example, customer information, file upload, etc. using HTML forms.
+*	PUT: Replaces all current representations of the target resource with the uploaded content.
+*	DELETE: Removes all current representations of the target resource given by a URI.
+*	CONNECT: Establishes a tunnel to the server identified by a given URI.
+* OPTIONS: Describes the communication options for the target resource.
+*	TRACE: Performs a message loop-back test along the path to the target resource.
 
 # Browser
 
