@@ -56,21 +56,12 @@
         }
   ```
 * Symbol: ES6 added the Symbol as a new primitive type.
-* promise
-* generator
-* iterator
-* map and set
-  [more details see here](http://www.javascripttutorial.net/es6/)
+* Promise
+* Generator
+* Iterator
+* Map and Set
 
-## The way to judge the data type in js
-Object.prototype.toString.call(), return [Object，type]
-jquery.type();
-
-## callback
-A callback is a function to be executed after another function is executed, which is:
-1.	passed as an argument to another function
-2.	is invoked after some kind of event
-3.  once its parent function completes, the function passed as an argument is then called
+[more details about es6 see here](http://www.javascripttutorial.net/es6/)
 
 ## What is Promise?
 Since JavaScript is single-thread language, so we need a lot of asynchronous functions. However, sometime we got a bunch of ugly nested code for asynchronous operation. Therefore, we introduce Promise to solve this problem.
@@ -108,8 +99,17 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 ## Array VS set
 1. set does not have duplicates, so when we need non-duplicate, we better use set
 2. array is better  when we need quick access to element by index and do heavy modification
+## The way to judge the data type in js
+1. Object.prototype.toString.call(), return [Object，type]
+2. jquery.type();
 
-## splice vs slice
+## callback
+A callback is a function to be executed after another function is executed, which is:
+1.	passed as an argument to another function
+2.	is invoked after some kind of event
+3.  once its parent function completes, the function passed as an argument is then called
+
+## splice() vs slice()
 1. The splice() method adds/removes items to/from an array, and returns the removed item(s).
 2. slice() of array work likes subString() of string
 
@@ -320,8 +320,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(FindsView)
 3. stateless
 
 ## Post VS Get
-
-
+1. GET requests include all request data in the URL and POST requests supply additional data from the client (browser) to the server in the message body.
+2. Security: GET is less secure compared to POST because data sent is part of the URL
+3. history different: for get method, Parameters remain in browser history because they are part of the URL; post: parameter are not saved in browser history
+4. restriction on form data length: post no restriction, get has
+5. restriction on form data type: get also can use ASCII characters, post method no restriction
 
 # Browser
 
