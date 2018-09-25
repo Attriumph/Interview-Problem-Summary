@@ -356,9 +356,10 @@ since the same-origin-policy, we cannot send a request to get data from differen
 5. nodejs as middleware
 
 ## Event delegation:
-add a event listener to a single common parent rather than each child, based on the event bubbling mechanism
-
-https://www.cnblogs.com/bfgis/p/5460191.html
+* define: add a event listener to a single common parent rather than each child, based on the event bubbling mechanism
+* when to use?
+   we want some code to run when you click on any one of the child elements, we can set the event listener on their parent and have the effect of the event listener bubble to each child, rather than having to set the event listener on every child individually.
+[more details here](https://www.cnblogs.com/bfgis/p/5460191.html)
 
 ## event flow
 1. event  flow  includes capture phase, target phase and bubble phase.
@@ -373,36 +374,52 @@ https://www.cnblogs.com/bfgis/p/5460191.html
 ## responsive Website
 
 ## Ways to improve website performance
-1. Minimize HTTP Requests
-2. Use a Content Delivery Network
-3. Add an Expires or a Cache-Control Header
-4. Gzip Components
-5. Put Stylesheets at the Top
-6. Put Scripts at the Bottom
-7. Avoid CSS Expressions
-8. Make JavaScript and CSS External
-9. Reduce DNS Lookups
-10. Minify JavaScript and CSS
-11. Avoid Redirects
-12. Remove Duplicate Scripts
-13. Configure Etags
-14. Make Ajax Cacheable
-15. Flush the Buffer Early
-16. Use GET for AJAX Requests
-17. Post-load Components
-18. Preload Components
-19. Reduce the Number of DOM Elements
-20. Split Components Across Domains
-21. Minimize the Number of iframes
-22. No 404s
-23. Reduce Cookie Size
-24. Use Cookie-free Domains for Components
-25. Minimize DOM Access
-26. Optimize Images
-27. Optimize CSS Sprites
-28. Don't Scale Images in HTML
-29. Make favicon.ico Small and Cacheable
-30. Avoid Empty Image src
+* Minimize HTTP Requests: Sites are mainly slow because of too many (or too large) HTTP requests. We can eliminate unnecessary request;
+  1. combined files: js to a file, css to a file
+  2. CSS sprites: CSS Sprites are the preferred method for reducing the number of image requests. Combine your background images into a single image and use the CSS background-image and background-position properties to display the desired image segment.
+* Use a Content Delivery Network:
+   A CDN is essentially many optimized servers around the world that deliver web content to users based on their geographic location. This means big performance improvements for site users. Because, say, if a person accessing your site in India, they will be retrieving web content from a server nearby
+*  Optimize Images: image sizes make a huge difference to site speed. The larger content/images, the slower the site. we could:
+  1.	Changing the resolution: reducing the “quality” of the image (and thereby the file size)
+  2.	Compressing the picture: increasing the efficiency of image data storage
+  3.	Cropping the picture: when cropping, you are cutting out unneeded areas and thus making the image smaller in size
+* Put Scripts at the Bottom:
+  Javascript files can load after the rest of your page. The simplest solution is to place your external Javascript files at the bottom of your page, just before the close of your body tag. Now more of your site can load before your scripts. Another method that allows even more control is to use the defer or async attributes when placing external .js files on your site.
+  1. Async tags load the scripts while the rest of the page loads, but this means scripts can be loaded out of order. Basically, lighter files load first. This might be fine for some scripts, but can be disastrous for others.
+  2. The defer attribute loads your scripts after your content has finished loading. It also runs the scripts in order. Just make sure your scripts run so late without breaking your site.
+
+* Add an Expires or a Cache-Control Header
+  Web page designs are getting richer and richer, which means more scripts, stylesheets, images, and Flash in the page. A first-time visitor to your page may have to make several HTTP requests, but by using the Expires header you make those components cacheable. This avoids unnecessary HTTP requests on subsequent page views. Expires headers are most often used with images, but they should be used on all components including scripts, stylesheets, and Flash components.
+* Gzip Components
+  Compression reduces response times by reducing the size of the HTTP response. Gzipping generally reduces the response size by about 70%.
+* Put Stylesheets at the Top:
+  This is because putting stylesheets in the HEAD allows the page to render progressively.
+* Avoid CSS Expressions
+* Use GET for AJAX Requests:
+  Ajax is that it provides instantaneous feedback to the user because it requests information asynchronously from the backend web server
+* Make JavaScript and CSS External:
+  Using external files in the real world generally produces faster pages because the JavaScript and CSS files are cached by the browser. JavaScript and CSS that are inlined in HTML documents get downloaded every time the HTML document is requested. This reduces the number of HTTP requests that are needed, but increases the size of the HTML document. On the other hand, if the JavaScript and CSS are in external files cached by the browser, the size of the HTML document is reduced without increasing the number of HTTP requests.
+* Use get to ajax request:
+   POST is implemented in the browsers as a two-step process: sending the headers first, then sending data. So it's best to use GET, which only takes one TCP packet to send (unless you have a lot of cookies).
+* No 404s:
+   HTTP requests are expensive so making an HTTP request and getting a useless response (i.e. 404 Not Found) is totally unnecessary and will slow down the user experience without any benefit.
+* Reduce Cookie Size:
+  HTTP cookies are used for a variety of reasons such as authentication and personalization. Information about cookies is exchanged in the HTTP headers between web servers and browsers. It's important to keep the size of cookies as low as possible to minimize the impact on the user's response time.
+* Reduce DNS Lookups
+* Minify JavaScript and CSS
+* Avoid Redirects
+* Remove Duplicate Scripts
+* Configure Etags
+* Make Ajax Cacheable
+* Post-load Components
+* Preload Components
+* Reduce the Number of DOM Elements
+* Minimize the Number of iframes
+* Minimize DOM Access
+* Optimize CSS Sprites
+* Don't Scale Images in HTML
+* Make favicon.ico Small and Cacheable
+* Avoid Empty Image src
 
 
 ## Cookie
