@@ -197,8 +197,9 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
 3. It’s easier to read and edit, which saves time and money during maintenance.
 
 ## What is Iframe?
-An IFrame (Inline Frame) is an HTML document embedded inside another HTML document on a website. The IFrame HTML element is often used to insert content from another source, such as an advertisement, into a Web page.
-<iframe src="http://www.w3schools.com"></iframe>
+* An IFrame (Inline Frame) is an HTML document embedded inside another HTML document on a website.
+* The IFrame HTML element is often used to insert content from another source, such as an advertisement, into a Web page.
+<iframe src="http://www.w3schools.com">不支持 iframe 的浏览器</iframe>
 
 
 ## Meta tag
