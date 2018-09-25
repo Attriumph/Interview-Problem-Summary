@@ -496,3 +496,8 @@ When including links in your content, use text that properly describes where the
 Users with mobility disabilities may not be able to use a mouse or trackpad. These people are able to access content through the use of a keyboard by pressing the "tab" or "arrow" keys.
 6. Design your forms for accessibility.
 When form fields are not labeled appropriately, the screen reader user does not have the same cues available as the sighted user. It may be impossible to tell what type of content should be entered into a form field.
+
+
+# Webpack VS Gulp
+* webpack is module bunlder, whose inputs are modules with dependencies, output is static assets, which helps us deploy on the production environment
+* gulp is just a task runner, a flow or steam control tool. gulp.task(), gulp.run(), gulp.wathc(),gulp.src(), gulp.dest()
