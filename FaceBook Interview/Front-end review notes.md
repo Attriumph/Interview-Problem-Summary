@@ -497,6 +497,8 @@ Users with mobility disabilities may not be able to use a mouse or trackpad. The
 6. Design your forms for accessibility.
 When form fields are not labeled appropriately, the screen reader user does not have the same cues available as the sighted user. It may be impossible to tell what type of content should be entered into a form field.
 
+# AngularJS VS React
+* two way binding model VS one way data flow
 
 # Webpack VS Gulp
 * webpack is module bunlder, whose inputs are modules with dependencies, output is static assets, which helps us deploy on the production environment
