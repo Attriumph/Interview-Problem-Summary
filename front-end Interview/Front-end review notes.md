@@ -218,6 +218,18 @@ CSS preprocessors take code written in the preprocessed language and then conver
 * rem is also relative length, which depends root length of HTML
 
 ### CSS3 to make shape
+* use transform(traslate, rotate)
+* use border
+```css
+
+  #triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+}
+```
  [See more details here](http://www.jqhtml.com/8045.html)
 
 ## SASS basic concepts
