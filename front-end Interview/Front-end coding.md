@@ -39,3 +39,15 @@ map.forEach(function(value, key, map) {
 });
 
 console.log(output);
+
+
+
+function compare(properity) {
+   return function (obj1, obj2) {
+   return obj1[properity] - obj2[properity];
+
+   }
+}
+
+output.sort(compare('count'));
+ console.log(output);
