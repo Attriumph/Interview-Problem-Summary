@@ -104,3 +104,72 @@ return unescape(r[2]);
 }
 return null;
 }
+
+
+
+```
+
+# HTML/CSS/Javascript 实现UI小模块
+
+```JavaScript
+
+<DOCTYPE! html>
+<html>
+  <head>
+    <title>
+    写一个类似于点赞功能的ui，点赞之后旁边的数字+1，取消之后-1
+    写html的时候问了怎么改进accessiblity和symentic？用了一些 header footer之类的标签，加了role属性。
+    写了个js函数来处理button toggle，事件绑定在外层容器上用了事件代理来处理点击操作
+
+    </title>
+    <style>
+      p {
+        color: white;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <p id="display">0</p>
+      <button id="good" >Good</button>
+      <button id="cancel">Cancel</button>
+    </div>
+
+
+    <script >
+      let display = 0;
+      let times = 0;
+      
+
+      document.getElementById("good").addEventListener("click", good);
+      document.getElementById("cancel").addEventListener("click", cancel);
+
+
+      function good() {
+        console.log("good");
+        if (times === 0) {
+          times = 1;
+          display = 1;
+          document.getElementById("display").innerHTML = display;
+        }
+
+
+      }
+
+      function cancel() {
+        if (times === 1) {
+          times = 0;
+          display = 0;       
+          document.getElementById("display").innerHTML = display;
+        }
+      }
+
+    </script>
+
+  </body>
+
+
+</html>
+```
