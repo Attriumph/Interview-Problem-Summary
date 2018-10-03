@@ -139,9 +139,9 @@ return null;
 
 
     <script >
-      let display = 0;
+      let display = document.getElementById("display").innerHTML;
       let times = 0;
-      
+
 
       document.getElementById("good").addEventListener("click", good);
       document.getElementById("cancel").addEventListener("click", cancel);
