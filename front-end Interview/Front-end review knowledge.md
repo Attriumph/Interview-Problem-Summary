@@ -60,7 +60,9 @@
 * Generator
 * Iterator
 * Map and Set
-
+* Arrow function: Until arrow functions, every new function defined its own this value (based on how function was called)
+  - An arrow function does not have its own this; the this value of the enclosing lexical context is used i.e. Arrow functions follow the normal variable lookup rules. So while searching for this  which is not present in current scope they end up finding this from its enclosing scope .
+[more details about arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)  
 [more details about es6 see here](http://www.javascripttutorial.net/es6/)
 
 ## What is Promise?
@@ -418,7 +420,7 @@ since the same-origin-policy, we cannot send a request to get data from differen
 
 [From here](https://medium.com/walmartlabs/the-benefits-of-server-side-rendering-over-client-side-rendering-5d07ff2cefe8)
 ## ansyn vs defer
-fetch and executation 
+fetch and executation
 * the async attribute is used to indicate to the browser that the script file can be executed asynchronously. The HTML parser does not need to pause at the point it reaches the script tag to fetch and execute, the execution can happen whenever the script becomes ready after being fetched in parallel with the document parsing.
 * The defer attribute tells the browser to only execute the script file once the HTML document has been fully parsed.
 ## Ways to improve website performance
