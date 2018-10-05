@@ -417,6 +417,10 @@ since the same-origin-policy, we cannot send a request to get data from differen
 * for SSR, the user can start viewing the page while all of that is happening. For the CSR world, you need to wait for all of the above to happen and then have the virtual dom moved to the browser dom for the page to be viewable.
 
 [From here](https://medium.com/walmartlabs/the-benefits-of-server-side-rendering-over-client-side-rendering-5d07ff2cefe8)
+## ansyn vs defer
+fetch and executation 
+* the async attribute is used to indicate to the browser that the script file can be executed asynchronously. The HTML parser does not need to pause at the point it reaches the script tag to fetch and execute, the execution can happen whenever the script becomes ready after being fetched in parallel with the document parsing.
+* The defer attribute tells the browser to only execute the script file once the HTML document has been fully parsed.
 ## Ways to improve website performance
 * Minimize HTTP Requests
 
