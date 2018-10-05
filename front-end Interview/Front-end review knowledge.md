@@ -210,6 +210,24 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
 # CSS
 ## CSS preprocessor
 CSS preprocessors take code written in the preprocessed language and then convert that code into the same old css. 3 of the more popular css preprocessors are Sass(用过), LESS, and Stylus
+### CSS preprocessor Pros and cons:
+* Pros:
+  1.	Nested syntax
+  2.	Ability to define variables
+  3.	Ability to define mixins
+  4.	Mathematical functions
+  5.	Operational functions (such as “lighten” and “darken”)
+  6.	Joining of multiple files
+* Cons:
+  1.	Debugging is harder
+    - Due to having a compilation step, the browser is not interpreting the source files, meaning the CSS line numbers are now irrelevant when trying to debug. This makes debugging a lot harder.
+
+  2.	Maintainance
+
+  3.	Compilation time slows down development
+    - Compilation times can be painfully slow, even when using the fastest techniques on a cutting edge machine.
+  4.	Performance is compromised
+    - Source files may be small, but the generated CSS could be huge. And it’s the generated CSS that counts.
 
 ## pt, px, em, rem
 * pt are absolute length, 1 pt = 1/72 inch
@@ -380,11 +398,25 @@ since the same-origin-policy, we cannot send a request to get data from differen
 4.	Bubbling phase – the event bubbles up from the element
 5.  capture and bubble phase are event propagation
 6. we can use stopPropogation to stop
+## Critical Rending Path
+1. Constructing the DOM Tree
+2. Constructing the CSSOM Tree
+3. Running JavaScript  - parser blocking resource
+4. Creating the Render Tree
+5. Generating the Layout
+6. Painting
 
 # General Web question
 
 ## responsive Website
+## SSR VS CSR
+* We are using server side rendering for two reasons:
+  - performance benefit for our customers
+  - Consistent SEO performance
+* The main difference is that for SSR your server’s response to the browser is the HTML of your page that is ready to be rendered, while for CSR the browser gets a pretty empty document with links to your javascript. That means for SSR your browser will start rendering the HTML from your server without having to wait for all the JavaScript to be downloaded and executed.
+* for SSR, the user can start viewing the page while all of that is happening. For the CSR world, you need to wait for all of the above to happen and then have the virtual dom moved to the browser dom for the page to be viewable.
 
+[From here](https://medium.com/walmartlabs/the-benefits-of-server-side-rendering-over-client-side-rendering-5d07ff2cefe8)
 ## Ways to improve website performance
 * Minimize HTTP Requests
 
@@ -498,17 +530,20 @@ To solve this issue we can use WAI-ARIA (Web Accessibility Initiative – Access
 
 1. Choose a content management system that supports accessibility.
 2. Use headings correctly to organize the structure of your content.
-Screen reader users can use heading structure to navigate content. By using headings (< h1 >, < h2>, etc.) correctly and strategically, the content of your website will be well-organized and easily interpreted by screen readers.
+   - Screen reader users can use heading structure to navigate content. By using headings (< h1 >, < h2>, etc.) correctly and strategically, the content of your website will be well-organized and easily interpreted by screen readers.
 3. Include proper alt text for images.
-Alt text should be provided for images, so that screen reader users can understand the message conveyed by the use of images on the page.
-(This is especially important for informative images (such as infographics). When creating the alt text, the text should contain the message you wish to convey through that image,)
+  - Alt text should be provided for images, so that screen reader users can understand the message conveyed by the use of images on the page.
+   (This is especially important for informative images (such as infographics). When creating the alt text, the text should contain the message you wish to convey through that image,)
 4. Give your links unique and descriptive names.
-When including links in your content, use text that properly describes where the link will go. Using "click here" is not considered descriptive,
+   - When including links in your content, use text that properly describes where the link will go. Using "click here" is not considered descriptive,
 5. Ensure that all content can be accessed with the keyboard alone in a logical way.
-Users with mobility disabilities may not be able to use a mouse or trackpad. These people are able to access content through the use of a keyboard by pressing the "tab" or "arrow" keys.
+   - Users with mobility disabilities may not be able to use a mouse or trackpad. These people are able to access content through the use of a keyboard by pressing the "tab" or "arrow" keys.
 6. Design your forms for accessibility.
-When form fields are not labeled appropriately, the screen reader user does not have the same cues available as the sighted user. It may be impossible to tell what type of content should be entered into a form field.
-
+  - When form fields are not labeled appropriately, the screen reader user does not have the same cues available as the sighted user. It may be impossible to tell what type of content should be entered into a form field.
+7. Use tables for tabular data, not for layout
+8. Ensure that all content can be accessed with the keyboard alone in a logical way
+9. Use ARIA roles and landmarks (but only when necessary)
+10. Make dynamic content accessible
 # AngularJS VS React
 * two way binding model VS one way data flow
 

@@ -172,4 +172,58 @@ return null;
 
 
 </html>
+
+
+
+// tooltip
+
+.container {
+      text-align: center;  
+      position: relative;
+      display: flex;
+      justify-content: center;
+     }
+
+     .toolkit {
+      visibility: hidden;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translate(-50%,10%);
+      width: 45px;
+      background-color: gray;
+      border-radius: 5px;
+     }
+
+     .name {
+
+       width: 200px;
+       background-color: blue;
+       border-radius: 5px;
+     }
+     .profile{
+       padding-top: 5px;
+       width: 80%;
+
+     }
+
+     p {
+       line-height: 50%;
+     }
+
+     .container:hover .toolkit {
+       visibility: visible;
+     }
+
+<div class="container">
+  <div class="name">
+    LinkedIn_Name
+  </div>
+
+  <div class="toolkit">
+      <img class="profile" src="https://tinyurl.com/yddhds52" alt="avator">
+      <p class="username">Name</p>
+      <p class="title">title</p>
+  </div>
+</div>
 ```
