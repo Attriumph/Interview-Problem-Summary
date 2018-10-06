@@ -108,7 +108,64 @@ return null;
 
 
 ```
+## map函数和split方法
 
+```JavaScript
+function Tuple (str) {
+   this.tuple = [];
+   this.parse(str);
+};
+
+Tuple.prototype.parse = function(str) {
+ var str2 = str.substring(1, str.length-1);
+ var t = str2.split('),(');
+ console.log(t);
+ var tps = t.map(function(item) {
+    return item.split(',').map(function(i) {return parseInt(i)})
+ });
+ console.log(tps);
+ this.tuple = tps;
+}
+
+Tuple.prototype.multiply = function(n) {
+if(n<=0 || n>this.tuple[0].length) {
+  return null;
+}
+var output = 1;
+for(var i=0; i<this.tuple.length; i++) {
+  output *= this.tuple[i][n-1];
+}
+return output;
+}
+
+var t = new Tuple("(1,2,3),(4,5,6),(7,8,9)");
+console.log(t.multiply(1));
+console.log(t.tuple);
+
+```
+## Promise useage example
+```JavaScript
+function loadScript(src) {
+  return new Promise(function(resolve, reject) {
+    let script = document.createElement('script');
+    script.src = src;
+
+    script.onload = () => resolve(script);
+    script.onerror = () => reject(new Error("Script load error: " + src));
+
+    document.head.append(script);
+  });
+}
+
+let promise = loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js");
+
+promise.then(
+  script => alert(`${script.src} is loaded!`),
+  error => alert(`Error: ${error.message}`)
+);
+
+promise.then(script => alert('One more handler to do something else!'));
+```
 # HTML/CSS/Javascript 实现UI小模块
 
 ```JavaScript
@@ -226,4 +283,86 @@ return null;
       <p class="title">title</p>
   </div>
 </div>
+
+
+
+// judge if parent-children relationship
+function isParent(parent, ele) {
+     console.log(ele.parentElement.nodeName);
+
+     while (ele.parentElement.nodeName !== "BODY") {
+
+       if (ele.parentElement === parent) {
+         return true;
+       }
+       ele = ele.parentElement;
+     }
+
+     return false;
+   }
+
+   let img = document.getElementsByClassName("profile")[0];
+   let container = document.getElementsByClassName("container")[0];
+
+   console.log(isParent(container, img));
+
+// judge results   
+let Fun = function(a){
+      this.a = a;
+
+         this.print = function(){
+           return this.a;
+      };
+
+         this.addOne  = function(){  
+          return this.a = this.a + 1;
+
+      };
+    };
+
+
+       Fun.prototype = { mutiply: function(k) {
+        return this.a *= k;
+      }
+    };
+
+
+    let obj = new Fun(2);
+
+       console.log(obj.print());   // 2
+       console.log(obj.addOne()); // a=3
+       console.log(obj.print()) ;   // 3
+       console.log("mutiply:"+obj.mutiply(3));// 9
+       console.log(obj.print());   // 9       c
+        console.log(obj); //9
+
+// isPalindrome
+
+function isPalindrome(str) {
+  if (str === null) {
+    return false;
+  }
+
+  let len = str.length;
+
+  if (len < 2) {
+    return true;
+  }
+
+  for (let i = 0; i < parseInt(len/2); i++) {
+
+    if (str.charAt(i) !== str.charAt(len - 1 - i)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+console.log("---isPalindrome:", isPalindrome("aba"));
+
+let foo = str=>{ return str === str.split("").reverse().join("");;}
+console.log("new method:", foo("ababa"));
+
+
 ```

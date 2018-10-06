@@ -62,25 +62,45 @@
 * Map and Set
 * Arrow function: Until arrow functions, every new function defined its own this value (based on how function was called)
   - An arrow function does not have its own this; the this value of the enclosing lexical context is used i.e. Arrow functions follow the normal variable lookup rules. So while searching for this  which is not present in current scope they end up finding this from its enclosing scope .
+  - Since arrow functions do not have their own this, the methods call() or apply() can only pass in parameters. thisArg is ignored.
 [more details about arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)  
 [more details about es6 see here](http://www.javascripttutorial.net/es6/)
 
 ## What is Promise?
 Since JavaScript is single-thread language, so we need a lot of asynchronous functions. However, sometime we got a bunch of ugly nested code for asynchronous operation. Therefore, we introduce Promise to solve this problem.
 
-* A Promise object serves as a link between the executor(resolve, reject) and the consuming functions, which will receive the result or error.
+* A Promise object serves as a link between the executor(resolve, reject) and the consuming functions, which needs the result or error of executor.resolve and reject are built-in functions in JS
 * In executor, we do the asynchronous action. After it is done, we will call the consuming functions.
 * When the promise is created, this executor function runs automatically. Since it contains the producing code, that will eventually produce a result(consuming function will use the result)
 * The resulting promise object has internal properties: state(pending, fulfilled and rejected) and result
 
 * also, we could use '.then' after a promise, so we can control the sequence of a series of asynchronous action
 * also, we have promise.all() and promise.race()
-
+[more details here](https://javascript.info/promise-basics)
 ## What is generator?
 * got bunch of nested code when dealing with many asynchronous functions, better then Promise
 * generator can be viewed as a special function in ES6, which allows us to control the process of the function
 * generator could pause its own process by yield inside and restart it from outside
 * we create a generator object to control its process, the generator object is also a iterator object
+
+## callback
+A callback is a function to be executed after another function is executed, which is:
+1.	passed as an argument to another function
+2.	is invoked after some kind of event
+3.  once its parent function completes, the function passed as an argument is then called
+
+
+## Event loop and message Queue
+* JavaScript use event loop and message queue to notify the accomplishment of ayschronous operations
+* A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message has an associated function which gets called in order to handle the message.
+* At some point during the event loop, the Js runtime starts handling the messages on the queue, starting with the oldest one. To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter.
+ [More details about event loop, message queue, ansychronous and synchronous](https://segmentfault.com/a/1190000004322358)
+## callback vs Promises
+* we must know what to do with the result before loadScript is called. Also, There can be only one callback.
+* Promises allow us to do things in the natural order. First, we get our promise object, and .then we write what to do with the result.
+  also, We can call .then on a Promise as many times as we want.
+
+## fetch() VS AJAX
 
 ## apply(), call(), bind()
 * Both these functions are used to bind 'this' to functions. JavaScript function has their owner.
@@ -105,11 +125,6 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 1. Object.prototype.toString.call(), return [Object，type]
 2. jquery.type();
 
-## callback
-A callback is a function to be executed after another function is executed, which is:
-1.	passed as an argument to another function
-2.	is invoked after some kind of event
-3.  once its parent function completes, the function passed as an argument is then called
 
 ## splice() vs slice()
 1. The splice() method adds/removes items to/from an array, and returns the removed item(s).
@@ -187,7 +202,34 @@ Queue.prototype.dequeue = function() {
     }
 	};
 ```
-
+## Common Js functions
+* Array
+ - Array.isArray(arr)
+ - arr.join(".")
+ - push()/pop()
+ - shift()/unshift()
+ - reverse()
+ - sort()
+ - arr.concat(): arr.concat("test1", ["test2"]) return a new arr
+ - slice():  return a new Array
+ - splice(): modify the original Array
+ - indexOf()
+ - every() / some()
+ - filter()/ map()/ forEach()
+ - reduce()
+* String
+ - charAt()
+ - indexOf()
+ - match()
+ - search()
+ - replace(): return a new string
+ - split()
+ - concat()
+ - slice()/substring()
+ - trim()
+ - escape(string)/unescape(string)
+ - encodeURI(string)/decodeURI(string)
+[From here](http://realtcg.com/2017/05/13/JavaScript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93-%E4%B8%80/)
 # HTML
 ## HTML Semantic
 Semantic HTML is HTML that introduces meaning to the web page rather than just presentation. For example, a <p> tag indicates that the enclosed text is a paragraph. This is both semantic and presentational, because people know what paragraphs are and browsers know how to display them. In HTML4, tags like < b > and < i > are not semantic, because they define only how the text should look (bold or italic) and do not provide any additional meaning.
