@@ -214,6 +214,34 @@ class PrimaryStudent extends Student {
 }
 
 ```
+
+##  Debounce & Throttling
+
+* Debounce: For events like keydown, scroll, we don’t want to trigger event in the middle of it, but only want to trigger after user pause! (ie. we only care the final result)
+* Throttling: For events like mouseover, we don’t want to trigger event every for every single move, but only want to trigger it every 200ms if such event happens (ie. we only care sample results)
+
+```JavaScript
+// Debounce
+let textarea = document.querySelector("textarea");
+  let timeout;
+  textarea.addEventListener("input", () => {
+    clearTimeout(timeout);  
+    timeout = setTimeout(() => {console.log("Typed!"); }, 500);
+  });
+
+// Throttling
+  let scheduled = true;
+  window.addEventListener("mousemove", event => {
+    if (scheduled) {
+      document.body.textContent = `Mouse at ${event.pageX}, ${event.pageY}`;
+      scheduled = false;
+      setTimeout(() => { scheduled = true; }, 1000);
+    }
+  });
+
+```
+[From here](https://caomingkai.github.io/)
+
 ## variable hoisting(only under un strict mode)
 A variable declared by ‘var’, can be accessed before its declaration
 Only the declaration hoisted, not the assignment!
@@ -379,7 +407,7 @@ CSS preprocessors take code written in the preprocessed language and then conver
   - inline elements' display will become blocks
 * using relative and absolute, the elements will cover other elements; but we can set z-index as -1
 ## float
-* The float CSS property specifies that an element should be placed along the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the web page, though still remaining a part of the flow
+* The float CSS property specifies that an element should be placed along the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the web page, but the element will not cover the content of next elements(only cover the border).
 * after setting a float property, the element will become a block
 
 ## Clear float
@@ -544,6 +572,7 @@ since the same-origin-policy, we cannot send a request to get data from differen
 fetch and executation
 * the async attribute is used to indicate to the browser that the script file can be executed asynchronously. The HTML parser does not need to pause at the point it reaches the script tag to fetch and execute, the execution can happen whenever the script becomes ready after being fetched in parallel with the document parsing.
 * The defer attribute tells the browser to only execute the script file once the HTML document has been fully parsed.
+[From here](https://bitsofco.de/async-vs-defer/)
 ## Ways to improve website performance
 * Minimize HTTP Requests
 
