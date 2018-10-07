@@ -9,7 +9,20 @@
 * A closure is an inner function that has access to the outer function’s variables.
 * Why use it?
    1. A closure lets us associate some data (the environment) with a function that operates on that data.
-   2. This has obvious parallels to object oriented programming, where objects allow us to associate some data (the object's properties) with one or more methods.
+   2. for object data privacy, This has obvious parallels to object oriented programming, where objects allow us to associate some data (the object's properties) with one or more methods.
+* sample code:
+```JavaScript
+function lazy_sum(arr) {
+    var sum = function () {
+        return arr.reduce(function (x, y) {
+            return x + y;
+        });
+    }
+    return sum;
+}
+var f = lazy_sum([1, 2, 3, 4, 5]); // function sum()
+f(); // 15
+```
 
 ## variable hoisting-- just for no strict mode
 * A variable declared by ‘var’, can be accessed before its declaration
@@ -146,8 +159,61 @@ A callback is a function to be executed after another function is executed, whic
 * instances inherit directly from other objects.
 * Instances are typically created via factory functions or Object.create().
 * Instances may be composed from many different objects, allowing for easy selective inheritance. We all know that JavaScript doesn’t supports multiple inheritance. But there’s a way to “mimic multiple inheritance” in prototype-based languages. But it cannot be done in class-based languages which does not support multiple inheritance.
+* before ES6, we use the following code to inherit a object
 
+```javascript
+function inherits(Child, Parent) {
+    var F = function () {};
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+    Child.prototype.constructor = Child;
+}
 
+function Student(props) {
+    this.name = props.name || 'Unnamed';
+}
+
+Student.prototype.hello = function () {
+    alert('Hello, ' + this.name + '!');
+}
+
+function PrimaryStudent(props) {
+    Student.call(this, props);
+    this.grade = props.grade || 1;
+}
+
+// 实现原型继承链:
+inherits(PrimaryStudent, Student);
+
+// 绑定其他方法到PrimaryStudent原型:
+PrimaryStudent.prototype.getGrade = function () {
+    return this.grade;
+};
+```
+* after ES6, we use the following codes
+```JavaScript
+class Student {
+    constructor(name) {
+        this.name = name;
+    }
+
+    hello() {
+        alert('Hello, ' + this.name + '!');
+    }
+}
+
+class PrimaryStudent extends Student {
+    constructor(name, grade) {
+        super(name); // 记得用super调用父类的构造方法!
+        this.grade = grade;
+    }
+
+    myGrade() {
+        alert('I am at grade ' + this.grade);
+    }
+}
+
+```
 ## variable hoisting(only under un strict mode)
 A variable declared by ‘var’, can be accessed before its declaration
 Only the declaration hoisted, not the assignment!
@@ -303,6 +369,19 @@ CSS preprocessors take code written in the preprocessed language and then conver
 6. import: separating your codes in small pieces is helpful for expressing your declarations and increasing maintainability and control over the codebase.
 7. Math operations: can be used for standard arithmetic or unit conversions.
 
+## Box model
+* block: by default, the width is 100%
+* inline: width is decided by Content
+## Position property
+* relative: not change the display property of elements
+* absolute: if parents of the elements do not set relative or absolute, the element will locate by the body
+  - width of block elements becomes auto
+  - inline elements' display will become blocks
+* using relative and absolute, the elements will cover other elements; but we can set z-index as -1
+## float
+* The float CSS property specifies that an element should be placed along the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the web page, though still remaining a part of the flow
+* after setting a float property, the element will become a block
+
 ## Clear float
 If children set float, the parent will lose height from children. In order to let the parent looks like contain children, we have several method:
 1. add new tag in the parent element: < br style="clear:both" />
@@ -435,7 +514,7 @@ since the same-origin-policy, we cannot send a request to get data from differen
    we want some code to run when you click on any one of the child elements, we can set the event listener on their parent and have the effect of the event listener bubble to each child, rather than having to set the event listener on every child individually.
 [more details here](https://www.cnblogs.com/bfgis/p/5460191.html)
 
-## event flow
+## Event flow
 1. event  flow  includes capture phase, target phase and bubble phase.
 2.	Capturing phase – the event goes down to the element.
 3.	Target phase – the event reached the target element.
