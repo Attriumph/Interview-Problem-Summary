@@ -166,33 +166,6 @@ promise.then(
 
 promise.then(script => alert('One more handler to do something else!'));
 ```
-
-## Infinite scroller handler 
-* dom接口： getBoundingClientRect() 和 window.innerHeight()
-[From here](https://segmentfault.com/a/1190000004974824)
-```JavaScript
-var isLoading = false;
-var isEnd = false;
-var triggerDistance = 200;
-
-function fetchData() {
-
-  var distance = container.getBoundingClientRect().bottom - window.innerHeight;
-  if ( !isLoading && !isEnd && distance < triggerDistance ) {
-
-    isLoading = true;
-
-    fetch(path).then(res => {
-      isLoading = false;
-      res.data.length === 0 && isEnd = true;
-      doSomething(res.data);
-    });
-
-  }
-
-}
-window.addEventListener('scroll', fetchData);
-```
 # HTML/CSS/Javascript 实现UI小模块
 
 ```JavaScript
