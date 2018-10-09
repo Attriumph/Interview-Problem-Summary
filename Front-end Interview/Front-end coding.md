@@ -56,7 +56,7 @@ function compare(properity) {
 }
 
 output.sort(compare('count'));
- console.log(output);
+
 ```
 
 
