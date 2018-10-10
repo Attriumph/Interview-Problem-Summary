@@ -298,31 +298,31 @@ Queue.prototype.dequeue = function() {
 ```
 ## Common Js functions
 * Array
- - Array.isArray(arr)
- - arr.join(".")
- - push()/pop()
- - shift()/unshift()
- - reverse()
- - sort()
- - arr.concat(): arr.concat("test1", ["test2"]) return a new arr
- - slice():  return a new Array
- - splice(): modify the original Array
- - indexOf()
- - every() / some()
- - filter()/ map()/ forEach()
- - reduce()
+  - Array.isArray(arr)
+  - arr.join(".")
+  - push()/pop()
+  - shift()/unshift()
+  - reverse()
+  - sort()
+  - arr.concat(): arr.concat("test1", ["test2"]) return a new arr
+  - slice():  return a new Array
+  - splice(): modify the original Array
+  - indexOf()
+  - every() / some()
+  - filter()/ map()/ forEach()
+  - reduce()
 * String
- - charAt()
- - indexOf()
- - match()
- - search()
- - replace(): return a new string
- - split()
- - concat()
- - slice()/substring()
- - trim()
- - escape(string)/unescape(string)
- - encodeURI(string)/decodeURI(string)
+  - charAt()
+  - indexOf()
+  - match()
+  - search()
+  - replace(): return a new string
+  - split()
+  - concat()
+  - slice()/substring()
+  - trim()
+  - escape(string)/unescape(string)
+  - encodeURI(string)/decodeURI(string)
 [From here](http://realtcg.com/2017/05/13/JavaScript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93-%E4%B8%80/)
 # HTML
 ## HTML Semantic
@@ -560,6 +560,7 @@ since the same-origin-policy, we cannot send a request to get data from differen
 # General Web question
 
 ## responsive Website
+* <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ## SSR VS CSR
 * We are using server side rendering for two reasons:
   - performance benefit for our customers
