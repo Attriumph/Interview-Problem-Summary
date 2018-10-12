@@ -446,7 +446,22 @@ If children set float, the parent will lose height from children. In order to le
         <div class="floated"></div>
         </div>
 ```
-
+## 5 ways to hidden Elements
+1. display: screen readers won’t read the element’s content either. It is as if the element does not exist.
+2. visibility:
+    - Just like the opacity property, the hidden element will still affect the layout of our web page.
+    - The only difference is that this time it will not capture any user interaction when hidden from the user.
+    - Additionally, the element will also be hidden from screen readers.
+3. opacity:
+    - set an element’s transparency;
+    - only hides the element visually. The element still occupies its position and affects the layout of the web page.
+    - It will also respond to user interaction as well.
+    - the element and all its content will be read by screen readers
+4. position:  
+    - Suppose you have an element that you would like to interact with but you do not want it to affect the layout of your web page.
+    - move the element out of the viewport
+5. clip-path:
+[from here](https://www.sitepoint.com/five-ways-to-hide-elements-in-css/)
 # React-Redux
 ## Redux Basic
 * There are two aspects that React does not solve well, one is code structure and other is communication between components. Therefore, we have Redux(before it, is Flux).
