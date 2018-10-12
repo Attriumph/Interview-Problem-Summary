@@ -96,7 +96,7 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 * generator could pause its own process by yield inside and restart it from outside
 * we create a generator object to control its process, the generator object is also a iterator object
 
-## callback
+## Callback
 A callback is a function to be executed after another function is executed, which is:
 1.	passed as an argument to another function
 2.	is invoked after some kind of event
@@ -108,6 +108,7 @@ A callback is a function to be executed after another function is executed, whic
 * A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message has an associated function which gets called in order to handle the message.
 * At some point during the event loop, the Js runtime starts handling the messages on the queue, starting with the oldest one. To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter.
  [More details about event loop, message queue, ansychronous and synchronous](https://segmentfault.com/a/1190000004322358)
+
 ## callback vs Promises
 * we must know what to do with the result before loadScript is called. Also, There can be only one callback.
 * Promises allow us to do things in the natural order. First, we get our promise object, and .then we write what to do with the result.
@@ -345,6 +346,39 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
 * Meta elements are typically used to specify page description, keywords, author of the document, last modified, and other metadata.
 * The metadata can be used by browsers (how to display content or reload page), search engines (keywords), or other web services.
 
+## HTML DOM
+### Tranverse Dom tree
+```JavaScript
+ // 广度优先遍历
+  function bfs(root) {
+    let queue = [root];
+
+    while(queue.length) {
+      let curNode = queue.shift();
+      console.log(curNode);
+
+      if(!curNode.children.length) {
+        continue;
+      }
+
+      Array.from(curNode.children).map((child) => queue.push(child));
+
+    }
+  }
+
+// 深度优先遍历
+  function dfs(root){
+    let child = root.firstElementChild;
+
+    while(child) {
+      console.log(child);
+      dfs(child);
+      child = child.nextElementSibling;  
+    }
+  }
+```
+### DOM API
+
 # CSS
 ## CSS preprocessor
 CSS preprocessors take code written in the preprocessed language and then convert that code into the same old css. 3 of the more popular css preprocessors are Sass(用过), LESS, and Stylus
@@ -461,7 +495,13 @@ If children set float, the parent will lose height from children. In order to le
     - Suppose you have an element that you would like to interact with but you do not want it to affect the layout of your web page.
     - move the element out of the viewport
 5. clip-path:
+
 [from here](https://www.sitepoint.com/five-ways-to-hide-elements-in-css/)
+
+## Event emitter
+### When to use it?
+* If when a certain event happens, we have to deal many type of manipulation for that event’s result, then it is better to use the event emitter pattern. Instead put all functions inside an event callback, we subscribe all the function to that event, when the event happens, we emit the event!
+
 # React-Redux
 ## Redux Basic
 * There are two aspects that React does not solve well, one is code structure and other is communication between components. Therefore, we have Redux(before it, is Flux).
