@@ -4,7 +4,6 @@
 * 常用方法： push, set, get, has, sort
 * 数据结构
 
-
 ```javascript
 var endorsements = [{skill: 'javascript', user: 'user1'}, {skill: 'css', user: 'user2'}, {skill: 'html', user: 'user3'}, {skill: 'javascript', user: 'user2'}, {skill: 'css', user: 'user3'}, {skill: 'javascript', user: 'user3'}];
 
@@ -46,8 +45,6 @@ map.forEach(function(value, key, map) {
 
 console.log(output);
 
-
-
 function compare(properity) {
    return function (obj1, obj2) {
    return obj1[properity] - obj2[properity];
@@ -58,7 +55,6 @@ function compare(properity) {
 output.sort(compare('count'));
 
 ```
-
 
 ## get parameters from URL
 * split()考察
@@ -105,8 +101,6 @@ return unescape(r[2]);
 return null;
 }
 
-
-
 ```
 ## map函数和split方法
 
@@ -143,29 +137,6 @@ console.log(t.multiply(1));
 console.log(t.tuple);
 
 ```
-## Promise useage example
-```JavaScript
-function loadScript(src) {
-  return new Promise(function(resolve, reject) {
-    let script = document.createElement('script');
-    script.src = src;
-
-    script.onload = () => resolve(script);
-    script.onerror = () => reject(new Error("Script load error: " + src));
-
-    document.head.append(script);
-  });
-}
-
-let promise = loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js");
-
-promise.then(
-  script => alert(`${script.src} is loaded!`),
-  error => alert(`Error: ${error.message}`)
-);
-
-promise.then(script => alert('One more handler to do something else!'));
-```
 # HTML/CSS/Javascript 实现UI小模块
 
 ```JavaScript
@@ -180,9 +151,6 @@ promise.then(script => alert('One more handler to do something else!'));
 
     </title>
     <style>
-      p {
-        color: white;
-      }
 
     </style>
   </head>
@@ -199,22 +167,16 @@ promise.then(script => alert('One more handler to do something else!'));
       let display = document.getElementById("display").innerHTML;
       let times = 0;
 
-
       document.getElementById("good").addEventListener("click", good);
       document.getElementById("cancel").addEventListener("click", cancel);
 
-
       function good() {
-        console.log("good");
         if (times === 0) {
           times = 1;
           display = 1;
           document.getElementById("display").innerHTML = display;
         }
-
-
       }
-
       function cancel() {
         if (times === 1) {
           times = 0;
@@ -222,15 +184,9 @@ promise.then(script => alert('One more handler to do something else!'));
           document.getElementById("display").innerHTML = display;
         }
       }
-
     </script>
-
   </body>
-
-
 </html>
-
-
 
 // tooltip
 
@@ -284,8 +240,6 @@ promise.then(script => alert('One more handler to do something else!'));
   </div>
 </div>
 
-
-
 // judge if parent-children relationship
 function isParent(parent, ele) {
      console.log(ele.parentElement.nodeName);
@@ -316,16 +270,13 @@ let Fun = function(a){
 
          this.addOne  = function(){  
           return this.a = this.a + 1;
-
       };
     };
-
 
        Fun.prototype = { mutiply: function(k) {
         return this.a *= k;
       }
     };
-
 
     let obj = new Fun(2);
 
@@ -334,38 +285,96 @@ let Fun = function(a){
        console.log(obj.print()) ;   // 3
        console.log("mutiply:"+obj.mutiply(3));// 9
        console.log(obj.print());   // 9       c
-        console.log(obj); //9
+       console.log(obj); //9
 
-// isPalindrome
+// Move to right smoothly
+function moveToRight(ele, dis, time) {
+   let d = dis/(1000*time) * 10;
 
-function isPalindrome(str) {
-  if (str === null) {
-    return false;
-  }
+   let cur = 0;
+   let myInterval;
 
-  let len = str.length;
+   myInterval = setInterval(function(){
+      cur += d;
+      if (cur <= dis) {
+        ele.style.transform = "translate(" + cur +"px, 0)";
+      } else {
+         clearInterval(myInterval);
+         console.log("stop");
+      }
 
-  if (len < 2) {
-    return true;
-  }
-
-  for (let i = 0; i < parseInt(len/2); i++) {
-
-    if (str.charAt(i) !== str.charAt(len - 1 - i)) {
-      return false;
-    }
-  }
-
-  return true;
+  }, 10);  
 }
-
-console.log("---isPalindrome:", isPalindrome("aba"));
-
-let foo = str=>{ return str === str.split("").reverse().join("");;}
-console.log("new method:", foo("ababa"));
 
 
 ```
+## F&B coding practice
+-----------------------------------------------------
+
+    A            B
+
+   / \           / \
+  O   O         O   O
+     /|\          /|\
+    x O O        y O O
+
+* y = find(A, B, x);
+* 有两个dom，A和B，要求返回B中所对应的(x在A中的值)，也就是说，找出x在A中的位置，然后返回在B中对应位置的值。
+* 另外一个就是node.children是一个类似于array但又不是array(Nodelist)，如何变成array？
+  - Array.prototype.slice.call(node.childNodes)
+
+* Followup：如果只是找index的话，不需要生成新array，在node.children里面如何找到某个点的index？
+  - forEach遍历？？？
+* 代码如下：
+ ```javascript
+
+ // Method1:
+ // if we do not know the dom api: parentNode, childNodes, we could traverse two trees at same time
+  function getSymmetricNode(target, root1, root2){
+    if( target === root1 ) return root2
+
+    for( let i = 0; i < root1.childNodes.length; i++){
+        let node1 = root1.childNodes[i]     
+        let node2 = root2.childNodes[i]
+        if( node1 === target ) return node2
+		    getSymmetricNode(target, node1, node2 )
+    }
+    return null
+}
+  //method2
+  // if we use dom API:
+  function getSymmetricNode(target, root1, root2){
+      let path = getIndexPath( target, root1 )
+      return getNode( path, root2 )
+  }
+
+  // transform a nodelilst to a array
+  function getChildNodesArray(node){
+      return Array.prototype.slice.call(node.childNodes)
+  }
+
+  // find the path    
+  function getIndexPath(target, root1){
+      let path = []
+      let curNode = target
+
+      while( curNode !==root1 && curNode && curNode.parentNode ){
+          let index = getChildNodesArray(curNode.parentNode).indexOf(curNode)
+          path.push(index)
+          curNode = curNode.parentNode
+        }
+      return path
+    }
+
+  // find the node
+  function getNode(path, root){
+      let node = root
+      while( path.length > 0 ){
+            node = getChildNodesArray(node)[path.pop()]
+      }
+      return node
+   }
+ ```
 
 ## 网页布局
 * 不用flexbox，使用box-sizing和float来布局

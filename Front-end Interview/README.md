@@ -89,6 +89,30 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 
 * also, we could use '.then' after a promise, so we can control the sequence of a series of asynchronous action
 * also, we have promise.all() and promise.race()
+### Promise useage example
+```JavaScript
+function loadScript(src) {
+  return new Promise(function(resolve, reject) {
+    let script = document.createElement('script');
+    script.src = src;
+
+    script.onload = () => resolve(script);
+    script.onerror = () => reject(new Error("Script load error: " + src));
+
+    document.head.append(script);
+  });
+}
+
+let promise = loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js");
+
+promise.then(
+  script => alert(`${script.src} is loaded!`),
+  error => alert(`Error: ${error.message}`)
+);
+
+promise.then(script => alert('One more handler to do something else!'));
+```
+
 [more details here](https://javascript.info/promise-basics)
 ## What is generator?
 * got bunch of nested code when dealing with many asynchronous functions, better then Promise
@@ -109,7 +133,7 @@ A callback is a function to be executed after another function is executed, whic
 * At some point during the event loop, the Js runtime starts handling the messages on the queue, starting with the oldest one. To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter.
  [More details about event loop, message queue, ansychronous and synchronous](https://segmentfault.com/a/1190000004322358)
 
-## callback vs Promises
+## Callback vs Promises
 * we must know what to do with the result before loadScript is called. Also, There can be only one callback.
 * Promises allow us to do things in the natural order. First, we get our promise object, and .then we write what to do with the result.
   also, We can call .then on a Promise as many times as we want.
@@ -325,6 +349,8 @@ Queue.prototype.dequeue = function() {
   - escape(string)/unescape(string)
   - encodeURI(string)/decodeURI(string)
 [From here](http://realtcg.com/2017/05/13/JavaScript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93-%E4%B8%80/)
+
+
 # HTML
 ## HTML Semantic
 Semantic HTML is HTML that introduces meaning to the web page rather than just presentation. For example, a <p> tag indicates that the enclosed text is a paragraph. This is both semantic and presentational, because people know what paragraphs are and browsers know how to display them. In HTML4, tags like < b > and < i > are not semantic, because they define only how the text should look (bold or italic) and do not provide any additional meaning.
