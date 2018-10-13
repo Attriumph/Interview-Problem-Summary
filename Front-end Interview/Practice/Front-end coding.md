@@ -287,26 +287,6 @@ let Fun = function(a){
        console.log(obj.print());   // 9       c
        console.log(obj); //9
 
-// Move to right smoothly
-function moveToRight(ele, dis, time) {
-   let d = dis/(1000*time) * 10;
-
-   let cur = 0;
-   let myInterval;
-
-   myInterval = setInterval(function(){
-      cur += d;
-      if (cur <= dis) {
-        ele.style.transform = "translate(" + cur +"px, 0)";
-      } else {
-         clearInterval(myInterval);
-         console.log("stop");
-      }
-
-  }, 10);  
-}
-
-
 ```
 ## F&B coding practice1
 [Details from here](https://caomingkai.github.io/2018/10/07/Search-for-a-Symmetric-Node/)
@@ -561,6 +541,32 @@ class DomStore {
     })
   }
 }
+
+```
+## F&B pratice6
+* smoothly move a element to right by a fixed distance
+```javascript
+
+// Move to right smoothly
+function moveToRight(ele, dis, time) {
+   let d = dis/(1000*time) * 10;
+
+   let cur = 0;
+   let myInterval;
+
+   myInterval = setInterval(function(){
+      cur += d;
+      if (cur <= dis) {
+        ele.style.transform = "translate(" + cur +"px, 0)";
+      } else {
+         clearInterval(myInterval);
+         console.log("stop");
+      }
+
+  }, 10);  
+}
+
+// a better way is to use transform and transiton 
 
 ```
 ## infinite scroller 实现

@@ -269,11 +269,6 @@ let textarea = document.querySelector("textarea");
 ```
 [From here](https://caomingkai.github.io/)
 
-## variable hoisting(only under un strict mode)
-A variable declared by ‘var’, can be accessed before its declaration
-Only the declaration hoisted, not the assignment!
-So it is hoisted with a value as ‘undefined’.
-
 ## Talk about 'this'
 * Since JavaScript does not have real class (everything is object),  so functions do not know who is their owner. When a object call a function, it should tell the function that I am the current owner of you  and you should use my properties to execute. This is what this does.
 * The this reference ALWAYS refers to (and holds the value of) an object—a singular object—and it is usually used inside a function or a method
@@ -338,6 +333,7 @@ Queue.prototype.dequeue = function() {
   - every() / some()
   - filter()/ map()/ forEach()
   - reduce()
+  - find()
 * String
   - charAt()
   - indexOf()
@@ -352,7 +348,14 @@ Queue.prototype.dequeue = function() {
   - encodeURI(string)/decodeURI(string)
 [From here](http://realtcg.com/2017/05/13/JavaScript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93-%E4%B8%80/)
 
+## Some details for Js
+### obj.property vs obj[property]
+* when property is a varible, must be obj[property]
+### if (key in object) VS if (object.hasOwnProperty(key))
+* in will also return true if key gets found somewhere in the prototype chain,
+* whereas Object.hasOwnProperty (like the name already tells us), will only return true if key is available on that object directly (its "owns" the property).
 
+[from here](https://stackoverflow.com/questions/13632999/if-key-in-object-or-ifobject-hasownpropertykey)
 # HTML
 ## HTML Semantic
 Semantic HTML is HTML that introduces meaning to the web page rather than just presentation. For example, a <p> tag indicates that the enclosed text is a paragraph. This is both semantic and presentational, because people know what paragraphs are and browsers know how to display them. In HTML4, tags like < b > and < i > are not semantic, because they define only how the text should look (bold or italic) and do not provide any additional meaning.
