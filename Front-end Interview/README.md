@@ -121,11 +121,11 @@ promise.then(script => alert('One more handler to do something else!'));
 * we create a generator object to control its process, the generator object is also a iterator object
 
 ## Callback
-A callback is a function to be executed after another function is executed, which is:
+A callback is a function to be executed after something happended, which is:
 1.	passed as an argument to another function
 2.	is invoked after some kind of event
 3.  once its parent function completes, the function passed as an argument is then called
-
+4. not only for ansychronous operations
 
 ## Event loop and message Queue
 * JavaScript use event loop and message queue to notify the accomplishment of ayschronous operations
@@ -372,8 +372,24 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
 * Meta elements are typically used to specify page description, keywords, author of the document, last modified, and other metadata.
 * The metadata can be used by browsers (how to display content or reload page), search engines (keywords), or other web services.
 
-## HTML DOM
-### Tranverse Dom tree
+# HTML DOM
+## DOM structure
+> difference between HTMLCollection & NodeList
+  * HTMLCollection: a collection of elements
+  * NodeList: a collection of all types of nodes: element node/ text node/ comment node
+  * convert them to array, to extract info: Array.prototype.slice.call(NodeList)
+  * everything in an HTML document is a node:
+
+
+> navigate across the DOM tree using attributes: [element node, text node, comment node]
+  * parentNode---parentElement
+  * childNodes---children
+  * firstChild---firstElementChild
+  * lastChild----lastElementChild
+  * nextSibling---nextElementSibling
+  * previousSibling---previousElementSibling
+
+## Tranverse Dom tree
 ```JavaScript
  // 广度优先遍历
   function bfs(root) {

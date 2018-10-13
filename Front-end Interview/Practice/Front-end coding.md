@@ -308,7 +308,8 @@ function moveToRight(ele, dis, time) {
 
 
 ```
-## F&B coding practice
+## F&B coding practice1
+[Details from here](https://caomingkai.github.io/2018/10/07/Search-for-a-Symmetric-Node/)
 -----------------------------------------------------
 
     A            B
@@ -322,9 +323,11 @@ function moveToRight(ele, dis, time) {
 * 有两个dom，A和B，要求返回B中所对应的(x在A中的值)，也就是说，找出x在A中的位置，然后返回在B中对应位置的值。
 * 另外一个就是node.children是一个类似于array但又不是array(Nodelist)，如何变成array？
   - Array.prototype.slice.call(node.childNodes)
-
+  - Array.from(arguments)
+  - use bind to create a new function slice() function on array-like object, so we can reuse it
 * Followup：如果只是找index的话，不需要生成新array，在node.children里面如何找到某个点的index？
-  - forEach遍历？？？
+  - forEach遍历
+* “Array-like” means that arguments has a length property and properties indexed from zero, but it doesn't have Array's built-in methods like forEach and map.
 * 代码如下：
  ```javascript
 
@@ -375,7 +378,43 @@ function moveToRight(ele, dis, time) {
       return node
    }
  ```
+## F&B pratice 2
+* debounce 应用
+* 在callback中传入参数的两种方法：the idea is to let the callback function return a function, so the returning function can pass into the o   
+  origin function
+  - bind函数
+  - closure: remember the Parameters
+```javascript
+function debounce(foo, delay) {
+  let timeout;
 
+  return ()=> {
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+     foo();
+   }, delay*1000);
+  }
+
+}
+function foo(x, y) {
+  return () => {
+      console.log("lai offer la!!"+x+y);
+  }
+}
+// or
+function foo(x, y) {
+    console.log("haha","hah" + x + y)
+    return foo.bind(null, x, y)
+
+}
+const foo1 = debounce(foo("ni", "hao"), 5);
+foo1();
+foo1();
+foo1();
+foo1();
+
+
+```
 ## 网页布局
 * 不用flexbox，使用box-sizing和float来布局
 * clear float
