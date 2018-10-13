@@ -566,8 +566,39 @@ function moveToRight(ele, dis, time) {
   }, 10);  
 }
 
-// a better way is to use transform and transiton 
+// a better way is to use transform and transiton
 
+```
+
+## F&B pratice7
+* Implement a square root function.
+* use binary search and must have "=" for low <= high
+```JavaScript
+var mySqrt = function(x) {
+    if (x < 0) {
+       throw "x should be >= 0"
+    }
+
+    if (x === 0) {
+        return 0;
+    }
+
+    let [low, high] = [1, x];
+
+    while (low <= high) {
+        let mid = low + parseInt((high - low)/2)
+
+        if (mid < parseInt(x/mid)){
+            low = mid + 1
+        } else if (mid > parseInt(x/mid)) {
+            high = mid - 1
+        } else {
+            return mid
+        }
+    }
+
+    return high
+}
 ```
 ## infinite scroller 实现
 * 第一个 api 是 window.innerHeight，它返回的是屏幕（viewport）高度。

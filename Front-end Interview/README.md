@@ -333,7 +333,7 @@ Queue.prototype.dequeue = function() {
   - every() / some()
   - filter()/ map()/ forEach()
   - reduce()
-  - find()
+  - find():the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
 * String
   - charAt()
   - indexOf()
@@ -354,6 +354,8 @@ Queue.prototype.dequeue = function() {
 ### if (key in object) VS if (object.hasOwnProperty(key))
 * in will also return true if key gets found somewhere in the prototype chain,
 * whereas Object.hasOwnProperty (like the name already tells us), will only return true if key is available on that object directly (its "owns" the property).
+### !!(expression) in js
+* it convert expression into boolean
 
 [from here](https://stackoverflow.com/questions/13632999/if-key-in-object-or-ifobject-hasownpropertykey)
 # HTML
