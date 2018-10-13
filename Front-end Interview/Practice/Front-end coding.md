@@ -412,8 +412,196 @@ foo1();
 foo1();
 foo1();
 foo1();
+```
+## F&B pratice3
+```javascript
+// [1, [2, [ [3, 4], 5], 6], [7, 8], 9] => [1, 2, 3, 4, 5, 6, 7, 8,  9]
+let input = [1, [2, [ [3, 4], 5], 6], [7, 8], 9]
+
+// iterative
+function flatten(input) {
+  if (input === undefined || input.length === 0) {
+    return [];
+  }
+
+  let res = [];
+  let stack = [];
+  stack.push(input);
+
+  while(stack.length !== 0) {
+    let cur = stack.pop();
+
+    if (!Array.isArray(cur)) {
+      res.push(cur);      
+    } else {
+      for (let i = cur.length - 1; i >= 0; i--) {
+        stack.push(cur[i]);
+      }
+    }
+  }
+
+  return res;
+}
+
+console.log(flatten(input))
+// recursive
+function flatten(arr) {
+  if (input === undefined || input.length === 0) {
+    return [];
+  }
+
+  return Array.isArray(arr) ? [].concat(...arr.map(flatten)): arr;
+}
+
+```
+## F&B pratice4
+* 实现一个event emitter
+```javascript
+class Emitter {
+  constructor(events = {}) {
+    this.events = events
+  }
+
+  subsribe(eventName, callback) {
+    (this.events[eventName]|| (this.events[eventName] = [])).push(callback)
+
+    return {
+      release: () => this.events[name] = this.events[name].filter(eventFn => callback !== eventFn);
+    }
+  }
+
+  emit(eventName, ...args) {
+    return (this.events[name] || []).map(fn => fn(...args))
+
+  }
+}
+
+export default Emitter
+```
+## F&B pratice5
+```javascript
+The way I interpret what you have written, it just sounds like they are asking for an ES6 Map? ES6 Maps can have objects as keys, so you can use the Node as the key.
+
+If you had to code it from scratch without the use of an ES6 Map, something like:
+
+class CachedNode {
+    constructor(node, value) {
+        this._node = node;
+        this._value = value;
+    }
+
+    getNode() {
+        return this._node;
+    }
+
+    getValue() {
+        return this._value;
+    }
+
+    setValue(value) {
+        this._value = value;
+        return this;
+    }
+}
+
+class SimpleStore {
+    constructor() {
+        this._container = [];
+    }
+
+    set(node, value) {
+        let cachedNode;
+        if (this.has(node)) {
+            cachedNode = this.get(node);
+            cachedNode.setValue(value);
+        } else {
+            cachedNode = new CachedNode(node, value);
+            this._container.push(cachedNode);
+        }
+
+        return this;
+    }
+
+    get(node) {
+        return this._container.find((cachedNode) => {
+            return cachedNode.getNode() === node;
+        });
+    }
+
+    has(node) {
+        return !!this.get(node);
+    }
+}
 
 
+// without cachedNode
+
+class DomStore {
+  constructor() {
+    this._store = []
+  }
+
+  set(node, value) {
+    if(this.has(node)) {
+      let domNode = this.get(node)
+      domNode.nodeValue = value
+    } else {
+      let domNode = {nodeName: node, nodeValue: value}
+      this._store.push(domNode)
+    }
+  }
+
+  has(node) {
+    return !!this.get(node)
+  }
+
+  get(node) {
+    return this._store.find(curNode => {
+      return curNode.nodeName === node
+    })
+  }
+}
+
+```
+## infinite scroller 实现
+* 第一个 api 是 window.innerHeight，它返回的是屏幕（viewport）高度。
+* 第二个 api 就是 Element.getBoundingClientRect ，这个方法用来计算元素边缘与屏幕（viewport）之间的距离。
+需要提醒一下，Element.getBoundingClientRect 会得到这么一个类 Object 对象：
+
+[refer](https://segmentfault.com/a/1190000004974824)
+```JavaScript
+ClientRect {
+  width: 760,   // 元素宽度
+  height: 2500, // 元素高度
+  top: -1352,   // 元素上边缘与屏幕上边缘的距离
+  bottom: 1239, // 元素下边缘与屏幕上边缘的距离
+  left: 760,    // 元素左边缘与屏幕左边缘的距离
+  right: 860    // 元素右边缘与屏幕左边缘的距离
+}
+
+var isLoading = false;
+var isEnd = false;
+var triggerDistance = 200;
+
+function fetchData() {
+
+  var distance = container.getBoundingClientRect().bottom - window.innerHeight;
+  if ( !isLoading && !isEnd && distance < triggerDistance ) {
+
+    isLoading = true;
+
+    fetch(path).then(res => {
+      isLoading = false;
+      // if not end, will short-circut latter statement
+      // if reach end, will still check the latter one, which will set isEnd to true
+      res.data.length === 0 && isEnd = true;
+      doSomething(res.data);
+    });
+
+  }
+
+}
+window.addEventListener('scroll', fetchData);
 ```
 ## 网页布局
 * 不用flexbox，使用box-sizing和float来布局

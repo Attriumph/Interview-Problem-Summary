@@ -127,6 +127,8 @@ A callback is a function to be executed after something happended, which is:
 3.  once its parent function completes, the function passed as an argument is then called
 4. not only for ansychronous operations
 
+## Observable
+
 ## Event loop and message Queue
 * JavaScript use event loop and message queue to notify the accomplishment of ayschronous operations
 * A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message has an associated function which gets called in order to handle the message.
@@ -420,6 +422,25 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
   }
 ```
 ### DOM API
+* addEventListener & removeEventListener
+```JavaScript
+// Attach an event handler to the document
+document.addEventListener("mousemove", myFunction);
+
+// Remove the event handler from the document
+document.removeEventListener("mousemove", myFunction);
+```
+* createAttribute() & setAttributeNode()
+```javascript
+function myFunction() {
+    var h1 = document.getElementsByTagName("H1")[0];
+    var att = document.createAttribute("class");
+    att.value = "democlass";
+    h1.setAttributeNode(att);
+}
+```
+* createElement() & intersetBefore() & appendChild()
+* querySelector & querySelectorAll()
 
 # CSS
 ## CSS preprocessor
