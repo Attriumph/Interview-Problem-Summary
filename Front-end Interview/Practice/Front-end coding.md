@@ -600,6 +600,57 @@ var mySqrt = function(x) {
     return high
 }
 ```
+## F&B pratice8
+* Roman into number
+```javascript
+var romanToInt = function(s) {
+
+    if (typeof(s) !== "string") {
+        return null;
+    }
+
+    let res = 0;
+
+    if (s.indexOf("IV") !== -1 || s.indexOf("IX") !== -1) { res -= 2; }
+    if (s.indexOf("XL") !== -1 || s.indexOf("XC") !== -1) { res -= 20;}
+    if (s.indexOf("CD") !== -1 || s.indexOf("CM") !== -1) { res -= 200;}
+
+    for (let i = 0; i < s.length; i++) {
+        let cur = s.charAt(i);
+        if (cur === 'I') { res += 1;}
+        if (cur === 'V') { res += 5;}
+        if (cur === 'X') { res += 10;}
+        if (cur === 'L') { res += 50;}
+        if (cur === 'C') { res += 100;}
+        if (cur === 'D') { res += 500;}
+        if (cur === 'M') { res += 1000;}  
+    }
+
+    return res;
+};
+```
+## F&B pratice9
+* find a  first bad version 
+```JavaScript
+
+cost findFirstBadVersion = function(int n) {
+        let start = 1, end = n;
+        while (start + 1 < end) {
+            let mid = start + Math.flooe((end - start) / 2);
+            if (SVNRepo.isBadVersion(mid)) {
+                end = mid;
+            } else {
+                start = mid;
+            }
+        }
+
+        if (SVNRepo.isBadVersion(start)) {
+            return start;
+        }
+        return end;
+    }
+}
+```
 ## infinite scroller 实现
 * 第一个 api 是 window.innerHeight，它返回的是屏幕（viewport）高度。
 * 第二个 api 就是 Element.getBoundingClientRect ，这个方法用来计算元素边缘与屏幕（viewport）之间的距离。

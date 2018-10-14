@@ -1,6 +1,6 @@
 # JavaScript
 
-##	forEach() VS map()
+##	forEach() VS map() VS (for..in) VS (for...of)
 1.	Both they will  call a provided function on each element in given array. However, the forEach() method doesn’t return anything (undefined), the map() method will return a new Array of  the same size.
 2.	forEach() can be used by map, set and array, map just be used by array
 
@@ -128,7 +128,81 @@ A callback is a function to be executed after something happended, which is:
 4. not only for ansychronous operations
 
 ## Observable
+* see the following code
+```JavaScript
+var observable = Rx.Observable.create(function (observer) {
+  observer.next(1);
+  observer.next(2);
+  observer.next(3);
+  setTimeout(() => {
+    observer.next(4);
+    observer.complete();
+  }, 1000);
+});
 
+console.log('just before subscribe');
+observable.subscribe({
+  next: x => console.log('got value ' + x),
+  error: err => console.error('something wrong occurred: ' + err),
+  complete: () => console.log('done'),
+});
+console.log('just after subscribe');
+```
+* Which executes as such on the console:
+
+  > just before subscribe
+    got value 1
+    got value 2
+    got value 3
+    just after subscribe
+    got value 4
+    done
+
+* observable is not just from ayschronous operations  
+* observable is a function, which can be observed by observer
+* observer is a object, which has three callback: next, error, complete
+* how to subscribe the observable?
+        observable.subsribe(observer)
+* how to manage the relationships between observable and observer? -- subscription
+        var subscription1 = observable.subscribe(observer1);
+* how to unsubscribe?  --- subscription1.unsubscribe();
+* Subscribing to an Observable is analogous to calling a Function.
+*  two Observable subscribes trigger two separate side effects. As opposed to EventEmitters which share the side effects and have eager execution regardless of the existence of subscribers, Observables have no shared execution and are lazy.
+### implement your own Observable
+```javascript
+// 1. Observable
+class Observable {
+
+    constructor() {
+        this.observerCollection = [];
+    }
+
+    subscribe(observer) {
+        this.observerCollection.push(observer);
+    }
+
+    unsubscribe(observer) {
+        let index = this.observerCollection.indexOf(observer);
+        if(index >= 0) this.observerCollection.splice(index, 1);
+    }
+
+    notifyObservers() {
+        this.observerCollection.forEach((observer)=>observer.notify());
+    }
+}
+
+// 2. Observer
+class Observer {
+
+    constructor(name) {
+        this.name = name;
+    }
+
+    notify() {
+        console.log(`${this.name} has been notified.`);
+    }
+}
+```
 ## Event loop and message Queue
 * JavaScript use event loop and message queue to notify the accomplishment of ayschronous operations
 * A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message has an associated function which gets called in order to handle the message.
