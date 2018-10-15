@@ -168,6 +168,7 @@ console.log('just after subscribe');
 * how to unsubscribe?  --- subscription1.unsubscribe();
 * Subscribing to an Observable is analogous to calling a Function.
 *  two Observable subscribes trigger two separate side effects. As opposed to EventEmitters which share the side effects and have eager execution regardless of the existence of subscribers, Observables have no shared execution and are lazy.
+* observable will not automatically run, which is opposed to promise.
 ### implement your own Observable
 ```javascript
 // 1. Observable
@@ -430,7 +431,8 @@ Queue.prototype.dequeue = function() {
 * whereas Object.hasOwnProperty (like the name already tells us), will only return true if key is available on that object directly (its "owns" the property).
 ### !!(expression) in js
 * it convert expression into boolean
-
+### Ways to judge if two object are same
+*  `_.isEqual(obj1, obj2)` method of lodash.js and underscore.js
 [from here](https://stackoverflow.com/questions/13632999/if-key-in-object-or-ifobject-hasownpropertykey)
 # HTML
 ## HTML Semantic

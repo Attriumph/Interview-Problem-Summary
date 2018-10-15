@@ -549,22 +549,20 @@ class DomStore {
 
 // Move to right smoothly
 function moveToRight(ele, dis, time) {
-   let d = dis/(1000*time) * 10;
+  let unitDis = dis/(1000*time) * 10
+  let cur = 0
+  let myInterval
 
-   let cur = 0;
-   let myInterval;
+  myInterval = setInterval(() => {
+     if (cur <= dis) {
+      cur += unitDis
+      ele.style.transform = `translate(${cur}px, 0)`    
+     } else {
+       clearInterval(myInterval)
+     }   
 
-   myInterval = setInterval(function(){
-      cur += d;
-      if (cur <= dis) {
-        ele.style.transform = "translate(" + cur +"px, 0)";
-      } else {
-         clearInterval(myInterval);
-         console.log("stop");
-      }
-
-  }, 10);  
-}
+    }, 10)
+  }
 
 // a better way is to use transform and transiton
 
@@ -630,7 +628,7 @@ var romanToInt = function(s) {
 };
 ```
 ## F&B pratice9
-* find a  first bad version 
+* find a  first bad version
 ```JavaScript
 
 cost findFirstBadVersion = function(int n) {
