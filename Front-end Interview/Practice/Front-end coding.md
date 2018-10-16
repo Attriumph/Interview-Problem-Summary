@@ -296,8 +296,8 @@ let Fun = function(a){
 
    / \           / \
   O   O         O   O
-     /|\          /|\
-    x O O        y O O
+     /|\           /|\
+    x O O         y O O
 
 * y = find(A, B, x);
 * 有两个dom，A和B，要求返回B中所对应的(x在A中的值)，也就是说，找出x在A中的位置，然后返回在B中对应位置的值。
@@ -341,7 +341,7 @@ let Fun = function(a){
       let path = []
       let curNode = target
 
-      while( curNode !==root1 && curNode && curNode.parentNode ){
+      while( curNode !== root1 && curNode && curNode.parentNode ){
           let index = getChildNodesArray(curNode.parentNode).indexOf(curNode)
           path.push(index)
           curNode = curNode.parentNode
@@ -460,10 +460,6 @@ export default Emitter
 ```
 ## F&B pratice5
 ```javascript
-The way I interpret what you have written, it just sounds like they are asking for an ES6 Map? ES6 Maps can have objects as keys, so you can use the Node as the key.
-
-If you had to code it from scratch without the use of an ES6 Map, something like:
-
 class CachedNode {
     constructor(node, value) {
         this._node = node;
@@ -688,6 +684,154 @@ function fetchData() {
 
 }
 window.addEventListener('scroll', fetchData);
+```
+## F&B pratice10
+```JavaScript
+items = [
+  {color: 'red', type: 'tv', age: 18},
+  {color: 'silver', type: 'phone', age: 20}
+]
+
+excludes = [
+  {k: 'color', v: 'silver'},
+   {k: 'color', v: 'red'},
+  {k: 'type', v: 'tv'},
+  ....
+]
+
+function excludeItems(items, excludes) {
+  excludes.forEach(pair => {
+   items = items.filter(item => item[pair.k] === pair.v);
+  });
+  return items;
+}
+
+//first turn "excludes" array into a map like so:
+excludes = {
+color: ['silver', 'gold' ...],
+type: ['tv', 'phone' ...]
+}
+function organize(excludes) {
+  let newEx = {}
+
+  excludes.forEach(exclude => {
+    if (newEx.hasOwnProperty(exclude.k)) {
+      newEx[exclude.k].push(exclude.v)
+    } else {
+      newEx[exclude.k] = [exclude.v]
+    }
+  })
+
+  return newEx
+}
+
+
+//then, rewrite the function like so:
+function excludeItems(items, excludes) {
+  const newItems = [];
+  items.forEach(item =>{
+   let isExcluded = false;
+
+   for (let key in item) {
+     if (excludes[key].indexOf(item[key]) !== -1) {
+      isExcluded = true;
+      break;
+  }
+}
+  if (!isExcluded) { newItems.push(item); }
+});
+return newItems;
+}
+```
+## F&B pratice11
+```javascript
+var arr =     ["a","b","c","d","e","f"];
+var indices = [ 1,  2,  3,  5,  0,  4];
+
+function reposition(arr, indices) {
+    if (indices.length !== arr.length) {
+      throw "the lengths should be same!"
+    }
+    if (arr === null || indices === null) {
+      return null
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      while (i !== indices[i]) {
+        let oldEle = arr[indices[i]]
+        let oldIndex = indices[indices[i]]
+
+        arr[indices[i]] = arr[i]
+        indices[indices[i]] = indices[i]
+
+        arr[i] = oldEle
+        indices[i] = oldIndex
+      }
+    }
+}
+```
+## F&B pratice12
+```javascript
+var arr = [
+  ['I','B','C','A','K','E','A'],
+  ['D','R','F','C','A','E','A'],
+  ['G','H','O','E','L','A','D']
+];
+
+var row = 0, col = 0;
+var totalCols = arr[0].length;
+var totalRows = arr.length;
+var goingDown = false;
+var msg = '';
+
+while (col < totalCols) {
+  msg += arr[row][col];
+
+  if (row === 0||(row < totalRows - 1) && goingDown) {
+    row += 1;
+    goingDown = true;
+  } else {
+    row -= 1;
+    goingDown = false;
+  }
+
+  col++;
+}
+```
+## F&B pratice13
+* HTML/CSS layout
+```javascript
+<style>
+.container {
+  position: relative;
+  width: 100px;
+}
+
+#img1 {
+  width: 100px;  
+}
+
+#img2 {
+  visibility: hidden;
+  width: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.container:hover #img2 {
+  visibility: visible;
+}
+
+</style>
+<div class="container">
+   <a href="https://www.google.com">
+   <img id="img1" src="https://achievement-images.teamtreehouse.com/HTML.png" alt="Smiley face">
+   </a>
+
+  <a href="https://www.1point3acres.com/bbs/thread-201648-1-1.html"><img id="img2" src="http://selectquotecareer2.dev.tilpropreview.com/wp-content/uploads/2013/05/icon4.png" alt="Smiley face">
+  </a>
+ </div>
 ```
 ## 网页布局
 * 不用flexbox，使用box-sizing和float来布局
