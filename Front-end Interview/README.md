@@ -1,5 +1,3 @@
-
-
 [TOC]
 
 # JavaScript
@@ -54,11 +52,14 @@ f(); // 15
 ## key features of ES6
 * block scoping with let keyword
 * default parameters
-* rest parameters: a prefix of three dots (...).  The rest parameter allows us to represent an indefinite number of arguments as an array.
+* rest parameters: a prefix of three dots (...).  The rest parameter allows us to represent an indefinite number of arguments as an array.we use the rest parameters to collect arguments from the second one to the end. We then multiply them by the first one. This example is using an arrow function, which is introduced in the next section.
   ```JavaScript
-  function fn(a,b,...args) {
-     //...
-  }
+  function multiply(multiplier, ...theArgs) {
+  return theArgs.map(x => multiplier * x);
+}
+
+var arr = multiply(2, 1, 2, 3);
+console.log(arr); // [2, 4, 6]
   ```
 * Spread Operator: consists three dots (...). The spread operator allows us to spread out elements of an array or a string.
 * Object Literal: The object literal is one of the most popular patterns for creating objects in JavaScript because of its simplicity.
@@ -445,7 +446,7 @@ Queue.prototype.dequeue = function() {
   - encodeURI(string)/decodeURI(string)
 [From here](http://realtcg.com/2017/05/13/JavaScript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93-%E4%B8%80/)
 
-## Some details for Js
+## Some details for JavaScript
 ### obj.property vs obj[property]
 * when property is a varible, must be obj[property]
 ### if (key in object) VS if (object.hasOwnProperty(key))
@@ -460,9 +461,9 @@ Queue.prototype.dequeue = function() {
 * The undefined value behaves as false when used in a boolean context;The undefined value converts to NaN when used in numeric context.
 * When you evaluate a null variable, the null value behaves as 0 in numeric contexts and as false in boolean contexts
 * variables that are hoisted return a value of undefined. So even if you declare and initialize after you use or refer to this variable, it still returns undefined
-### local scope vs block scope
+### function scope vs block scope
 * block scope is delimited by a pair of curly brackets
-* local scope is delimited by function
+* function scope is delimited by function
 * In web pages, the global object is window
 ### falsy values
    The following values evaluate to false (also known as Falsy values):
@@ -498,7 +499,33 @@ console.log(foo[2]);   // two
 console.log(foo['a']); // alpha
 console.log(foo['2']); // two
 ```
+### arguments objects
+* it is a array-like object
+* Using the arguments object, you can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how many arguments will be passed to the function.
+```JavaScript
+function myConcat(separator) {
+   var result = ''; // initialize list
+   var i;
+   // iterate through arguments
+   for (i = 1; i < arguments.length; i++) {
+      result += arguments[i] + separator;
+   }
+   return result;
+}
+// You can pass any number of arguments to this function, and it concatenates each argument into a string "list":
 
+// returns "red, orange, blue, "
+myConcat(', ', 'red', 'orange', 'blue');
+
+// returns "elephant; giraffe; lion; cheetah; "
+myConcat('; ', 'elephant', 'giraffe', 'lion', 'cheetah');
+```
+[From MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
+
+### Arrow function
+* does not have its own this, arguments, super
+* An arrow function does not have its own this; the this value of the enclosing execution context is used(箭头函数捕捉闭包上下文的this值).
+* 在箭头函数出现之前，每一个新函数都重新定义了自己的 this 值
 # HTML
 ## HTML Semantic
 Semantic HTML is HTML that introduces meaning to the web page rather than just presentation. For example, a <p> tag indicates that the enclosed text is a paragraph. This is both semantic and presentational, because people know what paragraphs are and browsers know how to display them. In HTML4, tags like < b > and < i > are not semantic, because they define only how the text should look (bold or italic) and do not provide any additional meaning.
