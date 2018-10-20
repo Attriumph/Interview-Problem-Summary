@@ -5,8 +5,26 @@
 # JavaScript
 
 ##	forEach() VS map() VS (for..in) VS (for...of)
-1.	Both they will  call a provided function on each element in given array. However, the forEach() method doesn’t return anything (undefined), the map() method will return a new Array of  the same size.
+1.	Both they will  call a provided function on each element in given array. However, the forEach() method doesn’t return anything (can not use break, continue), the map() method will return a new Array of  the same size.
 2.	forEach() can be used by map, set and array, map just be used by array
+3. for...in is used to iterate object, not good for iterate array, which may iterate over user-defined properties in addition to the array elements
+4. The for...of statement creates a loop Iterating over iterable objects (including Array, Map, Set, arguments object and so on)
+The following example shows the difference between a for...of loop and a for...in loop. While for...in iterates over property names, for...of iterates over property values:
+
+```JavaScript
+
+var arr = [3, 5, 7];
+arr.foo = 'hello';
+
+for (var i in arr) {
+   console.log(i); // logs "0", "1", "2", "foo"
+   console.log("length is ",arr.length) //3
+}
+
+for (var i of arr) {
+   console.log(i); // logs 3, 5, 7
+}
+```
 
 ## What is a Closure?
 
@@ -438,6 +456,48 @@ Queue.prototype.dequeue = function() {
 ### Ways to judge if two object are same
 *  `_.isEqual(obj1, obj2)` method of lodash.js and underscore.js
 [from here](https://stackoverflow.com/questions/13632999/if-key-in-object-or-ifobject-hasownpropertykey)
+### undefined and null
+* The undefined value behaves as false when used in a boolean context;The undefined value converts to NaN when used in numeric context.
+* When you evaluate a null variable, the null value behaves as 0 in numeric contexts and as false in boolean contexts
+* variables that are hoisted return a value of undefined. So even if you declare and initialize after you use or refer to this variable, it still returns undefined
+### local scope vs block scope
+* block scope is delimited by a pair of curly brackets
+* local scope is delimited by function
+* In web pages, the global object is window
+### falsy values
+   The following values evaluate to false (also known as Falsy values):
+
+* false
+* undefined
+* null
+* 0
+* NaN
+* the empty string ("")
+
+All other values, including all objects, evaluate to true when passed to a conditional statement.
+
+* Do not confuse the primitive boolean values true and false with the true and false values of the Boolean object. For example:
+```JavaScript
+var b = new Boolean(false);
+if (b) // this condition evaluates to true
+if (b == true) // this condition evaluates to false
+```
+### Data type conversion
+* In expressions involving numeric and string values with the **+ operator**, JavaScript converts numeric values to strings
+* n statements involving other operators, JavaScript does not convert numeric values to strings.
+* convert strings to numbers: parseInt() and parseFloat()
+### Object Literals
+* Object property names can be any string, including the empty string. If the property name would not be a valid JavaScript identifier or number, it must be enclosed in quotes. Property names that are not valid identifiers also cannot be accessed as a dot (.) property, but can be accessed and set with the array-like notation("[]").
+* identifier are a sequence of characters
+```JavaScript
+var foo = {a: 'alpha', 2: 'two'};
+console.log(foo.a);    // alpha
+console.log(foo[2]);   // two
+//console.log(foo.2);  // SyntaxError: missing ) after argument list
+//console.log(foo[a]); // ReferenceError: a is not defined
+console.log(foo['a']); // alpha
+console.log(foo['2']); // two
+```
 
 # HTML
 ## HTML Semantic
