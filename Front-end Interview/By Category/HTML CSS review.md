@@ -19,6 +19,78 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
 * Meta elements are typically used to specify page description, keywords, author of the document, last modified, and other metadata.
 * The metadata can be used by browsers (how to display content or reload page), search engines (keywords), or other web services.
 
+## Meta tag
+* The tag provides metadata about the HTML document. Metadata will not be displayed on the page, but will be machine parsable.
+* Meta elements are typically used to specify page description, keywords, author of the document, last modified, and other metadata.
+* The metadata can be used by browsers (how to display content or reload page), search engines (keywords), or other web services.
+
+# HTML DOM
+## DOM structure
+ difference between HTMLCollection & NodeList
+  * HTMLCollection: a collection of elements
+  * NodeList: a collection of all types of nodes: element node/ text node/ comment node
+  * convert them to array, to extract info: Array.prototype.slice.call(NodeList)
+  * everything in an HTML document is a node:
+
+
+ navigate across the DOM tree using attributes: [element node, text node, comment node]
+  * parentNode---parentElement
+  * childNodes---children
+  * firstChild---firstElementChild
+  * lastChild----lastElementChild
+  * nextSibling---nextElementSibling
+  * previousSibling---previousElementSibling
+
+## Tranverse Dom tree
+```JavaScript
+ // 广度优先遍历
+  function bfs(root) {
+    let queue = [root];
+
+    while(queue.length) {
+      let curNode = queue.shift();
+      console.log(curNode);
+
+      if(!curNode.children.length) {
+        continue;
+      }
+
+      Array.from(curNode.children).map((child) => queue.push(child));
+
+    }
+  }
+
+// 深度优先遍历
+  function dfs(root){
+    let child = root.firstElementChild;
+
+    while(child) {
+      console.log(child);
+      dfs(child);
+      child = child.nextElementSibling;  
+    }
+  }
+```
+### DOM API
+* addEventListener & removeEventListener
+```JavaScript
+// Attach an event handler to the document
+document.addEventListener("mousemove", myFunction);
+
+// Remove the event handler from the document
+document.removeEventListener("mousemove", myFunction);
+```
+* createAttribute() & setAttributeNode()
+```javascript
+function myFunction() {
+    var h1 = document.getElementsByTagName("H1")[0];
+    var att = document.createAttribute("class");
+    att.value = "democlass";
+    h1.setAttributeNode(att);
+}
+```
+* createElement() & intersetBefore() & appendChild()
+* querySelector & querySelectorAll()
 # CSS
 ## CSS preprocessor
 CSS preprocessors take code written in the preprocessed language and then convert that code into the same old css. 3 of the more popular css preprocessors are Sass(用过), LESS, and Stylus

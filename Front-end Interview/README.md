@@ -434,6 +434,7 @@ Queue.prototype.dequeue = function() {
 ### Ways to judge if two object are same
 *  `_.isEqual(obj1, obj2)` method of lodash.js and underscore.js
 [from here](https://stackoverflow.com/questions/13632999/if-key-in-object-or-ifobject-hasownpropertykey)
+
 # HTML
 ## HTML Semantic
 Semantic HTML is HTML that introduces meaning to the web page rather than just presentation. For example, a <p> tag indicates that the enclosed text is a paragraph. This is both semantic and presentational, because people know what paragraphs are and browsers know how to display them. In HTML4, tags like < b > and < i > are not semantic, because they define only how the text should look (bold or italic) and do not provide any additional meaning.
