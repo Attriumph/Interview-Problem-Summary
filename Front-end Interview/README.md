@@ -1,4 +1,6 @@
-[TOC]
+
+
+
 
 # JavaScript
 
@@ -252,13 +254,15 @@ class Observer {
 ## Map vs Object
 1. Key field: in Object, the keys MUST be simple types — either integer or string or symbols.
    But in Map it can be any data type (an object, an array, etc…).
-2. Element order: in Map, original order of elements (pairs) is preserved(so iterable), while in Object, it isn’t.
+2. Element order: in Map, insertion order of elements (pairs) is preserved(so iterable), while in Object, it isn’t.
 3. Inheritance: Map is an instance of Object
 4. compared with object, map has a lot of convenient method for data operation, such as size(), remove element, forEach
 
 ## Array VS set
 1. set does not have duplicates, so when we need non-duplicate, we better use set
-2. array is better  when we need quick access to element by index and do heavy modification
+2. Checking whether an element exists in a collection using indexOf for arrays is slow.
+3. array is better  when we need quick access to element by index and do heavy modification
+4. Set objects let you delete elements by their value. With an array you would have to splice based on an element's index.---set.delete('foo');
 ## The way to judge the data type in js
 1. Object.prototype.toString.call(), return [Object，type]
 2. jquery.type();
@@ -424,17 +428,18 @@ Queue.prototype.dequeue = function() {
   - shift()/unshift()
   - reverse()
   - sort()
-  - arr.concat(): arr.concat("test1", ["test2"]) return a new arr
+  - arr.concat(): arr.concat("test1", ["test2"]) returns a new array.
   - slice():  return a new Array
   - splice(): modify the original Array
   - indexOf()
   - every() / some()
   - filter()/ map()/ forEach()
-  - reduce()
+  - reduce(): applies callback(firstValue, secondValue) to reduce the list of items down to a single value and returns that value.
   - find():the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
 * String
   - charAt()
-  - indexOf()
+  - indexOf()/lastIndexOf()
+  - startsWith()/endsWith()
   - match()
   - search()
   - replace(): return a new string
@@ -444,11 +449,27 @@ Queue.prototype.dequeue = function() {
   - trim()
   - escape(string)/unescape(string)
   - encodeURI(string)/decodeURI(string)
+* Number Object
+  - Number.MAX_VALUE
+  - Number.MIN_VALUE
+  - Number.isInterger()
+  - Number.isNaN()
+* Math object
+  - Math.PI  (3.14....)
+  - Math.abs()
+  - Math.sin(), Math.cos(), Math.tan()
+  - Math.pow(base, exponent), Max.log10(), Math.log2()
+  - Math.floor(), Math.ceil()---returns the smallest integer greater than or equal to a given number.
+  - Math.min(), Math.max(), coudl be many values
+  - Math.random() --- The Math.random() function returns a floating-point, pseudo-random number in the range 0–1 (inclusive of 0, but not 1)
+  - Math.round()--- returns the value of a number rounded to the nearest integer.
+  - Math.sqrt(), Math.cbrt()
+  - Math.sign() --- return 1, 0, -1 indicating the sign of a number
+
 [From here](http://realtcg.com/2017/05/13/JavaScript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93-%E4%B8%80/)
 
 ## Some details for JavaScript
-### obj.property vs obj[property]
-* when property is a varible, must be obj[property]
+
 ### if (key in object) VS if (object.hasOwnProperty(key))
 * in will also return true if key gets found somewhere in the prototype chain,
 * whereas Object.hasOwnProperty (like the name already tells us), will only return true if key is available on that object directly (its "owns" the property).
@@ -499,7 +520,19 @@ console.log(foo[2]);   // two
 console.log(foo['a']); // alpha
 console.log(foo['2']); // two
 ```
-### arguments objects
+
+### Arrow function
+* does not have its own this, arguments, super
+* An arrow function does not have its own this; the this value of the enclosing execution context is used(箭头函数捕捉闭包上下文的this值).
+* 在箭头函数出现之前，每一个新函数都重新定义了自己的 this 值
+
+### arrays are also objects in JavaScript
+* JavaScript does not have an explicit array data type,if you supply a non-integer value to the array operator in the code above, a property will be created in the object representing the array, instead of an array element.
+```JavaScript
+var arr = [];
+arr[3.4] = 'Oranges';
+```
+## arguments objects
 * it is a array-like object
 * Using the arguments object, you can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how many arguments will be passed to the function.
 ```JavaScript
@@ -522,10 +555,7 @@ myConcat('; ', 'elephant', 'giraffe', 'lion', 'cheetah');
 ```
 [From MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
 
-### Arrow function
-* does not have its own this, arguments, super
-* An arrow function does not have its own this; the this value of the enclosing execution context is used(箭头函数捕捉闭包上下文的this值).
-* 在箭头函数出现之前，每一个新函数都重新定义了自己的 this 值
+
 # HTML
 ## HTML Semantic
 Semantic HTML is HTML that introduces meaning to the web page rather than just presentation. For example, a <p> tag indicates that the enclosed text is a paragraph. This is both semantic and presentational, because people know what paragraphs are and browsers know how to display them. In HTML4, tags like < b > and < i > are not semantic, because they define only how the text should look (bold or italic) and do not provide any additional meaning.
