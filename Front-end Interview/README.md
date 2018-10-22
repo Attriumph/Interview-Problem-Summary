@@ -291,7 +291,46 @@ class Observer {
 * before ES6, we use the following code to inherit a object
 
 ## Inheritance in JavaScript
-<img src='/images/hierachy1.png' style="text-align: center; width:40%;">
+
+### 1. based on example of MDN
+  <img src='/images/hierachy1.png' style="text-align: center; width:40%;">
+```JavaScript
+function Employee() {
+  this.name = '';
+  this.dept = 'general';
+}
+
+function Manager() {
+  Employee.call(this);
+  this.reports = [];
+}
+Manager.prototype = Object.create(Employee.prototype);
+Manager.prototype.constructor = Manager;
+
+function WorkerBee() {
+  Employee.call(this);
+  this.projects = [];
+}
+WorkerBee.prototype = Object.create(Employee.prototype);
+WorkerBee.prototype.constructor = WorkerBee;
+
+function SalesPerson() {
+   WorkerBee.call(this);
+   this.dept = 'sales';
+   this.quota = 100;
+}
+SalesPerson.prototype = Object.create(WorkerBee.prototype);
+SalesPerson.prototype.constructor = SalesPerson;
+
+function Engineer() {
+   WorkerBee.call(this);
+   this.dept = 'engineering';
+   this.machine = '';
+}
+Engineer.prototype = Object.create(WorkerBee.prototype)
+Engineer.prototype.constructor = Engineer;
+```
+### 2. based on liaoxuefeng
 ```javascript
 function inherits(Child, Parent) {
     var F = function () {};
