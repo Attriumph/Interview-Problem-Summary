@@ -294,7 +294,7 @@ class Observer {
 * Because an object has a single associated prototype, JavaScript cannot dynamically inherit from more than one prototype chain.
 * In JavaScript, you can have a constructor function call more than one other constructor function within it. This gives the illusion of multiple inheritance.
 ### 1. based on example of MDN
-  <img src='http://github.com/Attriumph/Interview-Problem-Summary/raw/master/images/hierachy1.png' style="text-align: center; width:40%;">
+  <img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/hierachy1.png' style="text-align: center; width:40%;">
 
 
 code:
