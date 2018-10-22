@@ -293,11 +293,18 @@ class Observer {
 ## Inheritance in JavaScript
 * Because an object has a single associated prototype, JavaScript cannot dynamically inherit from more than one prototype chain.
 * In JavaScript, you can have a constructor function call more than one other constructor function within it. This gives the illusion of multiple inheritance.
+* Every object has a __proto__ object property (except Object);
+* every function has a prototype object property.
+
 ### 1. based on example of MDN
-  <img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/hierachy1.png' style="text-align: center; width:40%;">
+
+  <img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/hierachy1.png' width="40%">
 
 
-code:
+* Two ways to implement inheritance based on MDN documents
+    1. use Object.create(): three steps
+    2. use new Father: 1 step, but have limitations
+  see code below:
 
 ```javaScript
 
@@ -306,6 +313,7 @@ function Employee(name, dept) {
   this.dept = dept || 'general';
 }
 
+// the first way to inherit a prototype
 function Manager() {
   Employee.call(this);
   this.reports = [];
@@ -320,19 +328,15 @@ function WorkerBee() {
 WorkerBee.prototype = Object.create(Employee.prototype);
 WorkerBee.prototype.constructor = WorkerBee;
 
+// anther qucik way to inherit
+// but in this case:
+// If we want to change the value of an object property at run time and have the new value be inherited by all descendants of the object, you cannot define the property in the object's constructor function. Instead, you add it to the constructor's associated prototype.
+
 function WorkerBee(projs) {
 
  this.projects = projs || [];
 }
 WorkerBee.prototype = new Employee;
-
-function SalesPerson() {
-   WorkerBee.call(this);
-   this.dept = 'sales';
-   this.quota = 100;
-}
-SalesPerson.prototype = Object.create(WorkerBee.prototype);
-SalesPerson.prototype.constructor = SalesPerson;
 
 function Engineer() {
    WorkerBee.call(this);
@@ -341,8 +345,15 @@ function Engineer() {
 }
 Engineer.prototype = Object.create(WorkerBee.prototype)
 Engineer.prototype.constructor = Engineer;
+
+//have the constructor add more properties by directly calling the constructor function for an object higher in the prototype chain
+function Engineer(name, projs, mach) {
+  WorkerBee.call(this, name, 'engineering', projs);
+  this.machine = mach || '';
+}
 ```
 ### 2. based on liaoxuefeng
+* a universal way to implement inheritance in javaScript before ES6
 ```javascript
 function inherits(Child, Parent) {
     var F = function () {};
