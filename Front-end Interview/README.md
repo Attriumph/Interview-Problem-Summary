@@ -110,6 +110,7 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 
 * also, we could use '.then' after a promise, so we can control the sequence of a series of asynchronous action
 * also, we have promise.all() and promise.race()
+* The await operator is used to wait for a Promise. It can only be used inside an async function
 ### Promise example
 ```JavaScript
 function loadScript(src) {
@@ -127,20 +128,14 @@ function loadScript(src) {
 let promise = loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js");
 
 promise.then(
-  script => alert(`${script.src} is loaded!`),
-  error => alert(`Error: ${error.message}`)
-);
+  script => alert(`${script.src} is loaded!`)  
+).catch(
+  error => alert(`Error: ${error.message}`));
 
 promise.then(script => alert('One more handler to do something else!'));
 ```
 
 [more details here](https://javascript.info/promise-basics)
-
-## What is generator?
-* got bunch of nested code when dealing with many asynchronous functions, better then Promise
-* generator can be viewed as a special function in ES6, which allows us to control the process of the function
-* generator could pause its own process by yield inside and restart it from outside
-* we create a generator object to control its process, the generator object is also a iterator object
 
 ## Callback
 A callback is a function to be executed after something happended, which is:
@@ -152,62 +147,71 @@ A callback is a function to be executed after something happended, which is:
 6. who call the callback when something happens??????
 
 [a good article to understand callback](https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced)
-## Observable
-* see the following code
-```JavaScript
-var observable = Rx.Observable.create(function (observer) {
-  observer.next(1);
-  observer.next(2);
-  observer.next(3);
-  setTimeout(() => {
-    observer.next(4);
-    observer.complete();
-  }, 1000);
-});
 
-console.log('just before subscribe');
-observable.subscribe({
-  next: x => console.log('got value ' + x),
-  error: err => console.error('something wrong occurred: ' + err),
-  complete: () => console.log('done'),
-});
-console.log('just after subscribe');
-```
-* Which executes as such on the console:
-
-  > just before subscribe
-    got value 1
-    got value 2
-    got value 3
-    just after subscribe
-    got value 4
-    done
-
-* observable is not just from ayschronous operations  
-* observable is a function, which can be observed by observer
-* observer is a object, which has three callback: next, error, complete
-* how to subscribe the observable?
-        observable.subsribe(observer)
-* how to manage the relationships between observable and observer? -- subscription
-        var subscription1 = observable.subscribe(observer1);
-* how to unsubscribe?  --- subscription1.unsubscribe();
-* Subscribing to an Observable is analogous to calling a Function.
-*  two Observable subscribes trigger two separate side effects. As opposed to EventEmitters which share the side effects and have eager execution regardless of the existence of subscribers, Observables have no shared execution and are lazy.
-* observable will not automatically run, which is opposed to promise.
-
-## Event loop and message Queue
-* JavaScript use event loop and message queue to notify the accomplishment of ayschronous operations
-* single thread means single javaScript engine, but we have other thread, such as ajax thread, runtime
-* A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message can be views as a callbackFun with response of asynchronous request
-* At some point during the event loop, the Js runtime starts handling the messages on the queue, starting with the oldest one. To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter.
-
-[More details about event loop, message queue, ansychronous and synchronous](https://segmentfault.com/a/1190000004322358)
 
 ## Callback vs Promises
-* we must know what to do with the result before loadScript is called. Also, There can be only one callback.
-* Promises allow us to do things in the natural order. First, we get our promise object, and .then we write what to do with the result.
-  also, We can call .then on a Promise as many times as we want.
+* We must have a ready callback function when calling function(args, callbackFun). Also, There can be only one callback. Therefore,
+  we get a nested and badly readable code when we have a series of asynchronous functions
+* Promises makes the code more readable, especially when using async and await. First, we get our promise object, and .then we write what to
+  do with the result.
+[compare callback vs promise with code](https://medium.com/front-end-hacking/callbacks-promises-and-async-await-ad4756e01d90)
 
+## What is generator?
+  * got bunch of nested code when dealing with many asynchronous functions, better then Promise
+  * generator can be viewed as a special function in ES6, which allows us to control the process of the function
+  * generator could pause its own process by yield inside and restart it from outside
+  * we create a generator object to control its process, the generator object is also a iterator object
+
+## Observable
+  * see the following code
+  ```JavaScript
+  var observable = Rx.Observable.create(function (observer) {
+    observer.next(1);
+    observer.next(2);
+    observer.next(3);
+    setTimeout(() => {
+      observer.next(4);
+      observer.complete();
+    }, 1000);
+  });
+
+  console.log('just before subscribe');
+  observable.subscribe({
+    next: x => console.log('got value ' + x),
+    error: err => console.error('something wrong occurred: ' + err),
+    complete: () => console.log('done'),
+  });
+  console.log('just after subscribe');
+  ```
+  * Which executes as such on the console:
+
+    - just before subscribe
+    -  got value 1
+    -  got value 2
+    -  got value 3
+    -  just after subscribe
+    -  got value 4
+    -  done
+
+  * observable is not just from ayschronous operations  
+  * observable is a function, which can be observed by observer
+  * observer is a object, which has three callback: next, error, complete
+  * how to subscribe the observable?
+          observable.subsribe(observer)
+  * how to manage the relationships between observable and observer? -- subscription
+          var subscription1 = observable.subscribe(observer1);
+  * how to unsubscribe?  --- subscription1.unsubscribe();
+  * Subscribing to an Observable is analogous to calling a Function.
+  *  two Observable subscribes trigger two separate side effects. As opposed to EventEmitters which share the side effects and have eager execution regardless of the existence of subscribers, Observables have no shared execution and are lazy.
+  * observable will not automatically run, which is opposed to promise.
+
+  ## Event loop and message Queue
+  * JavaScript use event loop and message queue to notify the accomplishment of ayschronous operations
+  * single thread means single javaScript engine, but we have other thread, such as ajax thread, runtime
+  * A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message can be views as a callbackFun with response of asynchronous request
+  * At some point during the event loop, the Js runtime starts handling the messages on the queue, starting with the oldest one. To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter.
+
+  [More details about event loop, message queue, ansychronous and synchronous](https://segmentfault.com/a/1190000004322358)
 ## apply(), call(), bind()
 * Both these functions are used to bind 'this' to functions. JavaScript function has their owner.
 * The only difference between apply and call is parameters for them. The call() method takes arguments separately. The apply() method takes arguments as an array.
