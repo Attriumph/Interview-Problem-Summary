@@ -290,6 +290,8 @@ class Observer {
 * Instances may be composed from many different objects, allowing for easy selective inheritance. We all know that JavaScript doesn’t supports multiple inheritance. But there’s a way to “mimic multiple inheritance” in prototype-based languages. But it cannot be done in class-based languages which does not support multiple inheritance.
 * before ES6, we use the following code to inherit a object
 
+## Inheritance in JavaScript
+<img src='/images/hierachy1.png' style="text-align: center; width:40%;">
 ```javascript
 function inherits(Child, Parent) {
     var F = function () {};
@@ -526,7 +528,7 @@ console.log(foo['2']); // two
 * An arrow function does not have its own this; the this value of the enclosing execution context is used(箭头函数捕捉闭包上下文的this值).
 * 在箭头函数出现之前，每一个新函数都重新定义了自己的 this 值
 
-### arrays are also objects in JavaScript
+### Arrays are also objects in JavaScript
 * JavaScript does not have an explicit array data type,if you supply a non-integer value to the array operator in the code above, a property will be created in the object representing the array, instead of an array element.
 ```JavaScript
 var arr = [];
@@ -554,8 +556,44 @@ myConcat(', ', 'red', 'orange', 'blue');
 myConcat('; ', 'elephant', 'giraffe', 'lion', 'cheetah');
 ```
 [From MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
+### Three native ways to list/traverse object properties:
 
+* for...in loops
+This method traverses all enumerable properties of an object and its prototype chain
+* Object.keys(o)
+This method returns an array with all the own (not in the prototype chain) enumerable properties' names ("keys") of an object o.
+* Object.getOwnPropertyNames(o)
 
+### Using the Object.create method create object
+* Objects can also be created using the Object.create() method. This method can be very useful, because it allows you to choose the prototype object for the object you want to create, without having to define a constructor function.
+```JavaScript
+// Animal properties and method encapsulation
+var Animal = {
+  type: 'Invertebrates', // Default value of properties
+  displayType: function() {  // Method which will display type of Animal
+    console.log(this.type);
+  }
+};
+
+// Create new animal type called animal1
+var animal1 = Object.create(Animal);
+animal1.displayType(); // Output:Invertebrates
+
+// Create new animal type called Fishes
+var fish = Object.create(Animal);
+fish.type = 'Fishes';
+fish.displayType(); // Output:Fishes
+```
+### 'this' used in form
+When combined with the form property, this can refer to the current object's parent form. In the following example, the form myForm contains a Text object and a button. When the user clicks the button, the value of the Text object is set to the form's name. The button's onclick event handler uses this.form to refer to the parent form, myForm.
+```html
+<form name="myForm">
+<p><label>Form name:<input type="text" name="text1" value="Beluga"></label>
+<p><input name="button1" type="button" value="Show Form Name"
+     onclick="this.form.text1.value = this.form.name">
+</p>
+</form>
+```
 # HTML
 ## HTML Semantic
 Semantic HTML is HTML that introduces meaning to the web page rather than just presentation. For example, a <p> tag indicates that the enclosed text is a paragraph. This is both semantic and presentational, because people know what paragraphs are and browsers know how to display them. In HTML4, tags like < b > and < i > are not semantic, because they define only how the text should look (bold or italic) and do not provide any additional meaning.
