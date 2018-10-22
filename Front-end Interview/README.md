@@ -291,13 +291,19 @@ class Observer {
 * before ES6, we use the following code to inherit a object
 
 ## Inheritance in JavaScript
-
+* Because an object has a single associated prototype, JavaScript cannot dynamically inherit from more than one prototype chain.
+* In JavaScript, you can have a constructor function call more than one other constructor function within it. This gives the illusion of multiple inheritance.
 ### 1. based on example of MDN
-  <img src='/images/hierachy1.png' style="text-align: center; width:40%;">
-```JavaScript
-function Employee() {
-  this.name = '';
-  this.dept = 'general';
+  <img src='http://github.com/Attriumph/Interview-Problem-Summary/raw/master/images/hierachy1.png' style="text-align: center; width:40%;">
+
+
+code:
+
+```javaScript
+
+function Employee(name, dept) {
+  this.name = name || '';
+  this.dept = dept || 'general';
 }
 
 function Manager() {
@@ -313,6 +319,12 @@ function WorkerBee() {
 }
 WorkerBee.prototype = Object.create(Employee.prototype);
 WorkerBee.prototype.constructor = WorkerBee;
+
+function WorkerBee(projs) {
+
+ this.projects = projs || [];
+}
+WorkerBee.prototype = new Employee;
 
 function SalesPerson() {
    WorkerBee.call(this);
