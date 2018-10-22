@@ -1,7 +1,4 @@
 
-
-
-
 # JavaScript
 
 ##	forEach() VS map() VS (for..in) VS (for...of)
@@ -46,23 +43,22 @@ var f = lazy_sum([1, 2, 3, 4, 5]); // function sum()
 f(); // 15
 ```
 
-## variable hoisting-- just for no strict mode
+## Hoisting -- just for no strict mode
 * A variable declared by ‘var’, can be accessed before its declaration
-* Only the declaration hoisted, not the assignment!
-* So it is hoisted with a value as ‘undefined’.
-
-## key features of ES6
+* Only the declaration hoisted, not the assignment! So it is hoisted with a value as ‘undefined’.
+* Function expressions in JavaScript are not hoisted. But, Fucntion declaration could be hoisted
+## Key features of ES6
 * block scoping with let keyword
 * default parameters
 * rest parameters: a prefix of three dots (...).  The rest parameter allows us to represent an indefinite number of arguments as an array.we use the rest parameters to collect arguments from the second one to the end. We then multiply them by the first one. This example is using an arrow function, which is introduced in the next section.
-  ```JavaScript
+```JavaScript
   function multiply(multiplier, ...theArgs) {
-  return theArgs.map(x => multiplier * x);
-}
+    return theArgs.map(x => multiplier * x);
+  }
 
-var arr = multiply(2, 1, 2, 3);
-console.log(arr); // [2, 4, 6]
-  ```
+  var arr = multiply(2, 1, 2, 3);
+  console.log(arr); // [2, 4, 6]
+```
 * Spread Operator: consists three dots (...). The spread operator allows us to spread out elements of an array or a string.
 * Object Literal: The object literal is one of the most popular patterns for creating objects in JavaScript because of its simplicity.
   1. computed property name
@@ -114,7 +110,7 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 
 * also, we could use '.then' after a promise, so we can control the sequence of a series of asynchronous action
 * also, we have promise.all() and promise.race()
-### Promise useage example
+### Promise example
 ```JavaScript
 function loadScript(src) {
   return new Promise(function(resolve, reject) {
@@ -139,6 +135,7 @@ promise.then(script => alert('One more handler to do something else!'));
 ```
 
 [more details here](https://javascript.info/promise-basics)
+
 ## What is generator?
 * got bunch of nested code when dealing with many asynchronous functions, better then Promise
 * generator can be viewed as a special function in ES6, which allows us to control the process of the function
@@ -151,7 +148,10 @@ A callback is a function to be executed after something happended, which is:
 2.	is invoked after some kind of event
 3.  once its parent function completes, the function passed as an argument is then called
 4. not only for ansychronous operations
+5.  Callbacks are a way to make sure certain code doesn’t execute until other code has already finished execution.
+6. who call the callback when something happens??????
 
+[a good article to understand callback](https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced)
 ## Observable
 * see the following code
 ```JavaScript
@@ -194,60 +194,26 @@ console.log('just after subscribe');
 * Subscribing to an Observable is analogous to calling a Function.
 *  two Observable subscribes trigger two separate side effects. As opposed to EventEmitters which share the side effects and have eager execution regardless of the existence of subscribers, Observables have no shared execution and are lazy.
 * observable will not automatically run, which is opposed to promise.
-### implement your own Observable
-```javascript
-// 1. Observable
-class Observable {
 
-    constructor() {
-        this.observerCollection = [];
-    }
-
-    subscribe(observer) {
-        this.observerCollection.push(observer);
-    }
-
-    unsubscribe(observer) {
-        let index = this.observerCollection.indexOf(observer);
-        if(index >= 0) this.observerCollection.splice(index, 1);
-    }
-
-    notifyObservers() {
-        this.observerCollection.forEach((observer)=>observer.notify());
-    }
-}
-
-// 2. Observer
-class Observer {
-
-    constructor(name) {
-        this.name = name;
-    }
-
-    notify() {
-        console.log(`${this.name} has been notified.`);
-    }
-}
-```
 ## Event loop and message Queue
 * JavaScript use event loop and message queue to notify the accomplishment of ayschronous operations
-* A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message has an associated function which gets called in order to handle the message.
+* single thread means single javaScript engine, but we have other thread, such as ajax thread, runtime
+* A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message can be views as a callbackFun with response of asynchronous request
 * At some point during the event loop, the Js runtime starts handling the messages on the queue, starting with the oldest one. To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter.
- [More details about event loop, message queue, ansychronous and synchronous](https://segmentfault.com/a/1190000004322358)
+
+[More details about event loop, message queue, ansychronous and synchronous](https://segmentfault.com/a/1190000004322358)
 
 ## Callback vs Promises
 * we must know what to do with the result before loadScript is called. Also, There can be only one callback.
 * Promises allow us to do things in the natural order. First, we get our promise object, and .then we write what to do with the result.
   also, We can call .then on a Promise as many times as we want.
 
-## fetch() VS AJAX
-
 ## apply(), call(), bind()
 * Both these functions are used to bind 'this' to functions. JavaScript function has their owner.
 * The only difference between apply and call is parameters for them. The call() method takes arguments separately. The apply() method takes arguments as an array.
 * bind() will create new function, it will not execute immediately, but call and bind will
 
-## Object VS array
+## Object VS Array
 1. array has order, object does not have order
 2. when delete or add element in array, typically, it will be more expensive
 
@@ -258,43 +224,34 @@ class Observer {
 3. Inheritance: Map is an instance of Object
 4. compared with object, map has a lot of convenient method for data operation, such as size(), remove element, forEach
 
-## Array VS set
+## Array VS Set
 1. set does not have duplicates, so when we need non-duplicate, we better use set
 2. Checking whether an element exists in a collection using indexOf for arrays is slow.
 3. array is better  when we need quick access to element by index and do heavy modification
 4. Set objects let you delete elements by their value. With an array you would have to splice based on an element's index.---set.delete('foo');
-## The way to judge the data type in js
-1. Object.prototype.toString.call(), return [Object，type]
-2. jquery.type();
-
-
-## splice() vs slice()
-1. The splice() method adds/removes items to/from an array, and returns the removed item(s).
-2. slice() of array work likes subString() of string
 
 
 ## Prototype
  A prototype is an internal object from which other objects inherit properties. Its main purpose is to allow multiple instances of an object to share a common property.
 
 ## Class inheritance VS prototype inheritance
-> Class Inheritance:
-* instances inherit from classes and create sub-class relationships.
-* Instances are typically instantiated via constructor functions with the new keyword.  
-* ES6 syntax extending classes is much easier to understand.
-* There are two new keywords: extends and super.
-*  The extends keyword sets up the inheritance relationship between the parent and child classes.
-* The super keyword invokes the constructor on the parent class.
-> Prototypal Inheritance:
-* instances inherit directly from other objects.
-* Instances are typically created via factory functions or Object.create().
-* Instances may be composed from many different objects, allowing for easy selective inheritance. We all know that JavaScript doesn’t supports multiple inheritance. But there’s a way to “mimic multiple inheritance” in prototype-based languages. But it cannot be done in class-based languages which does not support multiple inheritance.
-* before ES6, we use the following code to inherit a object
+
+|Class-based (Java) |	Prototype-based (JavaScript)|
+| ------ | ------ |
+Class and instance are distinct entities.	| All objects can inherit from another object.
+Define a class with a class definition; instantiate a class with constructor methods.	| Define and create a set of objects with constructor functions.
+Create a single object with the new operator.	| Same.
+Construct an object hierarchy by using class definitions to define subclasses of existing classes. |	Construct an object hierarchy by assigning an object as the prototype associated with a constructor function.
+Inherit properties by following the class chain.	| Inherit properties by following the prototype chain.
+Class definition specifies all properties of all instances of a class. Cannot add properties dynamically at run time.	| Constructor function or prototype specifies an initial set of properties. Can add or remove properties dynamically to individual objects or to the entire set of objects.
 
 ## Inheritance in JavaScript
+* Every object has a __proto__ object property (except Object);
+* The special property __proto__ is set when an object is constructed; it is set to the value of the constructor's prototype property.
+* every function has a prototype object property.
 * Because an object has a single associated prototype, JavaScript cannot dynamically inherit from more than one prototype chain.
 * In JavaScript, you can have a constructor function call more than one other constructor function within it. This gives the illusion of multiple inheritance.
-* Every object has a __proto__ object property (except Object);
-* every function has a prototype object property.
+
 
 ### 1. based on example of MDN
 
@@ -442,48 +399,6 @@ let textarea = document.querySelector("textarea");
 * this in arrow function is lexical scoping
 * for constructor, this refers the new object
 
-## CommonJS, AMD, RequireJS, ES6 Modules
-All of them are talking about javascript modules.
-JavaScript Modules refer to a small units of independent, reusable code. They have distinct functionality, allowing them to be added, removed without disrupting the system.
-* CommonJS uses the keywords require and exports. require is a function used to import functions from another module. exports is an object where any function put into it will get exported.(we could use nodeJS implmentation)
-* Asynchronous Module Definition (AMD): AMD was born since CommonJS wasn’t suited for the browsers early on. As the name implies, it supports asynchronous module loading.
-* RequireJS：implements the AMD API. It loads the plain JavaScript files as well as modules by using plain script tags. It includes an optimizing tool which can be run while deploying our code for better performance.
-
-
-## How to implement a Queue by using JS?
-1.	Two pointers and A object
-2.	Use array—reverse();
-
-```javascript
-function Queue() {
-    this._oldestIndex = 1;
-    this._newestIndex = 1;
-    this._storage = {};
-}
-
-Queue.prototype.size = function() {
-    return this._newestIndex - this._oldestIndex;
-};
-
-Queue.prototype.enqueue = function(data) {
-    this._storage[this._newestIndex] = data;
-    this._newestIndex++;
-};
-
-Queue.prototype.dequeue = function() {
-    var oldestIndex = this._oldestIndex,
-        newestIndex = this._newestIndex,
-        deletedData;
-
-    if (oldestIndex !== newestIndex) {
-        deletedData = this._storage[oldestIndex];
-        delete this._storage[oldestIndex];
-        this._oldestIndex++;
-
-        return deletedData;
-    }
-	};
-```
 ## Common Js functions
 * Array
   - Array.isArray(arr)
@@ -531,14 +446,82 @@ Queue.prototype.dequeue = function() {
   - Math.sign() --- return 1, 0, -1 indicating the sign of a number
 
 [From here](http://realtcg.com/2017/05/13/JavaScript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93-%E4%B8%80/)
+## arguments objects
+* it is a array-like object
+* Using the arguments object, you can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how many arguments will be passed to the function.
+```JavaScript
+function myConcat(separator) {
+   var result = ''; // initialize list
+   var i;
+   // iterate through arguments
+   for (i = 1; i < arguments.length; i++) {
+      result += arguments[i] + separator;
+   }
+   return result;
+}
+// You can pass any number of arguments to this function, and it concatenates each argument into a string "list":
 
-## Some details for JavaScript
+// returns "red, orange, blue, "
+myConcat(', ', 'red', 'orange', 'blue');
 
+// returns "elephant; giraffe; lion; cheetah; "
+myConcat('; ', 'elephant', 'giraffe', 'lion', 'cheetah');
+```
+[From MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
+
+## CommonJS, AMD, RequireJS, ES6 Modules
+All of them are talking about javascript modules.
+JavaScript Modules refer to a small units of independent, reusable code. They have distinct functionality, allowing them to be added, removed without disrupting the system.
+* CommonJS uses the keywords require and exports. require is a function used to import functions from another module. exports is an object where any function put into it will get exported.(we could use nodeJS implmentation)
+* Asynchronous Module Definition (AMD): AMD was born since CommonJS wasn’t suited for the browsers early on. As the name implies, it supports asynchronous module loading.
+* RequireJS：implements the AMD API. It loads the plain JavaScript files as well as modules by using plain script tags. It includes an optimizing tool which can be run while deploying our code for better performance.
+
+
+## How to implement a Queue by using JS?
+1.	Two pointers and A object
+2.	Use array—reverse();
+
+```javascript
+function Queue() {
+    this._oldestIndex = 1;
+    this._newestIndex = 1;
+    this._storage = {};
+}
+
+Queue.prototype.size = function() {
+    return this._newestIndex - this._oldestIndex;
+};
+
+Queue.prototype.enqueue = function(data) {
+    this._storage[this._newestIndex] = data;
+    this._newestIndex++;
+};
+
+Queue.prototype.dequeue = function() {
+    var oldestIndex = this._oldestIndex,
+        newestIndex = this._newestIndex,
+        deletedData;
+
+    if (oldestIndex !== newestIndex) {
+        deletedData = this._storage[oldestIndex];
+        delete this._storage[oldestIndex];
+        this._oldestIndex++;
+
+        return deletedData;
+    }
+	};
+```
+## Some small but important details for JavaScript
+### The way to judge the data type in js
+1. Object.prototype.toString.call(), return [Object，type]
+2. jquery.type();
 ### if (key in object) VS if (object.hasOwnProperty(key))
 * in will also return true if key gets found somewhere in the prototype chain,
 * whereas Object.hasOwnProperty (like the name already tells us), will only return true if key is available on that object directly (its "owns" the property).
 ### !!(expression) in js
 * it convert expression into boolean
+### The in operator
+* it returns true if the specified property is in the specified object or its prototype chain.
 ### Ways to judge if two object are same
 *  `_.isEqual(obj1, obj2)` method of lodash.js and underscore.js
 [from here](https://stackoverflow.com/questions/13632999/if-key-in-object-or-ifobject-hasownpropertykey)
@@ -596,28 +579,6 @@ console.log(foo['2']); // two
 var arr = [];
 arr[3.4] = 'Oranges';
 ```
-## arguments objects
-* it is a array-like object
-* Using the arguments object, you can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how many arguments will be passed to the function.
-```JavaScript
-function myConcat(separator) {
-   var result = ''; // initialize list
-   var i;
-   // iterate through arguments
-   for (i = 1; i < arguments.length; i++) {
-      result += arguments[i] + separator;
-   }
-   return result;
-}
-// You can pass any number of arguments to this function, and it concatenates each argument into a string "list":
-
-// returns "red, orange, blue, "
-myConcat(', ', 'red', 'orange', 'blue');
-
-// returns "elephant; giraffe; lion; cheetah; "
-myConcat('; ', 'elephant', 'giraffe', 'lion', 'cheetah');
-```
-[From MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
 ### Three native ways to list/traverse object properties:
 
 * for...in loops
