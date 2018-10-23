@@ -139,12 +139,12 @@ promise.then(script => alert('One more handler to do something else!'));
 
 ## Callback
 A callback is a function to be executed after something happended, which is:
-1.	passed as an argument to another function
-2.	is invoked after some kind of event
-3.  once its parent function completes, the function passed as an argument is then called
+1. passed as an argument to another function
+2. is invoked after some kind of event
+3. once its parent function completes, the function passed as an argument is then called
 4. not only for ansychronous operations
-5.  Callbacks are a way to make sure certain code doesn’t execute until other code has already finished execution.
-6. who call the callback when something happens??????
+5. Callbacks are a way to make sure certain code doesn’t execute until other code has already finished execution.
+6. who call the callback when something happens? --- event loop and message queue mechanism
 
 [a good article to understand callback](https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced)
 
@@ -154,6 +154,7 @@ A callback is a function to be executed after something happended, which is:
   we get a nested and badly readable code when we have a series of asynchronous functions
 * Promises makes the code more readable, especially when using async and await. First, we get our promise object, and .then we write what to
   do with the result.
+
 [compare callback vs promise with code](https://medium.com/front-end-hacking/callbacks-promises-and-async-await-ad4756e01d90)
 
 ## What is generator?
@@ -212,23 +213,20 @@ A callback is a function to be executed after something happended, which is:
   * At some point during the event loop, the Js runtime starts handling the messages on the queue, starting with the oldest one. To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter.
 
   [More details about event loop, message queue, ansychronous and synchronous](https://segmentfault.com/a/1190000004322358)
-## apply(), call(), bind()
-* Both these functions are used to bind 'this' to functions. JavaScript function has their owner.
-* The only difference between apply and call is parameters for them. The call() method takes arguments separately. The apply() method takes arguments as an array.
-* bind() will create new function, it will not execute immediately, but call and bind will
 
-## Object VS Array
+## Comparison between Data structures
+### Object VS Array
 1. array has order, object does not have order
 2. when delete or add element in array, typically, it will be more expensive
 
-## Map vs Object
+### Map vs Object
 1. Key field: in Object, the keys MUST be simple types — either integer or string or symbols.
    But in Map it can be any data type (an object, an array, etc…).
 2. Element order: in Map, insertion order of elements (pairs) is preserved(so iterable), while in Object, it isn’t.
 3. Inheritance: Map is an instance of Object
 4. compared with object, map has a lot of convenient method for data operation, such as size(), remove element, forEach
 
-## Array VS Set
+### Array VS Set
 1. set does not have duplicates, so when we need non-duplicate, we better use set
 2. Checking whether an element exists in a collection using indexOf for arrays is slow.
 3. array is better  when we need quick access to element by index and do heavy modification
@@ -250,8 +248,8 @@ Inherit properties by following the class chain.	| Inherit properties by followi
 Class definition specifies all properties of all instances of a class. Cannot add properties dynamically at run time.	| Constructor function or prototype specifies an initial set of properties. Can add or remove properties dynamically to individual objects or to the entire set of objects.
 
 ## Inheritance in JavaScript
-* Every object has a __proto__ object property (except Object);
-* The special property __proto__ is set when an object is constructed; it is set to the value of the constructor's prototype property.
+* Every object has a ```__proto__``` object property (except Object);
+* The special property ```__proto__``` is set when an object is constructed; it is set to the value of the constructor's prototype property.
 * every function has a prototype object property.
 * Because an object has a single associated prototype, JavaScript cannot dynamically inherit from more than one prototype chain.
 * In JavaScript, you can have a constructor function call more than one other constructor function within it. This gives the illusion of multiple inheritance.
@@ -264,7 +262,7 @@ Class definition specifies all properties of all instances of a class. Cannot ad
 
 * Two ways to implement inheritance based on MDN documents
     1. use Object.create(): three steps
-    2. use new Father: 1 step, but have limitations
+    2. use new Father: 1 step, lack change children's constructor?????
   see code below:
 
 ```javaScript
@@ -291,7 +289,9 @@ WorkerBee.prototype.constructor = WorkerBee;
 
 // anther qucik way to inherit
 // but in this case:
-// If we want to change the value of an object property at run time and have the new value be inherited by all descendants of the object, you cannot define the property in the object's constructor function. Instead, you add it to the constructor's associated prototype.
+// If we want to change the value of an object property at run time and have the new value be inherited by
+//all descendants of the object, we cannot define the property in the object's constructor function.
+// Instead, we add it to the constructor's associated prototype.
 
 function WorkerBee(projs) {
 
@@ -299,13 +299,11 @@ function WorkerBee(projs) {
 }
 WorkerBee.prototype = new Employee;
 
-function Engineer() {
-   WorkerBee.call(this);
+function Engineer(mach) {
    this.dept = 'engineering';
-   this.machine = '';
+   this.machine = mach || '';
 }
-Engineer.prototype = Object.create(WorkerBee.prototype)
-Engineer.prototype.constructor = Engineer;
+Engineer.prototype = new WorkerBee;
 
 //have the constructor add more properties by directly calling the constructor function for an object higher in the prototype chain
 function Engineer(name, projs, mach) {
@@ -422,16 +420,16 @@ let textarea = document.querySelector("textarea");
 * String
   - charAt()
   - indexOf()/lastIndexOf()
-  - startsWith()/endsWith()
-  - match()
-  - search()
-  - replace(): return a new string
+  - startsWith()/endsWith(): determines whether a string begins/ends with the characters of a specified string
+  - match(): [returns depends on whether regexpress has flag 'g'](https://mzl.la/1pFXfp8)
+  - search() : return the index of the first match between the regular expression and the given string
+  - replace(): [return a new string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
   - split()
   - concat()
   - slice()/substring()
   - trim()
-  - escape(string)/unescape(string)
-  - encodeURI(string)/decodeURI(string)
+  - encodeURIComponent()/decodeURIComponent()
+  - encodeURI(string)/decodeURI(string)  [difference see here](https://www.jianshu.com/p/075f5567c9a1)
 * Number Object
   - Number.MAX_VALUE
   - Number.MIN_VALUE
@@ -443,7 +441,7 @@ let textarea = document.querySelector("textarea");
   - Math.sin(), Math.cos(), Math.tan()
   - Math.pow(base, exponent), Max.log10(), Math.log2()
   - Math.floor(), Math.ceil()---returns the smallest integer greater than or equal to a given number.
-  - Math.min(), Math.max(), coudl be many values
+  - Math.min(), Math.max(), coudld be mor than two values
   - Math.random() --- The Math.random() function returns a floating-point, pseudo-random number in the range 0–1 (inclusive of 0, but not 1)
   - Math.round()--- returns the value of a number rounded to the nearest integer.
   - Math.sqrt(), Math.cbrt()
@@ -452,7 +450,7 @@ let textarea = document.querySelector("textarea");
 [From here](http://realtcg.com/2017/05/13/JavaScript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93-%E4%B8%80/)
 ## arguments objects
 * it is a array-like object
-* Using the arguments object, you can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how many arguments will be passed to the function.
+* Using the arguments object, we can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how many arguments will be passed to the function.
 ```JavaScript
 function myConcat(separator) {
    var result = ''; // initialize list
@@ -463,7 +461,6 @@ function myConcat(separator) {
    }
    return result;
 }
-// You can pass any number of arguments to this function, and it concatenates each argument into a string "list":
 
 // returns "red, orange, blue, "
 myConcat(', ', 'red', 'orange', 'blue');
@@ -516,16 +513,48 @@ Queue.prototype.dequeue = function() {
 	};
 ```
 ## Some small but important details for JavaScript
+### apply(), call(), bind()
+* Both these functions are used to bind 'this' to functions. JavaScript function has their owner.
+* The only difference between apply and call is parameters for them. The call() method takes arguments separately. The apply() method takes arguments as an array.
+* bind() will create new function, it will not execute immediately, but call and bind will
 ### The way to judge the data type in js
 1. Object.prototype.toString.call(), return [Object，type]
 2. jquery.type();
+3. typeof operator
+
+      |type|return|
+      | ------ | ------ |  
+      |Undefined	|"undefined"|
+      Null |	"object"
+      Boolean	|"boolean"
+      Number |	"number"
+      String |	"string"
+      Symbol | 	"symbol"
+      Function object | (	"function"
+      Any other object|	"object"
+
+### falsy values
+* The following values evaluate to false (also known as Falsy values):    
+  * false
+  * undefined
+  * null
+  * 0
+  * NaN
+  * the empty string ("")
+
+* All other values, including all objects, evaluate to true when passed to a conditional statement.      
+* Do not confuse the primitive boolean values true and false with the true and false values of the Boolean object. For example:
+      ```JavaScript
+      var b = new Boolean(false);
+      if (b) // this condition evaluates to true
+      if (b == true) // this condition evaluates to false
+      ```
 ### if (key in object) VS if (object.hasOwnProperty(key))
+* the in operator returns true if the specified property is in the specified object or its prototype chain.
 * in will also return true if key gets found somewhere in the prototype chain,
 * whereas Object.hasOwnProperty (like the name already tells us), will only return true if key is available on that object directly (its "owns" the property).
 ### !!(expression) in js
 * it convert expression into boolean
-### The in operator
-* it returns true if the specified property is in the specified object or its prototype chain.
 ### Ways to judge if two object are same
 *  `_.isEqual(obj1, obj2)` method of lodash.js and underscore.js
 [from here](https://stackoverflow.com/questions/13632999/if-key-in-object-or-ifobject-hasownpropertykey)
@@ -537,24 +566,7 @@ Queue.prototype.dequeue = function() {
 * block scope is delimited by a pair of curly brackets
 * function scope is delimited by function
 * In web pages, the global object is window
-### falsy values
-   The following values evaluate to false (also known as Falsy values):
 
-* false
-* undefined
-* null
-* 0
-* NaN
-* the empty string ("")
-
-All other values, including all objects, evaluate to true when passed to a conditional statement.
-
-* Do not confuse the primitive boolean values true and false with the true and false values of the Boolean object. For example:
-```JavaScript
-var b = new Boolean(false);
-if (b) // this condition evaluates to true
-if (b == true) // this condition evaluates to false
-```
 ### Data type conversion
 * In expressions involving numeric and string values with the **+ operator**, JavaScript converts numeric values to strings
 * n statements involving other operators, JavaScript does not convert numeric values to strings.
