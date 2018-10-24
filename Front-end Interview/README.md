@@ -480,12 +480,12 @@ JavaScript Modules refer to a small units of independent, reusable code. They ha
 
 ## How to implement a Queue by using JS?
 1.	Two pointers and A object
-2.	Use array—reverse();
+2.	Use array, shift() for dequeue;
 
 ```javascript
 function Queue() {
-    this._oldestIndex = 1;
-    this._newestIndex = 1;
+    this._oldestIndex = 0;
+    this._newestIndex = 0;
     this._storage = {};
 }
 
@@ -527,7 +527,7 @@ Queue.prototype.dequeue = function() {
       |Undefined	|"undefined"|
       Null |	"object"
       Boolean	|"boolean"
-      Number |	"number"
+      Number/NaN |	"number"
       String |	"string"
       Symbol | 	"symbol"
       Function object | (	"function"
@@ -569,7 +569,7 @@ Queue.prototype.dequeue = function() {
 
 ### Data type conversion
 * In expressions involving numeric and string values with the **+ operator**, JavaScript converts numeric values to strings
-* n statements involving other operators, JavaScript does not convert numeric values to strings.
+* statements involving other operators, JavaScript does not convert numeric values to strings.
 * convert strings to numbers: parseInt() and parseFloat()
 ### Object Literals
 * Object property names can be any string, including the empty string. If the property name would not be a valid JavaScript identifier or number, it must be enclosed in quotes. Property names that are not valid identifiers also cannot be accessed as a dot (.) property, but can be accessed and set with the array-like notation("[]").
@@ -590,7 +590,8 @@ console.log(foo['2']); // two
 * 在箭头函数出现之前，每一个新函数都重新定义了自己的 this 值
 
 ### Arrays are also objects in JavaScript
-* JavaScript does not have an explicit array data type,if you supply a non-integer value to the array operator in the code above, a property will be created in the object representing the array, instead of an array element.
+* JavaScript does not have an explicit array data type,if you supply a non-integer value to the array operator in the code below, a property will be created in the object representing the array, instead of an array element. It actually not array element, does not change array length
+* also, we cannot access it by for...of
 ```JavaScript
 var arr = [];
 arr[3.4] = 'Oranges';
@@ -780,13 +781,14 @@ CSS preprocessors take code written in the preprocessed language and then conver
 ## Position property
 * relative: not change the display property of elements
 * absolute: if parents of the elements do not set relative or absolute, the element will locate by the body
-  - width of block elements becomes auto
+  - width of block elements becomes auto, the width of its child element will affect by its width
   - inline elements' display will become blocks
 * using relative and absolute, the elements will cover other elements; but we can set z-index as -1
 ## float
-* The float CSS property specifies that an element should be placed along the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the web page, but the element will not cover the content of next elements(only cover the border).
+* The float CSS property specifies that an element should be placed along the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the web page, but the element will not cover the content of next elements(only cover the box).
 * after setting a float property, the element will become a block
 
+[a good article to understand float and position properity](http://www.cnblogs.com/coffeedeveloper/p/3145790.html)
 ## Clear float
 If children set float, the parent will lose height from children. In order to let the parent looks like contain children, we have several method:
 1. add new tag in the parent element: < br style="clear:both" />
