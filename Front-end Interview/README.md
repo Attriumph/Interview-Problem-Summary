@@ -657,6 +657,7 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
 
 # HTML DOM
 ## DOM structure
+[more details](https://caomingkai.github.io/2018/10/15/Common-DOM-Manipulations/)
 > difference between HTMLCollection & NodeList
   * HTMLCollection: a collection of elements
   * NodeList: a collection of all types of nodes: element node/ text node/ comment node
@@ -671,6 +672,39 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
   * lastChild----lastElementChild
   * nextSibling---nextElementSibling
   * previousSibling---previousElementSibling
+
+## window.onload vs document.onload
+* window.onload: When EVERYTHING is loaded. DOM is ready and all the contents including images, css, scripts, sub-frames, etc. finished loaded.
+* document.onload: once the DOM is loaded, regardless of the css, scripts,…
+
+## classlist of dom node
+```javascript
+function addClass(selector, className){
+   var elm = document.querySelector(selector);
+   if (elm){
+      elm.classList.add(className);
+      //elm.classList.remove(className);
+   }
+}
+```
+## innerHTML, innerText， textContent
+
+```javascript
+<p id="test">    This element    contains <span>an inner span</span>. </p>
+```
+* The values of these properties of the "test" paragraph will be:
+* innerText: "This element contains an inner span."  : Just the text, trimmed and space-collapsed.
+* innerHtml: " This element     contains <span>an inner span</span>. "   All spacing and inner element tags.
+* textContent: " This element     contains an inner span. "  Spacing, but no tags.
+
+## Repaint vs Reflow
+* reflow: flow of the elements in the page is changed due to change size or position
+* repaint: It happens when you change the look of an element without changing the size and shape. This doesn’t cause reflow as geometry of the element didn’t changed. eg, change visibility
+
+# CrateDocumentFragment: improve performance
+* documentFragment a lightweight or minimal part of a DOM or a subtree of a DOM tree.
+* It is very helpful when you are manipulating a part of DOM for multiple times.
+
 
 ## Tranverse Dom tree
 ```JavaScript
