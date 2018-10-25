@@ -705,10 +705,9 @@ function addClass(selector, className){
 * reflow: flow of the elements in the page is changed due to change size or position
 * repaint: It happens when you change the look of an element without changing the size and shape. This doesn’t cause reflow as geometry of the element didn’t changed. eg, change visibility
 
-# CrateDocumentFragment: improve performance
+## CreateDocumentFragment
 * documentFragment a lightweight or minimal part of a DOM or a subtree of a DOM tree.
-* It is very helpful when you are manipulating a part of DOM for multiple times.
-
+* It is very helpful for improving performance when you are manipulating a part of DOM for multiple times.
 
 ## Tranverse Dom tree
 ```JavaScript
@@ -890,7 +889,8 @@ If children set float, the parent will lose height from children. In order to le
   1. flex-direction: row | row-reverse | column | column-reverse
   2. flex-wrap: break new line or not when exceeding it container  
         nowrap | wrap | wrap-reverse;
-  3. flex-flow: <flex-direction> || <flex-wrap>;
+  3. flex-flow: combination of the first two
+          <flex-direction> || <flex-wrap>;
   4. align-items: where flex items sit on the cross axis
         flex-start | flex-end | center | baseline | stretch;
   5. justify-content: where the flex items sit on the main axis
@@ -1088,8 +1088,9 @@ since the same-origin-policy, we cannot send a request to get data from differen
 
 # General Web question
 
-## responsive Website
-* <meta name="viewport" content="width=device-width, initial-scale=1.0">
+## Responsive Website
+1. ```<meta name="viewport" content="width=device-width, initial-scale=1.0">```
+2. add media query at css
 ## SSR VS CSR
 * We are using server side rendering for two reasons:
   - performance benefit for our customers
@@ -1230,8 +1231,6 @@ To solve this issue we can use WAI-ARIA (Web Accessibility Initiative – Access
 8. Ensure that all content can be accessed with the keyboard alone in a logical way
 9. Use ARIA roles and landmarks (but only when necessary)
 10. Make dynamic content accessible
-# AngularJS VS React
-* two way binding model VS one way data flow
 
 # Webpack VS Gulp
 * webpack is module bunlder, whose inputs are modules with dependencies, output is static assets, which helps us deploy on the production environment
