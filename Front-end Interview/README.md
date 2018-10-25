@@ -830,25 +830,9 @@ CSS preprocessors take code written in the preprocessed language and then conver
 If children set float, the parent will lose height from children. In order to let the parent looks like contain children, we have several method:
 1. add new tag in the parent element: < br style="clear:both" />
 2. Float (Nearly) Everything
-3. use psedou class after
-```html
-<div class="l-form-row">
-            <div class="l-form-label"></div>
-            ....
-        </div>
-        <style>
-            .l-form-row:after {
-                clear: both;
-                content: "\0020";
-                display: block;
-                height: 0;
-                overflow: hidden
-            }
-        </style>
-```
-4. set the parent container overflow: hidden,  or overflow: auto;
-5. use clearfix:
-```
+3. set the parent container overflow: hidden,  or overflow: auto;
+4. use clearfix/pseudo class:
+```javascript
         .clearfix:after {
           content: " ";
           display: block;
@@ -904,6 +888,18 @@ If children set float, the parent will lose height from children. In order to le
   - The width and height properties include the content, but does not include the padding, border, or margin.
 * box-sizing: border-box;
   - The width and height properties include the content, padding, and border, but do not include the margin
+## inline element
+* padding-top, padding-bottom, margin-top, margin-bottom are invalid for inline elements
+* padding-left, padding-right, margin-left, margin-bottom are valid for inline elements
+* padding-top, padding-bottom are effective literally, but they did not affect other elements
+## CSS Specificity Scoring
+* inline style > inner style > external style
+* score distribution:
+  - HTML tag Element - One
+  - Class - Ten
+  - ID - Hundred
+  - Inline Styles - Thousand
+* !important is the biggest
 
 # React
 ## Why use react framework?
