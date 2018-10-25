@@ -1081,7 +1081,10 @@ since the same-origin-policy, we cannot send a request to get data from differen
 4. Creating the Render Tree
 5. Generating the Layout
 6. Painting
-
+## Frame
+* FPS: frame per second, for current browser, it's 60 fps
+* so, every frame takes 1000/60 = 16.667ms
+* the higher, the better user feel
 # General Web question
 
 ## Responsive Website
