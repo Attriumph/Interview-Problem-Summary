@@ -1000,6 +1000,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(FindsView)
 * There are several factory functions to create effects, such as call(), put(), take()--waiting for a specific action, fork()
 * also we have takeEvery() and takeLatest() to execute tasks when we have specific Actions
 
+<img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/redux-saga.jpg' width="70%">
 
 # Http
 
