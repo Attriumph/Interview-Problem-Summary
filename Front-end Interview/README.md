@@ -470,6 +470,10 @@ myConcat('; ', 'elephant', 'giraffe', 'lion', 'cheetah');
 ```
 [From MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
 
+## Event emitter
+### When to use it?
+* If when a certain event happens, we have to deal many type of manipulation for that event’s result, then it is better to use the event emitter pattern. Instead put all functions inside an event callback, we subscribe all the function to that event, when the event happens, we emit the event!
+
 ## CommonJS, AMD, RequireJS, ES6 Modules
 All of them are talking about javascript modules.
 JavaScript Modules refer to a small units of independent, reusable code. They have distinct functionality, allowing them to be added, removed without disrupting the system.
@@ -877,9 +881,29 @@ If children set float, the parent will lose height from children. In order to le
 
 [from here](https://www.sitepoint.com/five-ways-to-hide-elements-in-css/)
 
-## Event emitter
-### When to use it?
-* If when a certain event happens, we have to deal many type of manipulation for that event’s result, then it is better to use the event emitter pattern. Instead put all functions inside an event callback, we subscribe all the function to that event, when the event happens, we emit the event!
+## Flexbox layout
+### container:
+* float, clear, vertical-align for the items inside flexbox will become invalid
+* display: inline-flex vs display: flex:----only apply to flex container, to make it display as inline or block won’t affect flex items
+  inside
+* prosperities:
+  1. flex-direction: row | row-reverse | column | column-reverse
+  2. flex-wrap: break new line or not when exceeding it container  
+        nowrap | wrap | wrap-reverse;
+  3. flex-flow: <flex-direction> || <flex-wrap>;
+  4. align-items: where flex items sit on the cross axis
+        flex-start | flex-end | center | baseline | stretch;
+  5. justify-content: where the flex items sit on the main axis
+        flex-start | flex-end | center | space-between | space-around
+### flex items:
+* flex: 1 1 20px: three attributes: flex-grow flex-shrink flex-basis
+* order: 3: like the smaller will be put in front
+* align-self: override its container’s align-items layout, update position of itself
+## box-sizing properity
+* box-sizing: content-box;
+  - The width and height properties include the content, but does not include the padding, border, or margin.
+* box-sizing: border-box;
+  - The width and height properties include the content, padding, and border, but do not include the margin
 
 # React
 ## Why use react framework?
@@ -1000,7 +1024,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(FindsView)
 * There are several factory functions to create effects, such as call(), put(), take()--waiting for a specific action, fork()
 * also we have takeEvery() and takeLatest() to execute tasks when we have specific Actions
 
-<img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/redux-saga.jpg' width="70%">
+<img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/redux-saga.jpg' width="60%">
 
 # Http
 
