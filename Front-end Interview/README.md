@@ -881,7 +881,75 @@ If children set float, the parent will lose height from children. In order to le
 ### When to use it?
 * If when a certain event happens, we have to deal many type of manipulation for that event’s result, then it is better to use the event emitter pattern. Instead put all functions inside an event callback, we subscribe all the function to that event, when the event happens, we emit the event!
 
-# React-Redux
+# React
+## Why use react framework?
+* React is a library for building composable user interfaces. not MVC
+* React are based on Components
+* reconcilation:
+  - When component is first initialized, the render method is called, generating a lightweight representation of our view.
+  - From that representation, a string of markup is produced, and injected into the document.
+  - When your data changes, the render method is called again.
+  - In order to perform updates as efficiently as possible, react diff the return value from the previous call to render with the new one, and generate a minimal set of changes to be applied to the DOM.
+  - The data returned from render is neither a string nor a DOM node — it’s a lightweight description of what the DOM should look like.
+## Lifecycle
+* Mounting phase:These methods are called in the following order when an instance of a component is being created and inserted into the DOM
+  - constructor()
+  - getDerivedStateFromProps()
+  - render()
+  - componentDidMount()
+* Updating phase：An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:
+  - getDerivedStateFromProps()
+  - shouldComponentUpdate()
+  - render(): after either new props or new state
+  - componentDidUpdate()
+* Unmounting phase：This method is called when a component is being removed from the DOM:
+  - componentWillUnmount()
+
+<div style="text-align: center">
+<img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/lifecycle.png' width="60%">
+</div>
+## React Example
+```javascript
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Clock />,
+  document.getElementById('root')
+);
+```
+
+# Redux
 ## Redux Basic
 * There are two aspects that React does not solve well, one is code structure and other is communication between components. Therefore, we have Redux(before it, is Flux).
 * The key point of Redux is the web application is state machine. A view corresponds to a state.
