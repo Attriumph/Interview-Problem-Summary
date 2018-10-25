@@ -904,10 +904,12 @@ If children set float, the parent will lose height from children. In order to le
   - componentDidUpdate()
 * Unmounting phase：This method is called when a component is being removed from the DOM:
   - componentWillUnmount()
+[From here](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
-<div style="text-align: center">
-<img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/lifecycle.png' width="60%">
+<div style="text-align: center;">
+ <img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/lifecycle.png' width="70%">
 </div>
+
 ## React Example
 ```javascript
 class Clock extends React.Component {
