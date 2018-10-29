@@ -97,6 +97,7 @@ f(); // 15
 * Arrow function: Until arrow functions, every new function defined its own this value (based on how function was called)
   - An arrow function does not have its own this; the this value of the enclosing lexical context is used i.e. Arrow functions follow the normal variable lookup rules. So while searching for this  which is not present in current scope they end up finding this from its enclosing scope .
   - Since arrow functions do not have their own this, the methods call() or apply() can only pass in parameters. thisArg is ignored.
+
 [more details about arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)  
 [more details about es6 see here](http://www.javascripttutorial.net/es6/)
 
@@ -111,6 +112,7 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 * also, we could use '.then' after a promise, so we can control the sequence of a series of asynchronous action
 * also, we have promise.all() and promise.race()
 * The await operator is used to wait for a Promise. It can only be used inside an async function
+
 ### Promise example
 ```JavaScript
 function loadScript(src) {
