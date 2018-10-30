@@ -1192,7 +1192,7 @@ Although cookies and cache are two ways to store data on client’s machine, but
 3. Typically, cookies expire after some time, but cache is kept in the client’s machine until they are removed manually by the user.
 
 ## what happends when we type a URL on browser?
-1. if requested object is in the browser cache and is fresh, move on to step 7
+1. if requested object is in the browser cache and is fresh, then the browser will display the content.
 2. DNS lookup to find the ip address of the server
    check browser cache-> check os cache-> check router cache -> Internet service provider cache(its DNS
      will recursive search)
