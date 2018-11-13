@@ -1,6 +1,8 @@
 
 [TOC]
 
+[TOC]
+
 # JavaScript
 
 ##	forEach() VS map() VS (for..in) VS (for...of)
