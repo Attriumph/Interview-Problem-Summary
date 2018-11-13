@@ -11,7 +11,7 @@
 The following example shows the difference between a for...of loop and a for...in loop. While for...in iterates over property names, for...of iterates over property values:
 
 ```JavaScript
-// example
+// an example
 var arr = [3, 5, 7];
 arr.foo = 'hello';
 
@@ -90,6 +90,7 @@ f(); // 15
             console.log(type);
           }
         }
+    ```
   ```
 * Symbol: ES6 added the Symbol as a new primitive type.
 * Promise
@@ -116,7 +117,7 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 * The await operator is used to wait for a Promise. It can only be used inside an async function
 
 ### Promise example
-```JavaScript
+​```JavaScript
 function loadScript(src) {
   return new Promise(function(resolve, reject) {
     let script = document.createElement('script');
@@ -137,7 +138,7 @@ promise.then(
   error => alert(`Error: ${error.message}`));
 
 promise.then(script => alert('One more handler to do something else!'));
-```
+  ```
 
 [more details here](https://javascript.info/promise-basics)
 
@@ -267,7 +268,7 @@ Class definition specifies all properties of all instances of a class. Cannot ad
 * Two ways to implement inheritance based on MDN documents
     1. use Object.create(): three steps
     2. use new Father: 1 step, lack change children's constructor?????
-  see code below:
+    see code below:
 
 ```javaScript
 
@@ -531,7 +532,7 @@ Queue.prototype.dequeue = function() {
 3. typeof operator
 
       |type|return|
-      | ------ | ------ |  
+      | ------ | ------ |
       |Undefined	|"undefined"|
       Null |	"object"
       Boolean	|"boolean"
@@ -552,11 +553,11 @@ Queue.prototype.dequeue = function() {
 
 * All other values, including all objects, evaluate to true when passed to a conditional statement.      
 * Do not confuse the primitive boolean values true and false with the true and false values of the Boolean object. For example:
-      ```JavaScript
-      var b = new Boolean(false);
-      if (b) // this condition evaluates to true
-      if (b == true) // this condition evaluates to false
-      ```
+  ​    ```JavaScript
+  ​    var b = new Boolean(false);
+  ​    if (b) // this condition evaluates to true
+  ​    if (b == true) // this condition evaluates to false
+  ​    ```
 ### if (key in object) VS if (object.hasOwnProperty(key))
 * the in operator returns true if the specified property is in the specified object or its prototype chain.
 * in will also return true if key gets found somewhere in the prototype chain,
@@ -878,7 +879,7 @@ If children set float, the parent will lose height from children. In order to le
   2. flex-wrap: break new line or not when exceeding it container  
         nowrap | wrap | wrap-reverse;
   3. flex-flow: combination of the first two
-          <flex-direction> || <flex-wrap>;
+     ​     <flex-direction> || <flex-wrap>;
   4. align-items: where flex items sit on the cross axis
         flex-start | flex-end | center | baseline | stretch;
   5. justify-content: where the flex items sit on the main axis
