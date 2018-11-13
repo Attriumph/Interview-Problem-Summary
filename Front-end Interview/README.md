@@ -1,3 +1,4 @@
+[TOC]
 
 # JavaScript
 
@@ -1087,8 +1088,8 @@ since the same-origin-policy, we cannot send a request to get data from differen
 * FPS: frame per second, for current browser, it's 60 fps
 * so, every frame takes 1000/60 = 16.667ms
 * the higher, the better user feel
-# General Web question
 
+# General Web question
 ## Responsive Website
 1. ```<meta name="viewport" content="width=device-width, initial-scale=1.0">```
 2. add media query at css
