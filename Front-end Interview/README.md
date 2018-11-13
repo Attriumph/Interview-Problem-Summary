@@ -10,7 +10,7 @@
 The following example shows the difference between a for...of loop and a for...in loop. While for...in iterates over property names, for...of iterates over property values:
 
 ```JavaScript
-
+// example
 var arr = [3, 5, 7];
 arr.foo = 'hello';
 
