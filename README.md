@@ -1,7 +1,8 @@
-<!-- TOC -->autoauto- [JavaScript](#javascript)auto    - [forEach() VS map() VS (for..in) VS (for...of)](#foreach-vs-map-vs-forin-vs-forof)auto    - [What is a Closure?](#what-is-a-closure)auto    - [Hoisting -- just for no strict mode](#hoisting----just-for-no-strict-mode)auto    - [Key features of ES6](#key-features-of-es6)auto    - [What is Promise?](#what-is-promise)auto        - [Promise example](#promise-example)auto    - [Callback](#callback)auto    - [Callback vs Promises](#callback-vs-promises)auto    - [What is generator?](#what-is-generator)auto    - [Observable](#observable)auto    - [Comparison between Data structures](#comparison-between-data-structures)auto        - [Object VS Array](#object-vs-array)auto        - [Map vs Object](#map-vs-object)auto        - [Array VS Set](#array-vs-set)auto    - [Prototype](#prototype)auto    - [Class inheritance VS prototype inheritance](#class-inheritance-vs-prototype-inheritance)auto    - [Inheritance in JavaScript](#inheritance-in-javascript)auto        - [1. based on example of MDN](#1-based-on-example-of-mdn)auto        - [2. based on liaoxuefeng](#2-based-on-liaoxuefeng)auto    - [Debounce & Throttling](#debounce--throttling)auto    - [Talk about 'this'](#talk-about-this)auto    - [Common Js functions](#common-js-functions)auto    - [arguments objects](#arguments-objects)auto    - [Event emitter](#event-emitter)auto        - [When to use it?](#when-to-use-it)auto    - [CommonJS, AMD, RequireJS, ES6 Modules](#commonjs-amd-requirejs-es6-modules)auto    - [How to implement a Queue by using JS?](#how-to-implement-a-queue-by-using-js)auto    - [Some small but important details for JavaScript](#some-small-but-important-details-for-javascript)auto        - [apply(), call(), bind()](#apply-call-bind)auto        - [The way to judge the data type in js](#the-way-to-judge-the-data-type-in-js)auto        - [falsy values](#falsy-values)auto        - [if (key in object) VS if (object.hasOwnProperty(key))](#if-key-in-object-vs-if-objecthasownpropertykey)auto        - [!!(expression) in js](#expression-in-js)auto        - [Ways to judge if two object are same](#ways-to-judge-if-two-object-are-same)auto        - [undefined and null](#undefined-and-null)auto        - [function scope vs block scope](#function-scope-vs-block-scope)auto        - [Data type conversion](#data-type-conversion)auto        - [Object Literals](#object-literals)auto        - [Arrow function](#arrow-function)auto        - [Arrays are also objects in JavaScript](#arrays-are-also-objects-in-javascript)auto        - [Three native ways to list/traverse object properties:](#three-native-ways-to-listtraverse-object-properties)auto        - [Using the Object.create method create object](#using-the-objectcreate-method-create-object)auto        - ['this' used in form](#this-used-in-form)auto- [HTML](#html)auto    - [HTML Semantic](#html-semantic)auto        - [Why Semantic HTML is Important](#why-semantic-html-is-important)auto    - [What is Iframe?](#what-is-iframe)auto    - [Meta tag](#meta-tag)auto- [HTML DOM](#html-dom)auto    - [DOM structure](#dom-structure)auto    - [window.onload vs document.onload](#windowonload-vs-documentonload)auto    - [classlist of dom node](#classlist-of-dom-node)auto    - [innerHTML, innerText， textContent](#innerhtml-innertext-textcontent)auto    - [Repaint vs Reflow](#repaint-vs-reflow)auto    - [CreateDocumentFragment](#createdocumentfragment)auto    - [Tranverse Dom tree](#tranverse-dom-tree)auto        - [DOM API](#dom-api)auto- [CSS](#css)auto    - [CSS preprocessor](#css-preprocessor)auto        - [CSS preprocessor Pros and cons:](#css-preprocessor-pros-and-cons)auto    - [pt, px, em, rem](#pt-px-em-rem)auto        - [CSS3 to make shape](#css3-to-make-shape)auto    - [SASS basic concepts](#sass-basic-concepts)auto    - [Box model](#box-model)auto    - [Position property](#position-property)auto    - [float](#float)auto    - [Clear float](#clear-float)auto    - [5 ways to hidden Elements](#5-ways-to-hidden-elements)auto    - [Flexbox layout](#flexbox-layout)auto        - [container:](#container)auto        - [flex items:](#flex-items)auto    - [box-sizing properity](#box-sizing-properity)auto    - [inline element](#inline-element)auto    - [CSS Specificity Scoring](#css-specificity-scoring)auto- [React](#react)auto    - [Why use react framework?](#why-use-react-framework)auto    - [Lifecycle](#lifecycle)auto    - [React Example](#react-example)auto- [Redux](#redux)auto    - [Redux Basic](#redux-basic)auto    - [Keys for Redux usage](#keys-for-redux-usage)auto    - [Redux-sagas](#redux-sagas)auto- [Http](#http)auto    - [Features of Http](#features-of-http)auto    - [Post VS Get](#post-vs-get)auto    - [http methods](#http-methods)auto- [Browser](#browser)auto    - [What is CORS?](#what-is-cors)auto    - [How to cross origin?](#how-to-cross-origin)auto    - [Event delegation:](#event-delegation)auto    - [Event flow](#event-flow)auto    - [Critical Rending Path](#critical-rending-path)auto    - [Frame](#frame)auto- [General Web question](#general-web-question)auto    - [Responsive Website](#responsive-website)auto    - [SSR VS CSR](#ssr-vs-csr)auto    - [ansyn vs defer](#ansyn-vs-defer)auto    - [Ways to improve website performance](#ways-to-improve-website-performance)auto    - [Cookie](#cookie)auto    - [Cache](#cache)auto    - [Session](#session)auto    - [Difference between Cache and Cookies](#difference-between-cache-and-cookies)auto    - [What happends when browsing a web?](#what-happends-when-browsing-a-web)auto    - [Website accessibility consideration:](#website-accessibility-consideration)auto        - [define：](#define)auto        - [specific method](#specific-method)auto- [Webpack VS Gulp](#webpack-vs-gulp)autoauto<!-- /TOC -->
-# 1. JavaScript
+# 1. Table of Content<!-- TOC -->autoauto- [Table of Content](#table-of-content)auto- [1. JavaScript](#1-javascript)auto    - [1.1. forEach() VS map() VS (for..in) VS (for...of)](#11-foreach-vs-map-vs-forin-vs-forof)auto    - [1.2. What is a Closure?](#12-what-is-a-closure)auto    - [1.3. Hoisting -- just for no strict mode](#13-hoisting----just-for-no-strict-mode)auto    - [1.4. Key features of ES6](#14-key-features-of-es6)auto    - [1.5. What is Promise?](#15-what-is-promise)auto        - [1.5.1. Promise example](#151-promise-example)auto    - [1.6. Callback](#16-callback)auto    - [1.7. Callback vs Promises](#17-callback-vs-promises)auto    - [1.8. What is generator?](#18-what-is-generator)auto    - [1.9. Observable](#19-observable)auto    - [1.10. Comparison between Data structures](#110-comparison-between-data-structures)auto        - [1.10.1. Object VS Array](#1101-object-vs-array)auto        - [1.10.2. Map vs Object](#1102-map-vs-object)auto        - [1.10.3. Array VS Set](#1103-array-vs-set)auto    - [1.11. Prototype](#111-prototype)auto    - [1.12. Class inheritance VS prototype inheritance](#112-class-inheritance-vs-prototype-inheritance)auto    - [1.13. Inheritance in JavaScript](#113-inheritance-in-javascript)auto        - [1.13.1. based on example of MDN](#1131-based-on-example-of-mdn)auto        - [1.13.2. based on liaoxuefeng](#1132-based-on-liaoxuefeng)auto    - [1.14. Debounce & Throttling](#114-debounce--throttling)auto    - [1.15. Talk about 'this'](#115-talk-about-this)auto    - [1.16. Common Js functions](#116-common-js-functions)auto    - [1.17. arguments objects](#117-arguments-objects)auto    - [1.18. Event emitter](#118-event-emitter)auto        - [1.18.1. When to use it?](#1181-when-to-use-it)auto    - [1.19. CommonJS, AMD, RequireJS, ES6 Modules](#119-commonjs-amd-requirejs-es6-modules)auto    - [1.20. How to implement a Queue by using JS?](#120-how-to-implement-a-queue-by-using-js)auto    - [1.21. Some small but important details for JavaScript](#121-some-small-but-important-details-for-javascript)auto        - [1.21.1. apply(), call(), bind()](#1211-apply-call-bind)auto        - [1.21.2. The way to judge the data type in js](#1212-the-way-to-judge-the-data-type-in-js)auto        - [1.21.3. falsy values](#1213-falsy-values)auto        - [1.21.4. if (key in object) VS if (object.hasOwnProperty(key))](#1214-if-key-in-object-vs-if-objecthasownpropertykey)auto        - [1.21.5. !!(expression) in js](#1215-expression-in-js)auto        - [1.21.6. Ways to judge if two object are same](#1216-ways-to-judge-if-two-object-are-same)auto        - [1.21.7. undefined and null](#1217-undefined-and-null)auto        - [1.21.8. function scope vs block scope](#1218-function-scope-vs-block-scope)auto        - [1.21.9. Data type conversion](#1219-data-type-conversion)auto        - [1.21.10. Object Literals](#12110-object-literals)auto        - [1.21.11. Arrow function](#12111-arrow-function)auto        - [1.21.12. Arrays are also objects in JavaScript](#12112-arrays-are-also-objects-in-javascript)auto        - [1.21.13. Three native ways to list/traverse object properties:](#12113-three-native-ways-to-listtraverse-object-properties)auto        - [1.21.14. Using the Object.create method create object](#12114-using-the-objectcreate-method-create-object)auto        - [1.21.15. 'this' used in form](#12115-this-used-in-form)auto- [2. HTML](#2-html)auto    - [2.1. HTML Semantic](#21-html-semantic)auto        - [2.1.1. Why Semantic HTML is Important](#211-why-semantic-html-is-important)auto    - [2.2. What is Iframe?](#22-what-is-iframe)auto    - [2.3. Meta tag](#23-meta-tag)auto- [3. HTML DOM](#3-html-dom)auto    - [3.1. DOM structure](#31-dom-structure)auto    - [3.2. window.onload vs document.onload](#32-windowonload-vs-documentonload)auto    - [3.3. classlist of dom node](#33-classlist-of-dom-node)auto    - [3.4. innerHTML, innerText， textContent](#34-innerhtml-innertext-textcontent)auto    - [3.5. Repaint vs Reflow](#35-repaint-vs-reflow)auto    - [3.6. CreateDocumentFragment](#36-createdocumentfragment)auto    - [3.7. Tranverse Dom tree](#37-tranverse-dom-tree)auto        - [3.7.1. DOM API](#371-dom-api)auto- [4. CSS](#4-css)auto    - [4.1. CSS preprocessor](#41-css-preprocessor)auto        - [4.1.1. CSS preprocessor Pros and cons:](#411-css-preprocessor-pros-and-cons)auto    - [4.2. pt, px, em, rem](#42-pt-px-em-rem)auto        - [4.2.1. CSS3 to make shape](#421-css3-to-make-shape)auto    - [4.3. SASS basic concepts](#43-sass-basic-concepts)auto    - [4.4. Box model](#44-box-model)auto    - [4.5. Position property](#45-position-property)auto    - [4.6. float](#46-float)auto    - [4.7. Clear float](#47-clear-float)auto    - [4.8. ways to hidden Elements](#48-ways-to-hidden-elements)auto    - [4.9. Flexbox layout](#49-flexbox-layout)auto        - [4.9.1. container:](#491-container)auto        - [4.9.2. flex items:](#492-flex-items)auto    - [4.10. box-sizing properity](#410-box-sizing-properity)auto    - [4.11. inline element](#411-inline-element)auto    - [4.12. CSS Specificity Scoring](#412-css-specificity-scoring)auto- [5. React](#5-react)auto    - [5.1. Why use react framework?](#51-why-use-react-framework)auto    - [5.2. Lifecycle](#52-lifecycle)auto    - [5.3. React Example](#53-react-example)auto- [6. Redux](#6-redux)auto    - [6.1. Redux Basic](#61-redux-basic)auto    - [6.2. Keys for Redux usage](#62-keys-for-redux-usage)auto    - [6.3. Redux-sagas](#63-redux-sagas)auto- [7. Http](#7-http)auto    - [7.1. Features of Http](#71-features-of-http)auto    - [7.2. Post VS Get](#72-post-vs-get)auto    - [7.3. http methods](#73-http-methods)auto- [8. Browser](#8-browser)auto    - [8.1. What is CORS?](#81-what-is-cors)auto    - [8.2. How to cross origin?](#82-how-to-cross-origin)auto    - [8.3. Event delegation:](#83-event-delegation)auto    - [8.4. Event flow](#84-event-flow)auto    - [8.5. Critical Rending Path](#85-critical-rending-path)auto    - [8.6. Frame](#86-frame)auto- [9. General Web question](#9-general-web-question)auto    - [9.1. Responsive Website](#91-responsive-website)auto    - [9.2. SSR VS CSR](#92-ssr-vs-csr)auto    - [9.3. ansyn vs defer](#93-ansyn-vs-defer)auto    - [9.4. Ways to improve website performance](#94-ways-to-improve-website-performance)auto    - [9.5. Cookie](#95-cookie)auto    - [9.6. Cache](#96-cache)auto    - [9.7. Session](#97-session)auto    - [9.8. Difference between Cache and Cookies](#98-difference-between-cache-and-cookies)auto    - [9.9. What happends when browsing a web?](#99-what-happends-when-browsing-a-web)auto    - [9.10. Website accessibility consideration:](#910-website-accessibility-consideration)auto        - [9.10.1. define：](#9101-define)auto        - [9.10.2. specific method](#9102-specific-method)auto- [10. Webpack VS Gulp](#10-webpack-vs-gulp)autoauto<!-- /TOC -->
+ <!-- TOC -->autoauto- [Table of Content](#table-of-content)auto- [1. JavaScript](#1-javascript)auto    - [1.1. forEach() VS map() VS (for..in) VS (for...of)](#11-foreach-vs-map-vs-forin-vs-forof)auto    - [1.2. What is a Closure?](#12-what-is-a-closure)auto    - [1.3. Hoisting -- just for no strict mode](#13-hoisting----just-for-no-strict-mode)auto    - [1.4. Key features of ES6](#14-key-features-of-es6)auto    - [1.5. What is Promise?](#15-what-is-promise)auto        - [1.5.1. Promise example](#151-promise-example)auto    - [1.6. Callback](#16-callback)auto    - [1.7. Callback vs Promises](#17-callback-vs-promises)auto    - [1.8. What is generator?](#18-what-is-generator)auto    - [1.9. Observable](#19-observable)auto    - [1.10. Comparison between Data structures](#110-comparison-between-data-structures)auto        - [1.10.1. Object VS Array](#1101-object-vs-array)auto        - [1.10.2. Map vs Object](#1102-map-vs-object)auto        - [1.10.3. Array VS Set](#1103-array-vs-set)auto    - [1.11. Prototype](#111-prototype)auto    - [1.12. Class inheritance VS prototype inheritance](#112-class-inheritance-vs-prototype-inheritance)auto    - [1.13. Inheritance in JavaScript](#113-inheritance-in-javascript)auto        - [1.13.1. based on example of MDN](#1131-based-on-example-of-mdn)auto        - [1.13.2. based on liaoxuefeng](#1132-based-on-liaoxuefeng)auto    - [1.14. Debounce & Throttling](#114-debounce--throttling)auto    - [1.15. Talk about 'this'](#115-talk-about-this)auto    - [1.16. Common Js functions](#116-common-js-functions)auto    - [1.17. arguments objects](#117-arguments-objects)auto    - [1.18. Event emitter](#118-event-emitter)auto        - [1.18.1. When to use it?](#1181-when-to-use-it)auto    - [1.19. CommonJS, AMD, RequireJS, ES6 Modules](#119-commonjs-amd-requirejs-es6-modules)auto    - [1.20. How to implement a Queue by using JS?](#120-how-to-implement-a-queue-by-using-js)auto    - [1.21. Some small but important details for JavaScript](#121-some-small-but-important-details-for-javascript)auto        - [1.21.1. apply(), call(), bind()](#1211-apply-call-bind)auto        - [1.21.2. The way to judge the data type in js](#1212-the-way-to-judge-the-data-type-in-js)auto        - [1.21.3. falsy values](#1213-falsy-values)auto        - [1.21.4. if (key in object) VS if (object.hasOwnProperty(key))](#1214-if-key-in-object-vs-if-objecthasownpropertykey)auto        - [1.21.5. !!(expression) in js](#1215-expression-in-js)auto        - [1.21.6. Ways to judge if two object are same](#1216-ways-to-judge-if-two-object-are-same)auto        - [1.21.7. undefined and null](#1217-undefined-and-null)auto        - [1.21.8. function scope vs block scope](#1218-function-scope-vs-block-scope)auto        - [1.21.9. Data type conversion](#1219-data-type-conversion)auto        - [1.21.10. Object Literals](#12110-object-literals)auto        - [1.21.11. Arrow function](#12111-arrow-function)auto        - [1.21.12. Arrays are also objects in JavaScript](#12112-arrays-are-also-objects-in-javascript)auto        - [1.21.13. Three native ways to list/traverse object properties:](#12113-three-native-ways-to-listtraverse-object-properties)auto        - [1.21.14. Using the Object.create method create object](#12114-using-the-objectcreate-method-create-object)auto        - [1.21.15. 'this' used in form](#12115-this-used-in-form)auto- [2. HTML](#2-html)auto    - [2.1. HTML Semantic](#21-html-semantic)auto        - [2.1.1. Why Semantic HTML is Important](#211-why-semantic-html-is-important)auto    - [2.2. What is Iframe?](#22-what-is-iframe)auto    - [2.3. Meta tag](#23-meta-tag)auto- [3. HTML DOM](#3-html-dom)auto    - [3.1. DOM structure](#31-dom-structure)auto    - [3.2. window.onload vs document.onload](#32-windowonload-vs-documentonload)auto    - [3.3. classlist of dom node](#33-classlist-of-dom-node)auto    - [3.4. innerHTML, innerText， textContent](#34-innerhtml-innertext-textcontent)auto    - [3.5. Repaint vs Reflow](#35-repaint-vs-reflow)auto    - [3.6. CreateDocumentFragment](#36-createdocumentfragment)auto    - [3.7. Tranverse Dom tree](#37-tranverse-dom-tree)auto        - [3.7.1. DOM API](#371-dom-api)auto- [4. CSS](#4-css)auto    - [4.1. CSS preprocessor](#41-css-preprocessor)auto        - [4.1.1. CSS preprocessor Pros and cons:](#411-css-preprocessor-pros-and-cons)auto    - [4.2. pt, px, em, rem](#42-pt-px-em-rem)auto        - [4.2.1. CSS3 to make shape](#421-css3-to-make-shape)auto    - [4.3. SASS basic concepts](#43-sass-basic-concepts)auto    - [4.4. Box model](#44-box-model)auto    - [4.5. Position property](#45-position-property)auto    - [4.6. float](#46-float)auto    - [4.7. Clear float](#47-clear-float)auto    - [4.8. ways to hidden Elements](#48-ways-to-hidden-elements)auto    - [4.9. Flexbox layout](#49-flexbox-layout)auto        - [4.9.1. container:](#491-container)auto        - [4.9.2. flex items:](#492-flex-items)auto    - [4.10. box-sizing properity](#410-box-sizing-properity)auto    - [4.11. inline element](#411-inline-element)auto    - [4.12. CSS Specificity Scoring](#412-css-specificity-scoring)auto- [5. React](#5-react)auto    - [5.1. Why use react framework?](#51-why-use-react-framework)auto    - [5.2. Lifecycle](#52-lifecycle)auto    - [5.3. React Example](#53-react-example)auto- [6. Redux](#6-redux)auto    - [6.1. Redux Basic](#61-redux-basic)auto    - [6.2. Keys for Redux usage](#62-keys-for-redux-usage)auto    - [6.3. Redux-sagas](#63-redux-sagas)auto- [7. Http](#7-http)auto    - [7.1. Features of Http](#71-features-of-http)auto    - [7.2. Post VS Get](#72-post-vs-get)auto    - [7.3. http methods](#73-http-methods)auto- [8. Browser](#8-browser)auto    - [8.1. What is CORS?](#81-what-is-cors)auto    - [8.2. How to cross origin?](#82-how-to-cross-origin)auto    - [8.3. Event delegation:](#83-event-delegation)auto    - [8.4. Event flow](#84-event-flow)auto    - [8.5. Critical Rending Path](#85-critical-rending-path)auto    - [8.6. Frame](#86-frame)auto- [9. General Web question](#9-general-web-question)auto    - [9.1. Responsive Website](#91-responsive-website)auto    - [9.2. SSR VS CSR](#92-ssr-vs-csr)auto    - [9.3. ansyn vs defer](#93-ansyn-vs-defer)auto    - [9.4. Ways to improve website performance](#94-ways-to-improve-website-performance)auto    - [9.5. Cookie](#95-cookie)auto    - [9.6. Cache](#96-cache)auto    - [9.7. Session](#97-session)auto    - [9.8. Difference between Cache and Cookies](#98-difference-between-cache-and-cookies)auto    - [9.9. What happends when browsing a web?](#99-what-happends-when-browsing-a-web)auto    - [9.10. Website accessibility consideration:](#910-website-accessibility-consideration)auto        - [9.10.1. define：](#9101-define)auto        - [9.10.2. specific method](#9102-specific-method)auto- [10. Webpack VS Gulp](#10-webpack-vs-gulp)autoauto<!-- /TOC -->
+# 2. JavaScript
 
-## 1.1. forEach() VS map() VS (for..in) VS (for...of)
+## 2.1. forEach() VS map() VS (for..in) VS (for...of)
 1.	Both they will  call a provided function on each element in given array. However, the forEach() method doesn’t return anything (can not use break, continue), the map() method will return a new Array of  the same size.
 2.	forEach() can be used by map, set and array, map just be used by array
 3. for...in is used to iterate object, not good for iterate array, which may iterate over user-defined properties in addition to the array elements
@@ -23,7 +24,7 @@ for (var i of arr) {
 }
 ```
 
-## 1.2. What is a Closure?
+## 2.2. What is a Closure?
 
 * A closure is an inner function that has access to the outer function’s variables.
 * Why use it?
@@ -43,11 +44,11 @@ var f = lazy_sum([1, 2, 3, 4, 5]); // function sum()
 f(); // 15
 ```
 
-## 1.3. Hoisting -- just for no strict mode
+## 2.3. Hoisting -- just for no strict mode
 * A variable declared by ‘var’, can be accessed before its declaration
 * Only the declaration hoisted, not the assignment! So it is hoisted with a value as ‘undefined’.
 * Function expressions in JavaScript are not hoisted. But, Fucntion declaration could be hoisted
-## 1.4. Key features of ES6
+## 2.4. Key features of ES6
 * block scoping with let keyword
 * default parameters
 * rest parameters: a prefix of three dots (...).  The rest parameter allows us to represent an indefinite number of arguments as an array.we use the rest parameters to collect arguments from the second one to the end. We then multiply them by the first one. This example is using an arrow function, which is introduced in the next section.
@@ -108,7 +109,7 @@ f(); // 15
 [more details about arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)  
 [more details about es6 see here](http://www.javascripttutorial.net/es6/)
 
-## 1.5. What is Promise?
+## 2.5. What is Promise?
 Since JavaScript is single-thread language, so we need a lot of asynchronous functions. However, sometime we got a bunch of ugly nested code for asynchronous operation. Therefore, we introduce Promise to solve this problem.
 
 * A Promise object serves as a link between the executor(resolve, reject) and the consuming functions, which needs the result or error of executor.resolve and reject are built-in functions in JS
@@ -120,7 +121,7 @@ Since JavaScript is single-thread language, so we need a lot of asynchronous fun
 * also, we have promise.all() and promise.race()
 * The await operator is used to wait for a Promise. It can only be used inside an async function
 
-### 1.5.1. Promise example
+### 2.5.1. Promise example
 ```JavaScript
 function loadScript(src) {
   return new Promise(function(resolve, reject) {
@@ -146,7 +147,7 @@ promise.then(script => alert('One more handler to do something else!'));
 
 [more details here](https://javascript.info/promise-basics)
 
-## 1.6. Callback
+## 2.6. Callback
 A callback is a function to be executed after something happended, which is:
 1. passed as an argument to another function
 2. is invoked after some kind of event
@@ -158,7 +159,7 @@ A callback is a function to be executed after something happended, which is:
 [a good article to understand callback](https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced)
 
 
-## 1.7. Callback vs Promises
+## 2.7. Callback vs Promises
 * We must have a ready callback function when calling function(args, callbackFun). Also, There can be only one callback. Therefore,
   we get a nested and badly readable code when we have a series of asynchronous functions
 * Promises makes the code more readable, especially when using async and await. First, we get our promise object, and .then we write what to
@@ -166,13 +167,13 @@ A callback is a function to be executed after something happended, which is:
 
 [compare callback vs promise with code](https://medium.com/front-end-hacking/callbacks-promises-and-async-await-ad4756e01d90)
 
-## 1.8. What is generator?
+## 2.8. What is generator?
   * got bunch of nested code when dealing with many asynchronous functions, better then Promise
   * generator can be viewed as a special function in ES6, which allows us to control the process of the function
   * generator could pause its own process by yield inside and restart it from outside
   * we create a generator object to control its process, the generator object is also a iterator object
 
-## 1.9. Observable
+## 2.9. Observable
   * see the following code
   ```JavaScript
   var observable = Rx.Observable.create(function (observer) {
@@ -223,29 +224,29 @@ A callback is a function to be executed after something happended, which is:
 
   [More details about event loop, message queue, ansychronous and synchronous](https://segmentfault.com/a/1190000004322358)
 
-## 1.10. Comparison between Data structures
-### 1.10.1. Object VS Array
+## 2.10. Comparison between Data structures
+### 2.10.1. Object VS Array
 1. array has order, object does not have order
 2. when delete or add element in array, typically, it will be more expensive
 
-### 1.10.2. Map vs Object
+### 2.10.2. Map vs Object
 1. Key field: in Object, the keys MUST be simple types — either integer or string or symbols.
    But in Map it can be any data type (an object, an array, etc…).
 2. Element order: in Map, insertion order of elements (pairs) is preserved(so iterable), while in Object, it isn’t.
 3. Inheritance: Map is an instance of Object
 4. compared with object, map has a lot of convenient method for data operation, such as size(), remove element, forEach
 
-### 1.10.3. Array VS Set
+### 2.10.3. Array VS Set
 1. set does not have duplicates, so when we need non-duplicate, we better use set
 2. Checking whether an element exists in a collection using indexOf for arrays is slow.
 3. array is better  when we need quick access to element by index and do heavy modification
 4. Set objects let you delete elements by their value. With an array you would have to splice based on an element's index.---set.delete('foo');
 
 
-## 1.11. Prototype
+## 2.11. Prototype
  A prototype is an internal object from which other objects inherit properties. Its main purpose is to allow multiple instances of an object to share a common property.
 
-## 1.12. Class inheritance VS prototype inheritance
+## 2.12. Class inheritance VS prototype inheritance
 
 |Class-based (Java) |	Prototype-based (JavaScript)|
 | ------ | ------ |
@@ -256,7 +257,7 @@ Construct an object hierarchy by using class definitions to define subclasses of
 Inherit properties by following the class chain.	| Inherit properties by following the prototype chain.
 Class definition specifies all properties of all instances of a class. Cannot add properties dynamically at run time.	| Constructor function or prototype specifies an initial set of properties. Can add or remove properties dynamically to individual objects or to the entire set of objects.
 
-## 1.13. Inheritance in JavaScript
+## 2.13. Inheritance in JavaScript
 * Every object has a ```__proto__``` object property (except Object);
 * The special property ```__proto__``` is set when an object is constructed; it is set to the value of the constructor's prototype property.
 * every function has a prototype object property.
@@ -264,7 +265,7 @@ Class definition specifies all properties of all instances of a class. Cannot ad
 * In JavaScript, you can have a constructor function call more than one other constructor function within it. This gives the illusion of multiple inheritance.
 
 
-### 1.13.1. based on example of MDN
+### 2.13.1. based on example of MDN
 
   <img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/hierachy1.png' width="40%">
 
@@ -320,7 +321,7 @@ function Engineer(name, projs, mach) {
   this.machine = mach || '';
 }
 ```
-### 1.13.2. based on liaoxuefeng
+### 2.13.2. based on liaoxuefeng
 * a universal way to implement inheritance in javaScript before ES6
 ```javascript
 function inherits(Child, Parent) {
@@ -376,7 +377,7 @@ class PrimaryStudent extends Student {
 
 ```
 
-## 1.14. Debounce & Throttling
+## 2.14. Debounce & Throttling
 
 * Debounce: For events like keydown, scroll, we don’t want to trigger event in the middle of it, but only want to trigger after user pause! (ie. we only care the final result)
 * Throttling: For events like mouseover, we don’t want to trigger event every for every single move, but only want to trigger it every 200ms if such event happens (ie. we only care sample results)
@@ -403,14 +404,14 @@ let textarea = document.querySelector("textarea");
 ```
 [From here](https://caomingkai.github.io/)
 
-## 1.15. Talk about 'this'
+## 2.15. Talk about 'this'
 * Since JavaScript does not have real class (everything is object),  so functions do not know who is their owner. When a object call a function, it should tell the function that I am the current owner of you  and you should use my properties to execute. This is what this does.
 * The this reference ALWAYS refers to (and holds the value of) an object—a singular object—and it is usually used inside a function or a method
 * two special condition is constructor and arrow function
 * this in arrow function is lexical scoping
 * for constructor, this refers the new object
 
-## 1.16. Common Js functions
+## 2.16. Common Js functions
 * Array
   - Array.isArray(arr)
   - arr.join(".")
@@ -457,7 +458,7 @@ let textarea = document.querySelector("textarea");
   - Math.sign() --- return 1, 0, -1 indicating the sign of a number
 
 [From here](http://realtcg.com/2017/05/13/JavaScript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93-%E4%B8%80/)
-## 1.17. arguments objects
+## 2.17. arguments objects
 * it is a array-like object
 * Using the arguments object, we can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how many arguments will be passed to the function.
 ```JavaScript
@@ -479,11 +480,11 @@ myConcat('; ', 'elephant', 'giraffe', 'lion', 'cheetah');
 ```
 [From MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
 
-## 1.18. Event emitter
-### 1.18.1. When to use it?
+## 2.18. Event emitter
+### 2.18.1. When to use it?
 * If when a certain event happens, we have to deal many type of manipulation for that event’s result, then it is better to use the event emitter pattern. Instead put all functions inside an event callback, we subscribe all the function to that event, when the event happens, we emit the event!
 
-## 1.19. CommonJS, AMD, RequireJS, ES6 Modules
+## 2.19. CommonJS, AMD, RequireJS, ES6 Modules
 All of them are talking about javascript modules.
 JavaScript Modules refer to a small units of independent, reusable code. They have distinct functionality, allowing them to be added, removed without disrupting the system.
 * CommonJS uses the keywords require and exports. require is a function used to import functions from another module. exports is an object where any function put into it will get exported.(we could use nodeJS implmentation)
@@ -491,7 +492,7 @@ JavaScript Modules refer to a small units of independent, reusable code. They ha
 * RequireJS：implements the AMD API. It loads the plain JavaScript files as well as modules by using plain script tags. It includes an optimizing tool which can be run while deploying our code for better performance.
 
 
-## 1.20. How to implement a Queue by using JS?
+## 2.20. How to implement a Queue by using JS?
 1.	Two pointers and A object
 2.	Use array, shift() for dequeue;
 
@@ -525,12 +526,12 @@ Queue.prototype.dequeue = function() {
     }
 	};
 ```
-## 1.21. Some small but important details for JavaScript
-### 1.21.1. apply(), call(), bind()
+## 2.21. Some small but important details for JavaScript
+### 2.21.1. apply(), call(), bind()
 * Both these functions are used to bind 'this' to functions. JavaScript function has their owner.
 * The only difference between apply and call is parameters for them. The call() method takes arguments separately. The apply() method takes arguments as an array.
 * bind() will create new function, it will not execute immediately, but call and bind will
-### 1.21.2. The way to judge the data type in js
+### 2.21.2. The way to judge the data type in js
 1. Object.prototype.toString.call(), return [Object，type]
 2. jquery.type();
 3. typeof operator
@@ -546,7 +547,7 @@ Queue.prototype.dequeue = function() {
       Function object | (	"function"
       Any other object|	"object"
 
-### 1.21.3. falsy values
+### 2.21.3. falsy values
 * The following values evaluate to false (also known as Falsy values):    
   * false
   * undefined
@@ -562,29 +563,29 @@ Queue.prototype.dequeue = function() {
   ​    if (b) // this condition evaluates to true
   ​    if (b == true) // this condition evaluates to false
   ​    ```
-### 1.21.4. if (key in object) VS if (object.hasOwnProperty(key))
+### 2.21.4. if (key in object) VS if (object.hasOwnProperty(key))
 * the in operator returns true if the specified property is in the specified object or its prototype chain.
 * in will also return true if key gets found somewhere in the prototype chain,
 * whereas Object.hasOwnProperty (like the name already tells us), will only return true if key is available on that object directly (its "owns" the property).
-### 1.21.5. !!(expression) in js
+### 2.21.5. !!(expression) in js
 * it convert expression into boolean
-### 1.21.6. Ways to judge if two object are same
+### 2.21.6. Ways to judge if two object are same
 *  `_.isEqual(obj1, obj2)` method of lodash.js and underscore.js
 [from here](https://stackoverflow.com/questions/13632999/if-key-in-object-or-ifobject-hasownpropertykey)
-### 1.21.7. undefined and null
+### 2.21.7. undefined and null
 * The undefined value behaves as false when used in a boolean context;The undefined value converts to NaN when used in numeric context.
 * When you evaluate a null variable, the null value behaves as 0 in numeric contexts and as false in boolean contexts
 * variables that are hoisted return a value of undefined. So even if you declare and initialize after you use or refer to this variable, it still returns undefined
-### 1.21.8. function scope vs block scope
+### 2.21.8. function scope vs block scope
 * block scope is delimited by a pair of curly brackets
 * function scope is delimited by function
 * In web pages, the global object is window
 
-### 1.21.9. Data type conversion
+### 2.21.9. Data type conversion
 * In expressions involving numeric and string values with the **+ operator**, JavaScript converts numeric values to strings
 * statements involving other operators, JavaScript does not convert numeric values to strings.
 * convert strings to numbers: parseInt() and parseFloat()
-### 1.21.10. Object Literals
+### 2.21.10. Object Literals
 * Object property names can be any string, including the empty string. If the property name would not be a valid JavaScript identifier or number, it must be enclosed in quotes. Property names that are not valid identifiers also cannot be accessed as a dot (.) property, but can be accessed and set with the array-like notation("[]").
 * identifier are a sequence of characters
 ```JavaScript
@@ -597,19 +598,19 @@ console.log(foo['a']); // alpha
 console.log(foo['2']); // two
 ```
 
-### 1.21.11. Arrow function
+### 2.21.11. Arrow function
 * does not have its own this, arguments, super
 * An arrow function does not have its own this; the this value of the enclosing execution context is used(箭头函数捕捉闭包上下文的this值).
 * 在箭头函数出现之前，每一个新函数都重新定义了自己的 this 值
 
-### 1.21.12. Arrays are also objects in JavaScript
+### 2.21.12. Arrays are also objects in JavaScript
 * JavaScript does not have an explicit array data type,if you supply a non-integer value to the array operator in the code below, a property will be created in the object representing the array, instead of an array element. It actually not array element, does not change array length
 * also, we cannot access it by for...of
 ```JavaScript
 var arr = [];
 arr[3.4] = 'Oranges';
 ```
-### 1.21.13. Three native ways to list/traverse object properties:
+### 2.21.13. Three native ways to list/traverse object properties:
 
 * for...in loops
 This method traverses all enumerable properties of an object and its prototype chain
@@ -617,7 +618,7 @@ This method traverses all enumerable properties of an object and its prototype c
 This method returns an array with all the own (not in the prototype chain) enumerable properties' names ("keys") of an object o.
 * Object.getOwnPropertyNames(o)
 
-### 1.21.14. Using the Object.create method create object
+### 2.21.14. Using the Object.create method create object
 * Objects can also be created using the Object.create() method. This method can be very useful, because it allows you to choose the prototype object for the object you want to create, without having to define a constructor function.
 ```JavaScript
 // Animal properties and method encapsulation
@@ -637,7 +638,7 @@ var fish = Object.create(Animal);
 fish.type = 'Fishes';
 fish.displayType(); // Output:Fishes
 ```
-### 1.21.15. 'this' used in form
+### 2.21.15. 'this' used in form
 When combined with the form property, this can refer to the current object's parent form. In the following example, the form myForm contains a Text object and a button. When the user clicks the button, the value of the Text object is set to the form's name. The button's onclick event handler uses this.form to refer to the parent form, myForm.
 ```html
 <form name="myForm">
@@ -647,29 +648,29 @@ When combined with the form property, this can refer to the current object's par
 </p>
 </form>
 ```
-# 2. HTML
-## 2.1. HTML Semantic
+# 3. HTML
+## 3.1. HTML Semantic
 Semantic HTML is HTML that introduces meaning to the web page rather than just presentation. For example, a <p> tag indicates that the enclosed text is a paragraph. This is both semantic and presentational, because people know what paragraphs are and browsers know how to display them. In HTML4, tags like < b > and < i > are not semantic, because they define only how the text should look (bold or italic) and do not provide any additional meaning.
 Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, < blockquote >, < code > and < em >'. There are many more semantic HTML tags.
 
-### 2.1.1. Why Semantic HTML is Important
+### 3.1.1. Why Semantic HTML is Important
 1. semantic code aids accessibility. Specially, many people whose eyes are not good rely on speech browsers to read pages to them. These programs cannot interpret pages very well unless they are clearly explained.
 2. Help Search engines to better understand pages.  Search engine need to understand what your content is about when rank you properly on search engines. Semantic code tends to improve your placement on search engines, as it is easier for the "search engine spiders" to understand.
 3. It’s easier to read and edit, which saves time and money during maintenance.
 
-## 2.2. What is Iframe?
+## 3.2. What is Iframe?
 * An IFrame (Inline Frame) is an HTML document embedded inside another HTML document on a website.
 * The IFrame HTML element is often used to insert content from another source, such as an advertisement, into a Web page.
 <iframe src="http://www.w3schools.com">不支持 iframe 的浏览器</iframe>
 
 
-## 2.3. Meta tag
+## 3.3. Meta tag
 * The tag provides metadata about the HTML document. Metadata will not be displayed on the page, but will be machine parsable.
 * Meta elements are typically used to specify page description, keywords, author of the document, last modified, and other metadata.
 * The metadata can be used by browsers (how to display content or reload page), search engines (keywords), or other web services.
 
-# 3. HTML DOM
-## 3.1. DOM structure
+# 4. HTML DOM
+## 4.1. DOM structure
 [more details](https://caomingkai.github.io/2018/10/15/Common-DOM-Manipulations/)
 > difference between HTMLCollection & NodeList
   * HTMLCollection: a collection of elements
@@ -686,11 +687,11 @@ Examples of semantic HTML tags include the header tags '< h1 > through < h6 >, <
   * nextSibling---nextElementSibling
   * previousSibling---previousElementSibling
 
-## 3.2. window.onload vs document.onload
+## 4.2. window.onload vs document.onload
 * window.onload: When EVERYTHING is loaded. DOM is ready and all the contents including images, css, scripts, sub-frames, etc. finished loaded.
 * document.onload: once the DOM is loaded, regardless of the css, scripts,…
 
-## 3.3. classlist of dom node
+## 4.3. classlist of dom node
 ```javascript
 function addClass(selector, className){
    var elm = document.querySelector(selector);
@@ -700,7 +701,7 @@ function addClass(selector, className){
    }
 }
 ```
-## 3.4. innerHTML, innerText， textContent
+## 4.4. innerHTML, innerText， textContent
 
 ```javascript
 <p id="test">    This element    contains <span>an inner span</span>. </p>
@@ -710,15 +711,15 @@ function addClass(selector, className){
 * innerHtml: " This element     contains <span>an inner span</span>. "   All spacing and inner element tags.
 * textContent: " This element     contains an inner span. "  Spacing, but no tags.
 
-## 3.5. Repaint vs Reflow
+## 4.5. Repaint vs Reflow
 * reflow: flow of the elements in the page is changed due to change size or position
 * repaint: It happens when you change the look of an element without changing the size and shape. This doesn’t cause reflow as geometry of the element didn’t changed. eg, change visibility
 
-## 3.6. CreateDocumentFragment
+## 4.6. CreateDocumentFragment
 * documentFragment a lightweight or minimal part of a DOM or a subtree of a DOM tree.
 * It is very helpful for improving performance when you are manipulating a part of DOM for multiple times.
 
-## 3.7. Tranverse Dom tree
+## 4.7. Tranverse Dom tree
 ```JavaScript
  // 广度优先遍历
   function bfs(root) {
@@ -748,7 +749,7 @@ function addClass(selector, className){
     }
   }
 ```
-### 3.7.1. DOM API
+### 4.7.1. DOM API
 * addEventListener & removeEventListener
 ```JavaScript
 // Attach an event handler to the document
@@ -769,10 +770,10 @@ function myFunction() {
 * createElement() & intersetBefore() & appendChild()
 * querySelector & querySelectorAll()
 
-# 4. CSS
-## 4.1. CSS preprocessor
+# 5. CSS
+## 5.1. CSS preprocessor
 CSS preprocessors take code written in the preprocessed language and then convert that code into the same old css. 3 of the more popular css preprocessors are Sass(用过), LESS, and Stylus
-### 4.1.1. CSS preprocessor Pros and cons:
+### 5.1.1. CSS preprocessor Pros and cons:
 * Pros:
   1.	Nested syntax
   2.	Ability to define variables
@@ -791,13 +792,13 @@ CSS preprocessors take code written in the preprocessed language and then conver
   4.	Performance is compromised
     - Source files may be small, but the generated CSS could be huge. And it’s the generated CSS that counts.
 
-## 4.2. pt, px, em, rem
+## 5.2. pt, px, em, rem
 * pt are absolute length, 1 pt = 1/72 inch
 * px are relative length, different resolution is different length
 * em is also relative length, which depends its parents length
 * rem is also relative length, which depends root length of HTML
 
-### 4.2.1. CSS3 to make shape
+### 5.2.1. CSS3 to make shape
 * use transform(traslate, rotate)
 * use border
 ```css
@@ -812,7 +813,7 @@ CSS preprocessors take code written in the preprocessed language and then conver
 ```
  [See more details here](http://www.jqhtml.com/8045.html)
 
-## 4.3. SASS basic concepts
+## 5.3. SASS basic concepts
 1. Variables: Variables in SASS start with $ sign
 2. Nesting: CSS lacks visual hierarchy while working with child selectors. You have to write selectors and their combinations in separate lines. Nesting provides a visual hierarchy as in the HTML and increases the readability.
 3. mixins: mixins are used to include a bunch of properties or group declarations together. It allows for the easy reuse of blocks of code. Use include  to
@@ -821,21 +822,21 @@ CSS preprocessors take code written in the preprocessed language and then conver
 6. import: separating your codes in small pieces is helpful for expressing your declarations and increasing maintainability and control over the codebase.
 7. Math operations: can be used for standard arithmetic or unit conversions.
 
-## 4.4. Box model
+## 5.4. Box model
 * block: by default, the width is 100%
 * inline: width is decided by Content
-## 4.5. Position property
+## 5.5. Position property
 * relative: not change the display property of elements
 * absolute: if parents of the elements do not set relative or absolute, the element will locate by the body
   - width of block elements becomes auto, the width of its child element will affect by its width
   - inline elements' display will become blocks
 * using relative and absolute, the elements will cover other elements; but we can set z-index as -1
-## 4.6. float
+## 5.6. float
 * The float CSS property specifies that an element should be placed along the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the web page, but the element will not cover the content of next elements(only cover the box).
 * after setting a float property, the element will become a block
 
 [a good article to understand float and position properity](http://www.cnblogs.com/coffeedeveloper/p/3145790.html)
-## 4.7. Clear float
+## 5.7. Clear float
 If children set float, the parent will lose height from children. In order to let the parent looks like contain children, we have several method:
 1. add new tag in the parent element: < br style="clear:both" />
 2. Float (Nearly) Everything
@@ -855,7 +856,7 @@ If children set float, the parent will lose height from children. In order to le
         <div class="floated"></div>
         </div>
 ```
-## 4.8. ways to hidden Elements
+## 5.8. ways to hidden Elements
 1. display: screen readers won’t read the element’s content either. It is as if the element does not exist.
 2. visibility:
     - Just like the opacity property, the hidden element will still affect the layout of our web page.
@@ -873,8 +874,8 @@ If children set float, the parent will lose height from children. In order to le
 
 [from here](https://www.sitepoint.com/five-ways-to-hide-elements-in-css/)
 
-## 4.9. Flexbox layout
-### 4.9.1. container:
+## 5.9. Flexbox layout
+### 5.9.1. container:
 * float, clear, vertical-align for the items inside flexbox will become invalid
 * display: inline-flex vs display: flex:----only apply to flex container, to make it display as inline or block won’t affect flex items
   inside
@@ -888,20 +889,20 @@ If children set float, the parent will lose height from children. In order to le
         flex-start | flex-end | center | baseline | stretch;
   5. justify-content: where the flex items sit on the main axis
         flex-start | flex-end | center | space-between | space-around
-### 4.9.2. flex items:
+### 5.9.2. flex items:
 * flex: 1 1 20px: three attributes: flex-grow flex-shrink flex-basis
 * order: 3: like the smaller will be put in front
 * align-self: override its container’s align-items layout, update position of itself
-## 4.10. box-sizing properity
+## 5.10. box-sizing properity
 * box-sizing: content-box;
   - The width and height properties include the content, but does not include the padding, border, or margin.
 * box-sizing: border-box;
   - The width and height properties include the content, padding, and border, but do not include the margin
-## 4.11. inline element
+## 5.11. inline element
 * padding-top, padding-bottom, margin-top, margin-bottom are invalid for inline elements
 * padding-left, padding-right, margin-left, margin-bottom are valid for inline elements
 * padding-top, padding-bottom are effective literally, but they did not affect other elements
-## 4.12. CSS Specificity Scoring
+## 5.12. CSS Specificity Scoring
 * inline style > inner style > external style
 * score distribution:
   - HTML tag Element - One
@@ -910,8 +911,8 @@ If children set float, the parent will lose height from children. In order to le
   - Inline Styles - Thousand
 * !important is the biggest
 
-# 5. React
-## 5.1. Why use react framework?
+# 6. React
+## 6.1. Why use react framework?
 * React is a library for building composable user interfaces. not MVC
 * React are based on Components
 * reconcilation:
@@ -920,7 +921,7 @@ If children set float, the parent will lose height from children. In order to le
   - When your data changes, the render method is called again.
   - In order to perform updates as efficiently as possible, react diff the return value from the previous call to render with the new one, and generate a minimal set of changes to be applied to the DOM.
   - The data returned from render is neither a string nor a DOM node — it’s a lightweight description of what the DOM should look like.
-## 5.2. Lifecycle
+## 6.2. Lifecycle
 * Mounting phase:These methods are called in the following order when an instance of a component is being created and inserted into the DOM
   - constructor()
   - getDerivedStateFromProps()
@@ -939,7 +940,7 @@ If children set float, the parent will lose height from children. In order to le
  <img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/lifecycle.png' width="70%">
 </div>
 
-## 5.3. React Example
+## 6.3. React Example
 ```javascript
 class Clock extends React.Component {
   constructor(props) {
@@ -980,8 +981,8 @@ ReactDOM.render(
 );
 ```
 
-# 6. Redux
-## 6.1. Redux Basic
+# 7. Redux
+## 7.1. Redux Basic
 * There are two aspects that React does not solve well, one is code structure and other is communication between components. Therefore, we have Redux(before it, is Flux).
 * The key point of Redux is the web application is state machine. A view corresponds to a state.
 * All data are stored in one object(store);
@@ -993,7 +994,7 @@ ReactDOM.render(
 * once state changes, we should automatically update view. This is finished by store.subscribe()
 * for large application, we split reducer into different smaller reducers, but we use combineReducers() to combine them
 
-## 6.2. Keys for Redux usage
+## 7.2. Keys for Redux usage
 * Redux divides components into two types, one is presentational component, the other is container components
 * presentational components are responsible for UI, no states; all data are from props;
 * container components are responsible for dealing with data and logics, have state
@@ -1019,7 +1020,7 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(FindsView)
 ```
 
-## 6.3. Redux-sagas
+## 7.3. Redux-sagas
 * Saga is a middleware to manage the asynchronous operations, which is implemented by generator functions
 * Saga could subscribe actions, and then decide what to do next, such as initiate a Asynchronous operation, or initiate another action
 * In order to run our Saga, we need to:
@@ -1031,21 +1032,21 @@ export default connect(mapStateToProps, mapDispatchToProps)(FindsView)
 
 <img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/redux-saga.jpg' width="60%">
 
-# 7. Http
+# 8. Http
 
-## 7.1. Features of Http
+## 8.1. Features of Http
 1. connectionless
 2. data type independent
 3. stateless
 
-## 7.2. Post VS Get
+## 8.2. Post VS Get
 1. GET requests include all request data in the URL and POST requests supply additional data from the client (browser) to the server in the message body.
 2. Security: GET is less secure compared to POST because data sent is part of the URL
 3. history different: for get method, Parameters remain in browser history because they are part of the URL; post: parameter are not saved in browser history
 4. restriction on form data length: post no restriction, get has
 5. restriction on form data type: get also can use ASCII characters, post method no restriction
 
-## 7.3. http methods
+## 8.3. http methods
 * GET: The GET method is used to retrieve information from the given server using a given URI. Requests using GET should only retrieve data and should have no other effect on the data.
 * HEAD: Same as GET, but transfers the status line and header section only.
 * POST: A POST request is used to send data to the server, for example, customer information, file upload, etc. using HTML forms.
@@ -1055,13 +1056,13 @@ export default connect(mapStateToProps, mapDispatchToProps)(FindsView)
 * OPTIONS: Describes the communication options for the target resource.
 *	TRACE: Performs a message loop-back test along the path to the target resource.
 
-# 8. Browser
+# 9. Browser
 
-## 8.1. What is CORS?
+## 9.1. What is CORS?
 
 Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to tell a browser to let a web application running at one origin (domain) have permission to access selected resources from a server at a different origin.
 
-## 8.2. How to cross origin?
+## 9.2. How to cross origin?
 [more details](https://segmentfault.com/a/1190000011145364)
 since the same-origin-policy, we cannot send a request to get data from different origin
 1. CORS mechanism: it is decided by server of the requested source(the server decides Access-Control-Allow-Origin)
@@ -1070,36 +1071,36 @@ since the same-origin-policy, we cannot send a request to get data from differen
 4. websocket(HTML5)
 5. nodejs as middleware
 
-## 8.3. Event delegation:
+## 9.3. Event delegation:
 * define: add a event listener to a single common parent rather than each child, based on the event bubbling mechanism
 * when to use?
    we want some code to run when you click on any one of the child elements, we can set the event listener on their parent and have the effect of the event listener bubble to each child, rather than having to set the event listener on every child individually.
 [more details here](https://www.cnblogs.com/bfgis/p/5460191.html)
 
-## 8.4. Event flow
+## 9.4. Event flow
 1. event  flow  includes capture phase, target phase and bubble phase.
 2.	Capturing phase – the event goes down to the element.
 3.	Target phase – the event reached the target element.
 4.	Bubbling phase – the event bubbles up from the element
 5.  capture and bubble phase are event propagation
 6. we can use stopPropogation to stop
-## 8.5. Critical Rending Path
+## 9.5. Critical Rending Path
 1. Constructing the DOM Tree
 2. Constructing the CSSOM Tree
 3. Running JavaScript  - parser blocking resource
 4. Creating the Render Tree
 5. Generating the Layout
 6. Painting
-## 8.6. Frame
+## 9.6. Frame
 * FPS: frame per second, for current browser, it's 60 fps
 * so, every frame takes 1000/60 = 16.667ms
 * the higher, the better user feel
 
-# 9. General Web question
-## 9.1. Responsive Website
+# 10. General Web question
+## 10.1. Responsive Website
 1. ```<meta name="viewport" content="width=device-width, initial-scale=1.0">```
 2. add media query at css
-## 9.2. SSR VS CSR
+## 10.2. SSR VS CSR
 * We are using server side rendering for two reasons:
   - performance benefit for our customers
   - Consistent SEO performance
@@ -1107,12 +1108,12 @@ since the same-origin-policy, we cannot send a request to get data from differen
 * for SSR, the user can start viewing the page while all of that is happening. For the CSR world, you need to wait for all of the above to happen and then have the virtual dom moved to the browser dom for the page to be viewable.
 
 [From here](https://medium.com/walmartlabs/the-benefits-of-server-side-rendering-over-client-side-rendering-5d07ff2cefe8)
-## 9.3. ansyn vs defer
+## 10.3. ansyn vs defer
 fetch and executation
 * the async attribute is used to indicate to the browser that the script file can be executed asynchronously. The HTML parser does not need to pause at the point it reaches the script tag to fetch and execute, the execution can happen whenever the script becomes ready after being fetched in parallel with the document parsing.
 * The defer attribute tells the browser to only execute the script file once the HTML document has been fully parsed.
 [From here](https://bitsofco.de/async-vs-defer/)
-## 9.4. Ways to improve website performance
+## 10.4. Ways to improve website performance
 * Minimize HTTP Requests
 
   Sites are mainly slow because of too many (or too large) HTTP requests. We can eliminate unnecessary request;
@@ -1174,7 +1175,7 @@ fetch and executation
 * Avoid Empty Image src
 
 
-## 9.5. Cookie
+## 10.5. Cookie
 * A cookie is small piece of information stored on local computer by a website you visit.
 * Every time the user loads the website, the browser sends the cookie back to the server to notify the website of the user’s previous activity.
 * Cookies have a certain life span defined by their creators.
@@ -1184,21 +1185,21 @@ fetch and executation
  2. Personalization (user preferences)
  3.	Tracking (analyzing user behavior)
 
-## 9.6. Cache
+## 10.6. Cache
 * A web cache (or HTTP cache) is an information technology for the temporary storage (caching) of web documents, such as HTML pages and images, to reduce bandwidth usage, server load, and perceived lag.
 
-## 9.7. Session
+## 10.7. Session
 * A session is a server-side storage of information that is used to store the user's interaction with the web site or web application.
 * The web application pairs this session id with it's internal database and retrieves the stored variables for use by the requested page.
 * It is stored unlimited amount of data.
 
-## 9.8. Difference between Cache and Cookies
+## 10.8. Difference between Cache and Cookies
 Although cookies and cache are two ways to store data on client’s machine, but there are difference between cache and cookies and they serve different purposes.
 1. Cookie is used to store information to track different characteristics related to user, while cache is used to make the loading of web pages faster.
 2. Cookies stores information such as user preferences, while cache will keep resource files such as audio, video or flash files.
 3. Typically, cookies expire after some time, but cache is kept in the client’s machine until they are removed manually by the user.
 
-## 9.9. What happends when browsing a web?
+## 10.9. What happends when browsing a web?
 1. if requested object is in the browser cache and is fresh, then the browser will display the content.
 2. if not, the request will be sent to ISP, which will do DNS lookup to find the ip address of the server
    check browser cache-> check os cache-> check router cache -> Internet service provider cache(its DNS
@@ -1213,12 +1214,12 @@ Although cookies and cache are two ways to store data on client’s machine, but
 
 [From here](http://edusagar.com/articles/view/70/What-happens-when-you-type-a-URL-in-browser)
 
-## 9.10. Website accessibility consideration:
+## 10.10. Website accessibility consideration:
 [From here](https://www.w3.org/WAI/intro/accessibility.php)
-### 9.10.1. define：
+### 10.10.1. define：
 Web accessibility means that developing the website which is accessible to people with disabilities, and that provides a better user experience for everyone.
 
-### 9.10.2. specific method
+### 10.10.2. specific method
 To solve this issue we can use WAI-ARIA (Web Accessibility Initiative – Accessible Rich Internet Applications) to add special ARIA attributes to extend the semantics of the component markup.
 
 [From here](https://webaccess.berkeley.edu/resources/tips/web-accessibility)
@@ -1240,6 +1241,6 @@ To solve this issue we can use WAI-ARIA (Web Accessibility Initiative – Access
 9. Use ARIA roles and landmarks (but only when necessary)
 10. Make dynamic content accessible
 
-# 10. Webpack VS Gulp
+# 11. Webpack VS Gulp
 * webpack is module bunlder, whose inputs are modules with dependencies, output is static assets, which helps us deploy on the production environment
 * gulp is just a task runner, a flow or steam control tool. gulp.task(), gulp.run(), gulp.wathc(),gulp.src(), gulp.dest()
