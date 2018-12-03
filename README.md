@@ -1201,17 +1201,17 @@ Although cookies and cache are two ways to store data on client’s machine, but
 2. Cookies stores information such as user preferences, while cache will keep resource files such as audio, video or flash files.
 3. Typically, cookies expire after some time, but cache is kept in the client’s machine until they are removed manually by the user.
 
-## what happends when we type a URL on browser?
+## What happends when browsing a web?
 1. if requested object is in the browser cache and is fresh, then the browser will display the content.
-2. DNS lookup to find the ip address of the server
+2. if not, the request will be sent to ISP, which will do DNS lookup to find the ip address of the server
    check browser cache-> check os cache-> check router cache -> Internet service provider cache(its DNS
-     will recursive search)
-3. Browser initiate a TCP connection with the server
-4. Browser sends a Http request to the server
+     will recursive search)    
+3. Browser initiate a TCP connection with the server by IP address
+4. Browser sends a Http request to the server by IP address
 5. Server handles the incoming request and send response
 6. Browser receive the HTTP response;
-7. Browser display the html content
-   It also will send http request for get image or sth
+7. Browser display the content
+   It also will send http request for get image or sth in the returned files
 8. client interaction with server
 
 [From here](http://edusagar.com/articles/view/70/What-happens-when-you-type-a-URL-in-browser)
