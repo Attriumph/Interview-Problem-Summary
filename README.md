@@ -3,47 +3,91 @@
 - [1. Table of Content](#1-table-of-content)
 - [2. JavaScript](#2-javascript)   
   - [2.1. forEach() VS map() VS (for..in) VS (for...of)](#21-foreach-vs-map-vs-forin-vs-forof)    
+
   - [2.2. What is a Closure?](#22-what-is-a-closure)    
+
   - [2.3. Hoisting -- just for no strict mode](#23-hoisting----just-for-no-strict-mode)    
+
   - [2.4. Key features of ES6](#24-key-features-of-es6)    
+
   - [2.5. What is Promise?](#25-what-is-promise)       
+
    - [2.5.1. Promise example](#251-promise-example)    
+
   - [2.6. Callback](#26-callback)    
+
   - [2.7. Callback vs Promises](#27-callback-vs-promises)    
+
   - [2.8. What is generator?](#28-what-is-generator)    
+
   - [2.9. Observable](#29-observable)    
+
   - [2.10. Comparison between Data structures](#210-comparison-between-data-structures)        
-   - [2.10.1. Object VS Array](#2101-object-vs-array)       
-   - [2.10.2. Map vs Object](#2102-map-vs-object)       
-   - [2.10.3. Array VS Set](#2103-array-vs-set)    
+
+    - [2.10.1. Object VS Array](#2101-object-vs-array)       
+
+    - [2.10.2. Map vs Object](#2102-map-vs-object)       
+
+    - [2.10.3. Array VS Set](#2103-array-vs-set)    
+
   - [2.11. Prototype](#211-prototype)    
+
   - [2.12. Class inheritance VS prototype inheritance](#212-class-inheritance-vs-prototype-inheritance)    
+
   - [2.13. Inheritance in JavaScript](#213-inheritance-in-javascript)        
-   - [2.13.1. based on example of MDN](#2131-based-on-example-of-mdn)        
-   - [2.13.2. based on liaoxuefeng](#2132-based-on-liaoxuefeng)    
+
+    - [2.13.1. based on example of MDN](#2131-based-on-example-of-mdn)        
+
+    - [2.13.2. based on liaoxuefeng](#2132-based-on-liaoxuefeng)    
+
   - [2.14. Debounce & Throttling](#214-debounce--throttling)    
+
   - [2.15. Talk about 'this'](#215-talk-about-this)    
+
   - [2.16. Common Js functions](#216-common-js-functions)    
+
   - [2.17. arguments objects](#217-arguments-objects)    
+
   - [2.18. Event emitter](#218-event-emitter)        
-   - [2.18.1. When to use it?](#2181-when-to-use-it)    
+
+    - [2.18.1. When to use it?](#2181-when-to-use-it)    
+
   - [2.19. CommonJS, AMD, RequireJS, ES6 Modules](#219-commonjs-amd-requirejs-es6-modules)    
+
   - [2.20. How to implement a Queue by using JS?](#220-how-to-implement-a-queue-by-using-js)    
-  - [2.21. Some small but important details for JavaScript](#221-some-small-but-important-details-for-javascript)         - [2.21.1. apply(), call(), bind()](#2211-apply-call-bind)        
-   - [2.21.2. The way to judge the data type in js](#2212-the-way-to-judge-the-data-type-in-js)        
-   - [2.21.3. falsy values](#2213-falsy-values)        
-   - [2.21.4. if (key in object) VS if (object.hasOwnProperty(key))](#2214-if-key-in-object-vs-if-objecthasownpropertykey)        
-   - [2.21.5. !!(expression) in js](#2215-expression-in-js)        
-   - [2.21.6. Ways to judge if two object are same](#2216-ways-to-judge-if-two-object-are-same)        
-   - [2.21.7. undefined and null](#2217-undefined-and-null)        
-   - [2.21.8. function scope vs block scope](#2218-function-scope-vs-block-scope)        
-   - [2.21.9. Data type conversion](#2219-data-type-conversion)        
-   - [2.21.10. Object Literals](#22110-object-literals)        
-   - [2.21.11. Arrow function](#22111-arrow-function)        
-   - [2.21.12. Arrays are also objects in JavaScript](#22112-arrays-are-also-objects-in-javascript)        
-   - [2.21.13. Three native ways to list/traverse object properties:](#22113-three-native-ways-to-listtraverse-object-properties)        
-   - [2.21.14. Using the Object.create method create object](#22114-using-the-objectcreate-method-create-object)        - [2.21.15. 'this' used in form](#22115-this-used-in-form)
+
+  - [2.21. Some small but important details for JavaScript](#221-some-small-but-important-details-for-javascript)     
+
+    - [2.21.1. apply(), call(), bind()](#2211-apply-call-bind)        
+
+    - [2.21.2. The way to judge the data type in js](#2212-the-way-to-judge-the-data-type-in-js)        
+
+    - [2.21.3. falsy values](#2213-falsy-values)        
+
+    - [2.21.4. if (key in object) VS if (object.hasOwnProperty(key))](#2214-if-key-in-object-vs-if-objecthasownpropertykey)        
+
+    - [2.21.5. !!(expression) in js](#2215-expression-in-js)        
+
+    - [2.21.6. Ways to judge if two object are same](#2216-ways-to-judge-if-two-object-are-same)        
+
+    - [2.21.7. undefined and null](#2217-undefined-and-null)        
+
+    - [2.21.8. function scope vs block scope](#2218-function-scope-vs-block-scope)        
+
+    - [2.21.9. Data type conversion](#2219-data-type-conversion)        
+
+    - [2.21.10. Object Literals](#22110-object-literals)        
+
+    - [2.21.11. Arrow function](#22111-arrow-function)        
+
+    - [2.21.12. Arrays are also objects in JavaScript](#22112-arrays-are-also-objects-in-javascript)        
+
+    - [2.21.13. Three native ways to list/traverse object properties:](#22113-three-native-ways-to-listtraverse-object-properties)        
+
+    - [2.21.14. Using the Object.create method create object](#22114-using-the-objectcreate-method-create-object)      
+    - [2.21.15. 'this' used in form](#22115-this-used-in-form)
 - [3. HTML](#3-html)    
+
   - [3.1. HTML Semantic](#31-html-semantic)        
    - [3.1.1. Why Semantic HTML is Important](#311-why-semantic-html-is-important)   
   - [3.2. What is Iframe?](#32-what-is-iframe)    
@@ -56,59 +100,101 @@
   - [4.5. Repaint vs Reflow](#45-repaint-vs-reflow)    
   - [4.6. CreateDocumentFragment](#46-createdocumentfragment)    
   - [4.7. Tranverse Dom tree](#47-tranverse-dom-tree)        
-   - [4.7.1. DOM API](#471-dom-api)
+    - [4.7.1. DOM API](#471-dom-api)
 - [5. CSS](#5-css)    
- - [5.1. CSS preprocessor](#51-css-preprocessor)        
-  - [5.1.1. CSS preprocessor Pros and cons:](#511-css-preprocessor-pros-and-cons)    
- - [5.2. pt, px, em, rem](#52-pt-px-em-rem)        
-  - [5.2.1. CSS3 to make shape](#521-css3-to-make-shape)    
- - [5.3. SASS basic concepts](#53-sass-basic-concepts)    
- - [5.4. Box model](#54-box-model)    
- - [5.5. Position property](#55-position-property)    
- - [5.6. float](#56-float)    
- - [5.7. Clear float](#57-clear-float)    
- - [5.8. ways to hidden Elements](#58-ways-to-hidden-elements)    
- - [5.9. Flexbox layout](#59-flexbox-layout)        
-  - [5.9.1. container:](#591-container)        
-  - [5.9.2. flex items:](#592-flex-items)    
- - [5.10. box-sizing properity](#510-box-sizing-properity)    
- - [5.11. inline element](#511-inline-element)    
- - [5.12. CSS Specificity Scoring](#512-css-specificity-scoring)
+
+  - [5.1. CSS preprocessor](#51-css-preprocessor)        
+    - [5.1.1. CSS preprocessor Pros and cons:](#511-css-preprocessor-pros-and-cons)    
+
+  - [5.2. pt, px, em, rem](#52-pt-px-em-rem)        
+    - [5.2.1. CSS3 to make shape](#521-css3-to-make-shape)    
+
+  - [5.3. SASS basic concepts](#53-sass-basic-concepts)    
+
+  - [5.4. Box model](#54-box-model)    
+
+  - [5.5. Position property](#55-position-property)    
+
+  - [5.6. float](#56-float)    
+
+  - [5.7. Clear float](#57-clear-float)    
+
+  - [5.8. ways to hidden Elements](#58-ways-to-hidden-elements)    
+
+  - [5.9. Flexbox layout](#59-flexbox-layout)        
+
+    - [5.9.1. container:](#591-container)        
+
+    - [5.9.2. flex items:](#592-flex-items)    
+
+  - [5.10. box-sizing properity](#510-box-sizing-properity)    
+
+  - [5.11. inline element](#511-inline-element)    
+
+  - [5.12. CSS Specificity Scoring](#512-css-specificity-scoring)
 - [6. React](#6-react)    
- - [6.1. Why use react framework?](#61-why-use-react-framework)    
- - [6.2. Lifecycle](#62-lifecycle)    
- - [6.3. React Example](#63-react-example)
+
+  - [6.1. Why use react framework?](#61-why-use-react-framework)    
+
+  - [6.2. Lifecycle](#62-lifecycle)    
+
+  - [6.3. React Example](#63-react-example)
 - [7. Redux](#7-redux)    
- - [7.1. Redux Basic](#71-redux-basic)    
- - [7.2. Keys for Redux usage](#72-keys-for-redux-usage)    
- - [7.3. Redux-sagas](#73-redux-sagas)
+
+  - [7.1. Redux Basic](#71-redux-basic)    
+
+  - [7.2. Keys for Redux usage](#72-keys-for-redux-usage)    
+
+  - [7.3. Redux-sagas](#73-redux-sagas)
 - [8. Http](#8-http)    
- - [8.1. Features of Http](#81-features-of-http)    
- - [8.2. Post VS Get](#82-post-vs-get)    
- - [8.3. http methods](#83-http-methods)
+
+  - [8.1. Features of Http](#81-features-of-http)    
+
+  - [8.2. Post VS Get](#82-post-vs-get)    
+
+  - [8.3. http methods](#83-http-methods)
 - [9. Browser](#9-browser)    
- - [9.1. What is CORS?](#91-what-is-cors)    
- - [9.2. How to cross origin?](#92-how-to-cross-origin)    
- - [9.3. Event delegation:](#93-event-delegation)    
- - [9.4. Event flow](#94-event-flow)    
- - [9.5. Critical Rending Path](#95-critical-rending-path)    
- - [9.6. Frame](#96-frame)
+
+  - [9.1. What is CORS?](#91-what-is-cors)    
+
+  - [9.2. How to cross origin?](#92-how-to-cross-origin)    
+
+  - [9.3. Event delegation:](#93-event-delegation)    
+
+  - [9.4. Event flow](#94-event-flow)    
+
+  - [9.5. Critical Rending Path](#95-critical-rending-path)    
+
+  - [9.6. Frame](#96-frame)
 - [10. General Web question](#10-general-web-question)    
- - [10.1. Responsive Website](#101-responsive-website)    
- - [10.2. SSR VS CSR](#102-ssr-vs-csr)    
- - [10.3. ansyn vs defer](#103-ansyn-vs-defer)    
- - [10.4. Ways to improve website performance](#104-ways-to-improve-website-performance)    
- - [10.5. Cookie](#105-cookie)    
- - [10.6. Cache](#106-cache)    
- - [10.7. Session](#107-session)    
- - [10.8. Difference between Cache and Cookies](#108-difference-between-cache-and-cookies)    
- - [10.9. What happends when browsing a web?](#109-what-happends-when-browsing-a-web)    
- - [10.10. Website accessibility consideration:](#1010-website-accessibility-consideration)        
-  - [10.10.1. define：](#10101-define)        
-  - [10.10.2. specific method](#10102-specific-method)
+
+  - [10.1. Responsive Website](#101-responsive-website)    
+
+  - [10.2. SSR VS CSR](#102-ssr-vs-csr)    
+
+  - [10.3. ansyn vs defer](#103-ansyn-vs-defer)    
+
+  - [10.4. Ways to improve website performance](#104-ways-to-improve-website-performance)    
+
+  - [10.5. Cookie](#105-cookie)    
+
+  - [10.6. Cache](#106-cache)    
+
+  - [10.7. Session](#107-session)    
+
+  - [10.8. Difference between Cache and Cookies](#108-difference-between-cache-and-cookies)    
+
+  - [10.9. What happends when browsing a web?](#109-what-happends-when-browsing-a-web)    
+
+  - [10.10. Website accessibility consideration:](#1010-website-accessibility-consideration)        
+
+    - [10.10.1. define：](#10101-define)        
+
+    - [10.10.2. specific method](#10102-specific-method)
 - [11. Webpack VS Gulp](#11-webpack-vs-gulp)
 
 <!-- /TOC -->
+
 # 2. JavaScript
 
 ## 2.1. forEach() VS map() VS (for..in) VS (for...of)
