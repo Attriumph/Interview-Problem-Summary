@@ -1,4 +1,4 @@
-![](https://img.shields.io/cocoapods/l/Alamofire.svg?style=flat)
+![](https://img.shields.io/badge/License-MIT-orange.svg)
 
 # 1. Table of Content
 <!-- TOC -->
