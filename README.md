@@ -1,4 +1,7 @@
-![](https://img.shields.io/badge/License-MIT-orange.svg)
+<p align=""left>
+<img src="https://img.shields.io/badge/License-MIT-orange.svg">
+<img src="https://img.shields.io/badge/release--date-11%2F2018-green.svg">	
+</p>
 
 # 1. Table of Content
 <!-- TOC -->
