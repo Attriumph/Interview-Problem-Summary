@@ -608,7 +608,7 @@ let textarea = document.querySelector("textarea");
 * Since JavaScript does not have real class (everything is object),  so functions do not know who is their owner. When a object call a function, it should tell the function that I am the current owner of you  and you should use my properties to execute. This is what this does.
 * The this reference ALWAYS refers to (and holds the value of) an object—a singular object—and it is usually used inside a function or a method
 * two special condition is constructor and arrow function
-* this in arrow function is lexical scoping
+* this in arrow function is lexical scoping. [More details about this in arrow funtion](https://segmentfault.com/q/1010000008295253)
 * for constructor, this refers the new object
 
 ## 2.16. Common Js functions
