@@ -1137,7 +1137,7 @@ If children set float, the parent will lose height from children. In order to le
 [From here](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
 <div style="display: flex; justify-content: center;">
- <img src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/lifecycle.png' width="70%">
+ <img style="display:inline-block" src='https://github.com/Attriumph/Interview-Problem-Summary/blob/master/Front-end%20Interview/images/lifecycle.png' width="70%">
 </div>
 
 ## 6.3. React Example
