@@ -3,6 +3,12 @@
 <img src="https://img.shields.io/badge/release--date-11%2F2018-green.svg">	
 </p>
 
+# Preface
+### Author: [Lingquan Han](https://hanlingquan.com/)
+### Introducation:
+
+> This repo was summarized during the process of preparation for interviews, including common interview questions for software engineer(Front-end), Web engineer and UI engineer and so on. Hopefully, it is helpful for you. And please feel free to commit pr if you find problems or you want to add more content for this repo.
+
 # 1. Table of Content
 <!-- TOC -->
 - [1. Table of Content](#1-table-of-content)
